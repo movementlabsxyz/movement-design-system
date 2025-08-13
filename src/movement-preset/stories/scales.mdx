@@ -1,0 +1,32 @@
+import { Meta, Stories } from "@storybook/blocks";
+
+import { Source } from "@/docs/blocks";
+
+import * as ScalesStories from "./scales.stories";
+
+<Meta of={ScalesStories} />
+
+# Scales
+
+The available scale tokens that can be applied to properties like `borderWidth`, `rounded`, `zIndex`, and more in PandaCSS.
+
+
+{/* prettier-ignore-start */}
+
+<Source code={`
+import { css } from "styled-system/css";
+
+const ScalesExample = () => (
+  <div className={css({
+    borderWidth: "103",
+    rounded: "base",
+    zIndex: "popover",
+  })}>
+    Combined Scales
+  </div>
+);
+`} />
+
+{/* prettier-ignore-end */}
+
+<Stories of={ScalesStories} />

@@ -1,0 +1,27 @@
+import { Meta, Stories } from "@storybook/blocks";
+
+import { Source } from "@/docs/blocks";
+
+import * as TypographyStories from "./text.stories";
+
+<Meta of={TypographyStories} />
+
+# Typography
+
+Typography styles bundled into `textStyle` prop for pandaCSS.
+
+{/* prettier-ignore-start */}
+
+<Source code={`
+import { css } from "styled-system/css";
+
+const MyComponent = () => (
+  <p className={css({ textStyle: "heading-large.md" })}>
+    Hello World
+  </p>
+);
+`} />
+
+{/* prettier-ignore-end */}
+
+<Stories of={TypographyStories} />

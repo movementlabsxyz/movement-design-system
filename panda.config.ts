@@ -1,19 +1,13 @@
 import { defineConfig } from "@pandacss/dev";
-import { movementLabsPreset } from "./src/movement-labs-preset";
+import {movementPreset} from "./src/movement-preset"
 
 export default defineConfig({
-  presets:[movementLabsPreset],
+  presets: [movementPreset],
   // Whether to use css reset
   preflight: true,
 
   // Where to look for your css declarations
-  include: [
-    "./src/**/*.{js,jsx,ts,tsx}", 
-    "./pages/**/*.{js,jsx,ts,tsx}",
-    "./.storybook/**/*.{js,jsx,ts,tsx}",
-    "./src/**/*.stories.{js,jsx,ts,tsx}",
-    "./src/**/*.mdx"
-  ],
+  include: ["./src/**/*.{js,jsx,ts,tsx}", "./pages/**/*.{js,jsx,ts,tsx}"],
 
   // Files to exclude
   exclude: [],
