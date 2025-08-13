@@ -1,139 +1,35 @@
-/* Card component styles */
-.card-styling {
-  /* Base glass morphism styles */
-  border-radius: var(--border-radius-md, 16px);
-  border: 1px solid var(--styles-glass-stroke-gold, #FFF);
-  background: var(--styles-glass-bg, linear-gradient(153deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.00) 100%));
-  backdrop-filter: blur(21px);
-  transition: all 0.2s ease;
-}
 
-/* Hover effect for glass cards */
-.card-styling:hover {
-  border-radius: var(--border-radius-md, 16px);
-  border: 1px solid var(--styles-glass-stroke-gold, #FFF);
-  background: var(--styles-glass-hover, linear-gradient(153deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.00) 100%));
-  backdrop-filter: blur(21px);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1);
-}
-
-/* Loading animation for cards */
-@keyframes cardShimmer {
-  0% {
-    background-position: -200px 0;
-  }
-  100% {
-    background-position: calc(200px + 100%) 0;
-  }
-}
-
-.card-loading {
-  position: relative;
-  overflow: hidden;
-}
-
-.card-loading::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-  background-size: 200px 100%;
-  animation: cardShimmer 1.5s infinite;
-}
-
-/* Card variants */
-.card-elevated {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-.card-elevated:hover {
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-}
-
-.card-outlined {
-  background: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-.card-outlined:hover {
-  border-color: rgba(255, 255, 255, 0.6);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-/* Card content styles */
-.card-content {
-  padding: 1rem;
-  color: white;
-}
-
-.card-header {
-  padding: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.card-body {
-  padding: 1rem;
-  flex: 1;
-}
-
-.card-footer {
-  padding: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-/* Responsive card grid */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
-}
-
-/* Card size variants */
-.card-sm {
-  min-height: 120px;
-  max-width: 200px;
-}
-
-.card-md {
-  min-height: 200px;
-  max-width: 300px;
-}
-
-.card-lg {
-  min-height: 300px;
-  max-width: 400px;
-}
-
-.card-xl {
-  min-height: 400px;
-  max-width: 500px;
-}
-
-/* Focus styles for accessibility */
-.card-styling:focus {
-  outline: 2px solid rgba(255, 255, 255, 0.5);
-  outline-offset: 2px;
-}
-
-/* Dark theme adjustments */
-@media (prefers-color-scheme: dark) {
-  .card-styling {
-    border-color: rgba(255, 255, 255, 0.2);
+.card-styling{
+    border: 1px solid;
+    /* border-image: radial-gradient(69.43% 69.43% at 50% 50%, #81FFBA 0%, #81ffba70 100%) 1; */
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    transition: 0.3s ease-out;
+    box-sizing: border-box;
+    border: none !important;
   }
   
-  .card-styling:hover {
-    border-color: rgba(255, 255, 255, 0.4);
+  .hover-effect:hover {
+    cursor: pointer;
+    background: linear-gradient(153deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.00) 100%) !important;
+    backdrop-filter: blur(21px);
+    border-image: radial-gradient(69.43% 69.43% at 50% 50%, #FFD935 0%, #FFD93570 100%) 1;
   }
-}
+  
+  
+  .card-styling::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 4px; 
+    padding: 1px; 
+    background: radial-gradient(59.92% 76.24% at 50% 50%, #81FFBA 0%, rgba(129, 255, 186, 0.00) 100%), radial-gradient(59.97% 79.12% at 50% 50%, #81FFBA 18.75%, rgba(129, 255, 186, 0.00) 100%), radial-gradient(76.68% 94.29% at 50% 50%, #FFF 0%, rgba(255, 255, 255, 0.00) 100%);
+    mask: 
+      linear-gradient(#000 0 0) content-box, 
+      linear-gradient(#000 0 0);
+    mask-composite: exclude; 
+  }
+  
+  .card-styling:hover::before {
+    background: radial-gradient(59.92% 76.24% at 50% 50%, #FFD935 0%, rgba(21, 21, 21, 0.00) 100%), radial-gradient(59.97% 79.12% at 50% 50%, #FFD935 18.75%, rgba(255, 217, 53, 0.00) 100%), radial-gradient(76.68% 94.29% at 50% 50%, #FFF 0%, rgba(255, 255, 255, 0.00) 100%);
+  }

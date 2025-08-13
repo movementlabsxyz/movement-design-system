@@ -42,6 +42,7 @@ export const createStorybookTheme = () => {
     // Brand
     brandTitle: 'Movement Design System',
     brandUrl: './',
-    brandImage: `./logo.svg`,
+    brandImage: "../src/assets/logo.svg",
+    // brandImage: require('../src/assets/logo.svg'),
   });
 };
