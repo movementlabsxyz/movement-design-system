@@ -32,7 +32,6 @@ const preview: Preview = {
     themes: {
       default: "dark",
       list: [
-        { name: "light", class: "light", color: "#ffffff" },
         { name: "dark", class: "dark", color: "#000000" },
       ],
     },
@@ -44,11 +43,7 @@ const preview: Preview = {
         {
           name: "dark",
           value: "#000000",
-        },
-        {
-          name: "light",
-          value: "#ffffff",
-        },
+        }
       ],
     },
   },

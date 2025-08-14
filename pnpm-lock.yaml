@@ -111,9 +111,15 @@ importers:
       playwright:
         specifier: ^1.54.1
         version: 1.54.2
+      rollup:
+        specifier: ^4.46.2
+        version: 4.46.2
       storybook:
         specifier: ^9.0.17
         version: 9.1.1(@testing-library/dom@10.4.1)(prettier@3.2.5)(vite@7.0.6(lightningcss@1.25.1))
+      tslib:
+        specifier: ^2.8.1
+        version: 2.8.1
       typescript:
         specifier: ~5.8.3
         version: 5.8.3

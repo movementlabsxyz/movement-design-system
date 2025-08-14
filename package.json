@@ -1,12 +1,25 @@
 {
-  "name": "draft-design-system",
+  "name": "movement-design-system",
   "version": "0.0.1",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./preset": {
+      "import": "./dist/movement-preset/index.esm.js",
+      "require": "./dist/movement-preset/index.js",
+      "types": "./dist/movement-preset/index.d.ts"
+    }
+  },
   "files": [
-    "dist"
+    "dist",
+    "styled-system"
   ],
   "scripts": {
     "dev": "vite",
@@ -55,7 +68,9 @@
     "eslint-plugin-storybook": "^9.0.17",
     "globals": "^16.3.0",
     "playwright": "^1.54.1",
+    "rollup": "^4.46.2",
     "storybook": "^9.0.17",
+    "tslib": "^2.8.1",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.35.1",
     "vite": "^7.0.4",

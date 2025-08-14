@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import { ComponentPropsWithoutRef, forwardRef, ReactNode } from "react";
-import { cx } from "styled-system/css";
-import { cva, RecipeVariantProps } from "styled-system/css/cva";
+import { cx, cva, type RecipeVariantProps } from "styled-system/css";
 
 export type CardVariant = NonNullable<
   RecipeVariantProps<typeof cardStyles>
