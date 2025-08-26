@@ -159,4 +159,21 @@ export const semanticColors = {
       lighten: { value: "{colors.neutrals.blackAlpha.700}" },
     },
   },
+  feedback: {
+    success: {
+      default: { value: "{colors.guild-green.400}" },
+      dark: { value: "{colors.guild-green.700}" },
+      light: { value: "{colors.guild-green.100}" },
+    },
+    error: {
+      default: { value: "#D82C2D" },
+      dark: { value: "#b61a1c" },
+      light: { value: "#ffc2c2" },
+    },
+    warning: {
+      default: { value: "{colors.oracle-orange.500}" },
+      dark: { value: "{colors.oracle-orange.600}" },
+      light: { value: "{colors.oracle-orange.100}" },
+    },
+  },
 } satisfies SemanticTokens["colors"];
