@@ -10,7 +10,7 @@ export const createStorybookTheme = () => {
     colorSecondary: '#0337ff', // byzantine-blue.400
 
     // UI
-    appBg: '#000000', // neutrals.black
+    appBg: '#1F1F21', // dark.400 equivalent
     appContentBg: '#1F1F21', // dark.400 equivalent
     appBorderColor: '#45454F', // dark.600 equivalent
     appBorderRadius: 8,

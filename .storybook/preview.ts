@@ -31,9 +31,7 @@ const preview: Preview = {
     // Configure themes addon
     themes: {
       default: "dark",
-      list: [
-        { name: "dark", class: "dark", color: "#000000" },
-      ],
+      list: [{ name: "dark", class: "dark", color: "#1a1a1a" }],
     },
 
     // Additional styling for code blocks
@@ -42,8 +40,8 @@ const preview: Preview = {
       values: [
         {
           name: "dark",
-          value: "#000000",
-        }
+          value: "#1a1a1a",
+        },
       ],
     },
   },
