@@ -25,7 +25,7 @@ const Icon = ({ className }: { className?: string }) => (
 );
 
 const meta = {
-  title: "Components/Button",
+  title: "Components/Button/Button",
   component: Button,
   parameters: {
     layout: "centered",
