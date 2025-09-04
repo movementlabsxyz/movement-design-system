@@ -46,6 +46,30 @@ export const keyframes = {
     "0%": { transform: "translateY(0%)" },
     "100%": { transform: "translateY(150%)" },
   },
+  slideInFromTop: {
+    "0%": { transform: "translateY(-100%)" },
+    "100%": { transform: "translateY(0%)" },
+  },
+  slideOutToTop: {
+    "0%": { transform: "translateY(0%)" },
+    "100%": { transform: "translateY(-100%)" },
+  },
+  slideInFromLeft: {
+    "0%": { transform: "translateX(-100%)" },
+    "100%": { transform: "translateX(0%)" },
+  },
+  slideOutToLeft: {
+    "0%": { transform: "translateX(0%)" },
+    "100%": { transform: "translateX(-100%)" },
+  },
+  slideInFromRight: {
+    "0%": { transform: "translateX(100%)" },
+    "100%": { transform: "translateX(0%)" },
+  },
+  slideOutToRight: {
+    "0%": { transform: "translateX(0%)" },
+    "100%": { transform: "translateX(100%)" },
+  },
   shimmer: {
     "0%": { transform: "translateX(-100%)" },
     "100%": { transform: "translateX(100%)" },

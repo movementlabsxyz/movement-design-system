@@ -8,6 +8,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- New `Drawer` component with comprehensive functionality
+- Drawer supports DrawerHeader, DrawerBody, and DrawerFooter sub-components
+- Drawer supports multiple placements (top, bottom, left, right) and sizes
+- Drawer includes backdrop click and escape key close options
+- Comprehensive Storybook stories for Drawer component
+- Mock icon components for drawer demonstrations
+- New `Modal` component with comprehensive functionality
+- Modal supports ModalHeader, ModalBody, and ModalFooter sub-components
+- Modal supports multiple sizes (sm, md, lg, xl, full) and various configurations
+- Modal includes backdrop click and escape key close options
+- Comprehensive Storybook stories for Modal component
+- Mock icon components for modal demonstrations
+- New `Menu` component with comprehensive functionality
+- Menu supports MenuItem and MenuSeparator sub-components
+- Menu items support icons, end icons, selection states, and disabled states
+- Comprehensive Storybook stories for Menu component
+- Mock icon components for menu demonstrations
 - New `IconButton` component with comprehensive styling options
 - IconButton supports multiple variants (filled, outlined, text, ghost)
 - IconButton supports multiple colors (primary, secondary, neutral, danger, success, warning)
