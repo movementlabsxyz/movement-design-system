@@ -1,7 +1,6 @@
 import { Dialog as ArkDialog } from "@ark-ui/react/dialog";
 import { ComponentType, ReactNode, forwardRef } from "react";
-import { css } from "styled-system/css";
-import { stack } from "styled-system/patterns";
+import { css, cx } from "styled-system/css";
 
 // Mock icon components for modal
 const IconX = ({ className }: { className?: string }) => (
@@ -14,45 +13,6 @@ const IconX = ({ className }: { className?: string }) => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
-  </svg>
-);
-
-const IconWarning = ({ className }: { className?: string }) => (
-  <svg
-    className={className}
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path d="M12 2L1 21h22L12 2zm0 3.17L19.83 19H4.17L12 5.17zM11 16h2v2h-2zm0-6h2v4h-2z" />
-  </svg>
-);
-
-const IconInfo = ({ className }: { className?: string }) => (
-  <svg
-    className={className}
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
-  </svg>
-);
-
-const IconCheckCircle = ({ className }: { className?: string }) => (
-  <svg
-    className={className}
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
   </svg>
 );
 
@@ -100,11 +60,14 @@ const modalOverlayStyles = css({
   position: "fixed",
   inset: "0",
   bg: "neutrals.blackAlpha.600",
-  zIndex: 50,
+  zIndex: "overlay",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
   p: "4",
+  // Ensure it covers the entire viewport
+  width: "100vw",
+  height: "100vh",
 });
 
 const modalContentStyles = css({
@@ -114,7 +77,11 @@ const modalContentStyles = css({
   w: "full",
   maxH: "90vh",
   overflow: "hidden",
-  position: "relative",
+  position: "fixed",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  zIndex: "modal",
 });
 
 const sizeStyles = {
@@ -186,7 +153,7 @@ const iconStyles = css({
 export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
   ({ title, icon: Icon, className }, ref) => {
     return (
-      <div ref={ref} className={css(modalHeaderStyles, className)}>
+      <div ref={ref} className={cx(modalHeaderStyles, className)}>
         {Icon && <Icon className={iconStyles} />}
         <h2 className={modalTitleStyles}>{title}</h2>
         <ArkDialog.CloseTrigger className={modalCloseButtonStyles}>
@@ -202,7 +169,7 @@ ModalHeader.displayName = "ModalHeader";
 export const ModalBody = forwardRef<HTMLDivElement, ModalBodyProps>(
   ({ children, className }, ref) => {
     return (
-      <div ref={ref} className={css(modalBodyStyles, className)}>
+      <div ref={ref} className={cx(modalBodyStyles, className)}>
         {children}
       </div>
     );
@@ -214,7 +181,7 @@ ModalBody.displayName = "ModalBody";
 export const ModalFooter = forwardRef<HTMLDivElement, ModalFooterProps>(
   ({ children, className }, ref) => {
     return (
-      <div ref={ref} className={css(modalFooterStyles, className)}>
+      <div ref={ref} className={cx(modalFooterStyles, className)}>
         {children}
       </div>
     );
@@ -251,7 +218,11 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
         <ArkDialog.Positioner>
           <ArkDialog.Content
             ref={ref}
-            className={css(modalContentStyles, sizeStyles[size], className)}
+            className={cx(
+              modalContentStyles,
+              css({ ...sizeStyles[size] }),
+              className
+            )}
           >
             {children}
           </ArkDialog.Content>
