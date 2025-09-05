@@ -62,7 +62,7 @@ const drawerOverlayStyles = css({
   position: "fixed",
   inset: "0",
   bg: "neutrals.blackAlpha.600",
-  zIndex: 50,
+  zIndex: "overlay",
   animation: "fadeIn 0.2s ease-out",
   _closed: {
     animation: "fadeOut 0.2s ease-in",
@@ -77,6 +77,7 @@ const drawerContentStyles = css({
   flexDirection: "column",
   overflow: "hidden",
   transition: "transform 0.3s ease-out, opacity 0.3s ease-out",
+  zIndex: "modal",
 });
 
 const getPlacementStyles = (placement: string) => {
