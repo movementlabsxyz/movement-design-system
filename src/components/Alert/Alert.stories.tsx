@@ -236,21 +236,36 @@ export const Interactive: Story = {
   },
 };
 
-export const AllStates: Story = {
+// Additional examples
+
+export const FormValidation: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-      <Alert variant="info">Simple info alert without title</Alert>
-      <Alert variant="info" title="Info with Title">
-        Info alert with title
+      <Alert variant="error" title="Validation Error">
+        Please correct the following errors before submitting the form.
       </Alert>
-      <Alert variant="warning" title="Warning" dismissible>
-        Dismissible warning alert
+      <Alert variant="success" title="Success">
+        Your form has been submitted successfully!
       </Alert>
-      <Alert variant="error" title="Error" dismissible>
-        Dismissible error alert
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: "Example of alerts used for form validation feedback.",
+      },
+    },
+  },
+};
+
+export const SystemNotifications: Story = {
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+      <Alert variant="info" title="System Maintenance">
+        Scheduled maintenance will occur tonight from 2:00 AM to 4:00 AM EST.
       </Alert>
-      <Alert variant="success" title="Success" dismissible>
-        Dismissible success alert
+      <Alert variant="warning" title="Service Degradation">
+        Some features may be temporarily unavailable due to high traffic.
       </Alert>
     </div>
   ),
@@ -258,9 +273,8 @@ export const AllStates: Story = {
     docs: {
       description: {
         story:
-          "All the different states and variations of Alert displayed together.",
+          "Example of alerts used for system notifications and maintenance.",
       },
     },
   },
 };
-
