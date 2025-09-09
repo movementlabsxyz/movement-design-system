@@ -1,5 +1,7 @@
 import { ComponentType, ReactNode, forwardRef } from "react";
-import { css, cx } from "styled-system/css";
+import { cx, cva } from "styled-system/css";
+
+import { type AlertVariant } from "./types";
 
 // Mock icon components for alert
 const IconInfo = ({ className }: { className?: string }) => (
@@ -67,9 +69,6 @@ const IconX = ({ className }: { className?: string }) => (
   </svg>
 );
 
-export const alertVariants = ["info", "warning", "error", "success"] as const;
-export type AlertVariant = (typeof alertVariants)[number];
-
 export interface AlertProps {
   /** The variant of the alert */
   variant?: AlertVariant;
@@ -87,77 +86,149 @@ export interface AlertProps {
   className?: string;
 }
 
-const alertStyles = css({
-  display: "flex",
-  alignItems: "flex-start",
-  gap: "3",
-  p: "4",
-  borderRadius: "lg",
-  border: "1px solid",
-  position: "relative",
+// Alert recipe using CVA
+const alertRecipe = cva({
+  base: {
+    display: "flex",
+    alignItems: "flex-start",
+    gap: "3",
+    p: "4",
+    borderRadius: "lg",
+    // border: "1px solid",
+    position: "relative",
+  },
+  variants: {
+    variant: {
+      info: {
+        color: "black",
+        bg: "primary.base",
+      },
+      error: {
+        color: "white",
+        bg: "feedback.warning.default",
+      },
+      warning: {
+        color: "white",
+        bg: "feedback.warning.default",
+      },
+      success: {
+        color: "black",
+        bg: "feedback.success.default",
+      },
+    },
+  },
+  defaultVariants: {
+    variant: "info",
+  },
 });
 
-const variantStyles = {
-  info: css({
-    bg: "neutrals.blue.50",
-    borderColor: "neutrals.blue.200",
-    color: "neutrals.blue.900",
-  }),
-  warning: css({
-    bg: "neutrals.yellow.50",
-    borderColor: "neutrals.yellow.200",
-    color: "neutrals.yellow.900",
-  }),
-  error: css({
-    bg: "neutrals.red.50",
-    borderColor: "neutrals.red.200",
-    color: "neutrals.red.900",
-  }),
-  success: css({
-    bg: "neutrals.green.50",
-    borderColor: "neutrals.green.200",
-    color: "neutrals.green.900",
-  }),
-};
-
-const iconStyles = css({
-  flexShrink: "0",
-  mt: "0.5",
+// Alert icon recipe using CVA
+const alertIconRecipe = cva({
+  base: {
+    flexShrink: "0",
+    mt: "0.5",
+  },
+  variants: {
+    variant: {
+      info: {},
+      warning: {},
+      error: {},
+      success: {},
+    },
+  },
+  defaultVariants: {
+    variant: "info",
+  },
 });
 
-const contentStyles = css({
-  flex: "1",
-  minW: "0",
+// Alert content recipe using CVA
+const alertContentRecipe = cva({
+  base: {
+    flex: "1",
+    minW: "0",
+  },
+  variants: {
+    variant: {
+      info: {},
+      warning: {},
+      error: {},
+      success: {},
+    },
+  },
+  defaultVariants: {
+    variant: "info",
+  },
 });
 
-const titleStyles = css({
-  fontSize: "sm",
-  fontWeight: "semibold",
-  mb: "1",
+// Alert title recipe using CVA
+const alertTitleRecipe = cva({
+  base: {
+    fontSize: "sm",
+    fontWeight: "semibold",
+    mb: "1",
+  },
+  variants: {
+    variant: {
+      info: {},
+      warning: {},
+      error: {},
+      success: {},
+    },
+  },
+  defaultVariants: {
+    variant: "info",
+  },
 });
 
-const descriptionStyles = css({
-  fontSize: "sm",
-  color: "inherit",
-  opacity: "0.9",
+// Alert description recipe using CVA
+const alertDescriptionRecipe = cva({
+  base: {
+    fontSize: "sm",
+    color: "inherit",
+    opacity: "0.9",
+  },
+  variants: {
+    variant: {
+      info: {},
+      warning: {},
+      error: {},
+      success: {},
+    },
+  },
+  defaultVariants: {
+    variant: "info",
+  },
 });
 
-const dismissButtonStyles = css({
-  flexShrink: "0",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  w: "6",
-  h: "6",
-  borderRadius: "md",
-  cursor: "pointer",
-  color: "inherit",
-  opacity: "0.7",
-  transition: "all 0.2s ease",
-  _hover: {
-    opacity: "1",
-    bg: "currentColor",
-    // opacity: "0.1",
+// Alert dismiss button recipe using CVA
+const alertDismissButtonRecipe = cva({
+  base: {
+    flexShrink: "0",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    w: "6",
+    h: "6",
+    borderRadius: "md",
+    cursor: "pointer",
+    color: "inherit",
+    opacity: "0.7",
+    transition: "all 0.2s ease",
+    _hover: {
+      opacity: "1",
+      bg: "currentColor",
+    },
+  },
+  variants: {
+    variant: {
+      info: {},
+      warning: {},
+      error: {},
+      success: {},
+    },
+  },
+  defaultVariants: {
+    variant: "info",
   },
 });
 
@@ -183,19 +254,20 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
     ref
   ) => {
     const Icon = icon || iconMap[variant];
-    const variantStyle = variantStyles[variant];
 
     return (
-      <div ref={ref} className={cx(alertStyles, variantStyle, className)}>
-        <Icon className={iconStyles} />
-        <div className={contentStyles}>
-          {title && <div className={titleStyles}>{title}</div>}
-          <div className={descriptionStyles}>{children}</div>
+      <div ref={ref} className={cx(alertRecipe({ variant }), className)}>
+        <Icon className={alertIconRecipe({ variant })} />
+        <div className={alertContentRecipe({ variant })}>
+          {title && (
+            <div className={alertTitleRecipe({ variant })}>{title}</div>
+          )}
+          <div className={alertDescriptionRecipe({ variant })}>{children}</div>
         </div>
         {dismissible && (
           <button
             type="button"
-            className={dismissButtonStyles}
+            className={alertDismissButtonRecipe({ variant })}
             onClick={onDismiss}
             aria-label="Dismiss alert"
           >
