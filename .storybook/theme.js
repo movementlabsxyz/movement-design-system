@@ -6,12 +6,13 @@ export const createStorybookTheme = () => {
     base: 'dark',
     
     // Brand colors
-    colorPrimary: '#ffd935', // moveus-marigold.400
-    colorSecondary: '#0337ff', // byzantine-blue.400
+    colorPrimary: '#47a872', // moveus-marigold.400
+    colorSecondary: '#6ce2a1', // byzantine-blue.400
+    textColor: '#F0F0F0', // off white
 
     // UI
-    appBg: '#1F1F21', // dark.400 equivalent
-    appContentBg: '#1F1F21', // dark.400 equivalent
+    appBg: '#111111', // dark.400 equivalent
+    appContentBg: '#101010', // dark.400 equivalent
     appBorderColor: '#45454F', // dark.600 equivalent
     appBorderRadius: 8,
 

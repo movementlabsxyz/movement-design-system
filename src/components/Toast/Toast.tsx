@@ -1,6 +1,6 @@
 import { Toast as ArkToast } from "@ark-ui/react/toast";
 import { ComponentType } from "react";
-import { css } from "styled-system/css";
+import { css, cva } from "styled-system/css";
 import { stack } from "styled-system/patterns";
 
 import { type ToastProps, type ToastVariant } from "./types";
@@ -75,21 +75,16 @@ const IconCheckCircle = ({ className }: { className?: string }) => (
  * A message that appears on the screen to provide feedback on an action, or provide a notification
  * of an event that has occurred.
  */
-export function Toast({
-  variant,
-  title,
-  description,
-  id,
-}: ToastProps) {
+export function Toast({ variant, title, description, id }: ToastProps) {
   const Icon = iconMap[variant];
   return (
-    <ArkToast.Root className={toastStyles} id={id}>
-      <Icon className={iconStyles} />
+    <ArkToast.Root className={toastRecipe({ variant })} id={id}>
+      <Icon className={iconRecipe({ variant })} />
       <div className={stack({ gap: "4" })}>
-        <ArkToast.Title className={css({ textStyle: "label.md" })}>
+        <ArkToast.Title className={titleRecipe({ variant })}>
           {title}
         </ArkToast.Title>
-        <ArkToast.Description className={css({ textStyle: "body.sm" })}>
+        <ArkToast.Description className={descriptionRecipe({ variant })}>
           {typeof description === "function" ? description() : description}
         </ArkToast.Description>
       </div>
@@ -98,9 +93,9 @@ export function Toast({
       >
         <IconX
           className={css({
-            color: "toast.icon.close",
-            h: "16",
-            w: "16",
+            color: variant === "success" ? "black" : "toast.icon.close",
+            h: "4",
+            w: "4",
             m: "[2px]",
           })}
         />
@@ -116,34 +111,113 @@ const iconMap: Record<ToastVariant, ComponentType<{ className?: string }>> = {
   success: IconCheckCircle,
 };
 
-const toastStyles = css({
-  display: "grid",
-  gridTemplateColumns: "[auto minmax(0, 1fr) auto]",
-  columnGap: "8",
-  rounded: "primary",
-  color: "toast.text",
-  bg: "toast.background",
-  p: "12",
-  pb: "16",
-  w: "[calc(100vw - 48px)]",
-  maxW: "[356px]",
-
-  // Positioning styles
-  position: "relative",
-  scale: "var(--scale)",
-  translate: "[var(--x) var(--y) 0]",
-  opacity: "var(--opacity)",
-  willChange: "translate, opacity, scale",
-  zIndex: "var(--z-index)",
-  transitionDuration: "100",
-  transitionProperty: "translate, scale, opacity",
-  transitionTimingFunction: "default",
-  _open: { animation: "slideInFromBottom {durations.100} ease-out" },
-  _closed: { animation: "slideOutToBottom {durations.100} ease-in" },
+// Toast recipe using CVA
+const toastRecipe = cva({
+  base: {
+    display: "grid",
+    gridTemplateColumns: "[auto minmax(0, 1fr) auto]",
+    columnGap: "2",
+    rounded: "primary",
+    p: "3",
+    pb: "4",
+    w: "[calc(100vw - 48px)]",
+    maxW: "[356px]",
+    position: "relative",
+    scale: "var(--scale)",
+    translate: "[var(--x) var(--y) 0]",
+    opacity: "var(--opacity)",
+    willChange: "translate, opacity, scale",
+    zIndex: "var(--z-index)",
+    transitionDuration: "100",
+    transitionProperty: "translate, scale, opacity",
+    transitionTimingFunction: "default",
+    _open: { animation: "slideInFromBottom {durations.100} ease-out" },
+    _closed: { animation: "slideOutToBottom {durations.100} ease-in" },
+  },
+  variants: {
+    variant: {
+      info: {
+        color: "black",
+        bg: "primary.base",
+      },
+      error: {
+        color: "white",
+        bg: "feedback.warning.default",
+      },
+      warning: {
+        color: "white",
+        bg: "feedback.warning.default",
+      },
+      success: {
+        color: "black",
+        bg: "feedback.success.default",
+      },
+    },
+  },
+  defaultVariants: {
+    variant: "info",
+  },
 });
 
-const iconStyles = css({
-  h: "20",
-  w: "20",
-  color: "toast.text",
+// Icon recipe using CVA
+const iconRecipe = cva({
+  base: {
+    h: "5",
+    w: "5",
+  },
+  variants: {
+    variant: {
+      info: { color: "toast.text" },
+      error: { color: "toast.text" },
+      warning: { color: "toast.text" },
+      success: { color: "black" },
+    },
+  },
+  defaultVariants: {
+    variant: "info",
+  },
+});
+
+// Title recipe using CVA
+const titleRecipe = cva({
+  base: {
+    textStyle: "label.md",
+  },
+  variants: {
+    variant: {
+      info: {},
+      error: {},
+      warning: {},
+      success: {
+        textStyle: "body-bold.md",
+        color: "black",
+        lineHeight: "1.5",
+      },
+    },
+  },
+  defaultVariants: {
+    variant: "info",
+  },
+});
+
+// Description recipe using CVA
+const descriptionRecipe = cva({
+  base: {
+    textStyle: "body.sm",
+  },
+  variants: {
+    variant: {
+      info: {},
+      error: {},
+      warning: {},
+      success: {
+        textStyle: "body-regular.md",
+        color: "black",
+        lineHeight: "1.4",
+      },
+    },
+  },
+  defaultVariants: {
+    variant: "info",
+  },
 });

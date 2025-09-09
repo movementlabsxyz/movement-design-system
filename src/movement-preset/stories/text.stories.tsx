@@ -13,7 +13,9 @@ const TextExample = ({ className }: { className: string }) => {
   return (
     <div className={stack({ align: "start", gap: "2" })}>
       <p className={className}>Movement Design System</p>
-      <code className={css({ fontSize: "2", color: "moveus-marigold.200" })}>{className.replace('textStyle_', '')}</code>
+      <code className={css({ fontSize: "2", color: "moveus-marigold.200" })}>
+        {className.replace("textStyle_", "")}
+      </code>
     </div>
   );
 };
@@ -88,7 +90,7 @@ export const MonoRegular: Story = {
 export const MonoLight: Story = {
   render: () => (
     <div className={stack({ gap: "4" })}>
-            <TextExample className={css({ textStyle: "mono-light.xl" })} />
+      <TextExample className={css({ textStyle: "mono-light.xl" })} />
       <TextExample className={css({ textStyle: "mono-light.lg" })} />
       <TextExample className={css({ textStyle: "mono-light.md" })} />
       <TextExample className={css({ textStyle: "mono-light.sm" })} />
