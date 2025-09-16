@@ -1,3 +1,4 @@
 export { Toast } from "./Toast";
-export { Toaster } from "./Toaster";
+export { createToaster } from "./Toaster";
+export { GlobalToaster, toast } from "./global-toast";
 export type { ToastProps, ToastVariant } from "./types";

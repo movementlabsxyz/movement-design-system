@@ -47,7 +47,7 @@ export interface ModalProps {
   /** The content of the modal */
   children: ReactNode;
   /** The size of the modal */
-  size?: "sm" | "md" | "lg" | "xl" | "full";
+  size?: "sm" | "md" | "lg" | "xl" | "full" | "dynamic";
   /** Whether the modal can be closed by clicking the backdrop */
   closeOnBackdropClick?: boolean;
   /** Whether the modal can be closed by pressing the escape key */
@@ -90,6 +90,7 @@ const sizeStyles = {
   lg: { maxW: "700px" },
   xl: { maxW: "900px" },
   full: { maxW: "95vw", maxH: "95vh" },
+  dynamic: { maxW: "100%", maxH: "100%" },
 };
 
 const modalHeaderStyles = css({

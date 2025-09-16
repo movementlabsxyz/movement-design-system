@@ -10,6 +10,6 @@ export { Menu } from "./Menu";
 export { Modal } from "./Modal";
 export { Pagination } from "./Pagination";
 export { Tag } from "./Tag";
-export { Toast, Toaster } from "./Toast";
+export { Toast, createToaster, GlobalToaster, toast } from "./Toast";
 export { ToggleGroup } from "./ToggleGroup";
 export { Tooltip } from "./Tooltip";

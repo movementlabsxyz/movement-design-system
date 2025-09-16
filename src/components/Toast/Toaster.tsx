@@ -9,23 +9,12 @@ import { css } from "styled-system/css";
 import { Toast } from "./Toast";
 import { type ToastProps } from "./types";
 
-export interface CreateToastArgs extends ToastProps {
+export interface CreateToastArgs extends Omit<ToastProps, "id"> {
   /** The optional id of the toast. This can be used to update or dismiss the toast programmatically. */
-  id: string;
+  id?: string;
   /** The duration of the toast in milliseconds. This will override the default duration. */
   duration?: number;
 }
-
-const createToasterReturn = createToaster();
-
-/** The component from which toast messages are rendered */
-export const Toaster = createToasterReturn[0];
-
-/**
- * When invoked, a toast message will be displayed.
- * The `Toaster` must be mounted in the component tree for the toast message to be displayed.
- */
-export const toast = createToasterReturn[1];
 
 export function createToaster() {
   const toaster = arkCreateToaster({
@@ -73,7 +62,7 @@ export function createToaster() {
     <ArkToaster toaster={toaster} className={css({ zIndex: "toast!" })}>
       {(toast) => {
         const props = toast.meta as unknown as ToastProps;
-        return <Toast {...props}  />;
+        return <Toast {...props} />;
       }}
     </ArkToaster>
   );
