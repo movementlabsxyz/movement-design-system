@@ -74,7 +74,6 @@ const modalContentStyles = css({
   bg: "neutrals.white",
   borderRadius: "lg",
   boxShadow: "2xl",
-  w: "full",
   maxH: "90vh",
   overflow: "hidden",
   position: "fixed",
