@@ -85,12 +85,12 @@ const modalContentStyles = css({
 });
 
 const sizeStyles = {
-  sm: { maxW: "400px" },
-  md: { maxW: "500px" },
-  lg: { maxW: "700px" },
-  xl: { maxW: "900px" },
-  full: { maxW: "95vw", maxH: "95vh" },
-  dynamic: { maxW: "100%", maxH: "100%" },
+  sm: { maxW: "400px", w: "full" },
+  md: { maxW: "500px", w: "full" },
+  lg: { maxW: "700px", w: "full" },
+  xl: { maxW: "900px", w: "full" },
+  full: { maxW: "95vw", maxH: "95vh", w: "full" },
+  dynamic: { maxW: "100%", maxH: "100%", w: "auto" },
 };
 
 const modalHeaderStyles = css({

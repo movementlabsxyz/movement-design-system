@@ -16,6 +16,8 @@ export interface CreateToastArgs extends Omit<ToastProps, "id"> {
   duration?: number;
 }
 
+export type TypedToastArgs = Omit<CreateToastArgs, "variant">;
+
 export function createToaster() {
   const toaster = arkCreateToaster({
     placement: "bottom-end",
@@ -24,17 +26,17 @@ export function createToaster() {
     removeDelay: 200, // This maps to durations.100
     // gap: 120, // Add gap between toasts (12px)
   });
-  console.log("toaster", toaster);
 
-  const upsertToast = ({ id, duration, ...props }: CreateToastArgs) => {
+  const createToast = (props: CreateToastArgs) => {
     // Ensure we always have an id
     const toastId =
-      id || `toast-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+      props.id ||
+      `toast-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
 
     toaster.create({
       id: toastId,
-      type: duration === Infinity ? "loading" : "custom",
-      duration: duration ?? 5000,
+      type: props.duration === Infinity ? "loading" : "custom",
+      duration: props.duration ?? 5000,
       meta: props,
     });
   };
@@ -49,9 +51,41 @@ export function createToaster() {
    *
    * Additionally, toasts can be dismissed with `toast.dismiss`.
    */
-  const toast = Object.assign(upsertToast, {
+  const toast = Object.assign(createToast, {
     /** Dismisses a toast by id. If no id is provided, all toasts will be dismissed. */
     dismiss: dismissToast,
+    /** Creates a success toast */
+    success: (message: string | TypedToastArgs) => {
+      if (typeof message === "string") {
+        createToast({ variant: "success", title: "", description: message });
+      } else {
+        createToast({ variant: "success", ...message });
+      }
+    },
+    /** Creates an error toast */
+    error: (message: string | TypedToastArgs) => {
+      if (typeof message === "string") {
+        createToast({ variant: "error", title: "", description: message });
+      } else {
+        createToast({ variant: "error", ...message });
+      }
+    },
+    /** Creates a warning toast */
+    warning: (message: string | TypedToastArgs) => {
+      if (typeof message === "string") {
+        createToast({ variant: "warning", title: "", description: message });
+      } else {
+        createToast({ variant: "warning", ...message });
+      }
+    },
+    /** Creates an info toast */
+    info: (message: string | TypedToastArgs) => {
+      if (typeof message === "string") {
+        createToast({ variant: "info", title: "", description: message });
+      } else {
+        createToast({ variant: "info", ...message });
+      }
+    },
   });
 
   /**

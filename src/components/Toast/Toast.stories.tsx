@@ -7,6 +7,7 @@ import { Button } from "../Button";
 import { Toast } from "./Toast";
 import { toastVariants } from "./types";
 import { createToaster } from "./Toaster";
+import { GlobalToaster, toast as globalToast } from "./global-toast";
 
 function capitalize(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1);
@@ -64,6 +65,51 @@ export const AllVariants: Story = {
   },
   args: {
     description: "This is the description of the toast message.",
+  },
+};
+
+export const MethodBasedAPI: Story = {
+  render: () => {
+    const [Toaster, toast] = createToaster();
+    return (
+      <div className={stack({ gap: "16", align: "flex-start", pb: "96" })}>
+        <Toaster />
+        <Button
+          onClick={() => toast.success("Operation completed successfully!")}
+        >
+          Success Toast (String)
+        </Button>
+        <Button onClick={() => toast.error("Something went wrong!")}>
+          Error Toast (String)
+        </Button>
+        <Button onClick={() => toast.warning("Please check your input")}>
+          Warning Toast (String)
+        </Button>
+        <Button onClick={() => toast.info("New feature available!")}>
+          Info Toast (String)
+        </Button>
+        <Button
+          onClick={() =>
+            toast.success({
+              title: "Success!",
+              description: "Your action was completed successfully.",
+            })
+          }
+        >
+          Success Toast (Object)
+        </Button>
+        <Button
+          onClick={() =>
+            toast.error({
+              title: "Error",
+              description: "Something went wrong. Please try again.",
+            })
+          }
+        >
+          Error Toast (Object)
+        </Button>
+      </div>
+    );
   },
 };
 
@@ -188,6 +234,97 @@ export const MultipleToasts: Story = {
         <Toaster />
         <Button onClick={createMultipleToasts}>Create Multiple Toasts</Button>
         <Button onClick={() => toast.dismiss()}>Dismiss All Toasts</Button>
+      </div>
+    );
+  },
+};
+
+export const MethodBasedMultipleToasts: Story = {
+  render: () => {
+    const [Toaster, toast] = createToaster();
+
+    const createMultipleToasts = () => {
+      // Create several toasts quickly using method-based API
+      toast.info("This is the first toast message.");
+
+      setTimeout(() => {
+        toast.success("This is the second toast message.");
+      }, 100);
+
+      setTimeout(() => {
+        toast.warning("This is the third toast message.");
+      }, 200);
+
+      setTimeout(() => {
+        toast.error("This is the fourth toast message.");
+      }, 300);
+    };
+
+    return (
+      <div className={stack({ pb: "120", gap: "16", align: "flex-start" })}>
+        <Toaster />
+        <Button onClick={createMultipleToasts}>
+          Create Multiple Toasts (Method API)
+        </Button>
+        <Button onClick={() => toast.dismiss()}>Dismiss All Toasts</Button>
+      </div>
+    );
+  },
+};
+
+/**
+ * This story demonstrates the global toast usage pattern that would be used in a real application.
+ * The GlobalToaster is set up once at the root level, and the global toast functions can be used
+ * anywhere in the component tree.
+ */
+export const GlobalToastUsage: Story = {
+  render: () => {
+    return (
+      <div className={stack({ pb: "120", gap: "16", align: "flex-start" })}>
+        {/* In a real app, this would be at the root level */}
+        <GlobalToaster />
+
+        <div className={stack({ gap: "8", align: "flex-start" })}>
+          <h3 className={css({ textStyle: "heading.regular.md", mb: "2" })}>
+            Global Toast Usage
+          </h3>
+          <p
+            className={css({
+              textStyle: "body-regular.sm",
+              color: "neutrals.gray.600",
+            })}
+          >
+            These buttons use the global toast system. The GlobalToaster is set
+            up once at the root level.
+          </p>
+        </div>
+
+        <Button onClick={() => globalToast.success("Global success message!")}>
+          Global Success Toast
+        </Button>
+        <Button onClick={() => globalToast.error("Global error message!")}>
+          Global Error Toast
+        </Button>
+        <Button onClick={() => globalToast.warning("Global warning message!")}>
+          Global Warning Toast
+        </Button>
+        <Button onClick={() => globalToast.info("Global info message!")}>
+          Global Info Toast
+        </Button>
+        <Button
+          onClick={() =>
+            globalToast.success({
+              title: "Global Success",
+              description:
+                "This is a global success toast with title and description.",
+            })
+          }
+        >
+          Global Success (Object)
+        </Button>
+        <Button onClick={() => globalToast.dismiss()}>
+          Dismiss All Global Toasts
+        </Button>
       </div>
     );
   },

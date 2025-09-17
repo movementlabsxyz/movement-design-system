@@ -11,3 +11,4 @@ export interface ToastProps {
   /** The id of the toast message. */
   id: string;
 }
+

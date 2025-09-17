@@ -33,32 +33,44 @@ import { toast } from "@movementlabsxyz/movement-design-system";
 
 function MyComponent() {
   const handleSuccess = () => {
-    toast({
-      variant: "success",
+    // Simple string usage
+    toast.success("Your action was completed successfully!");
+    
+    // Or with full options
+    toast.success({
       title: "Success!",
       description: "Your action was completed successfully.",
     });
   };
 
   const handleError = () => {
-    toast({
-      variant: "error", 
+    // Simple string usage
+    toast.error("Something went wrong!");
+    
+    // Or with full options
+    toast.error({
       title: "Error",
       description: "Something went wrong. Please try again.",
     });
   };
 
   const handleInfo = () => {
-    toast({
-      variant: "info",
+    // Simple string usage
+    toast.info("Here's some useful information.");
+    
+    // Or with full options
+    toast.info({
       title: "Information",
       description: "Here's some useful information.",
     });
   };
 
   const handleWarning = () => {
-    toast({
-      variant: "warning",
+    // Simple string usage
+    toast.warning("Please be careful with this action.");
+    
+    // Or with full options
+    toast.warning({
       title: "Warning",
       description: "Please be careful with this action.",
     });
@@ -84,9 +96,8 @@ import { toast } from "@movementlabsxyz/movement-design-system";
 
 function MyComponent() {
   const showToast = () => {
-    const toastId = toast({
+    toast.info({
       id: "my-toast", // Optional: provide an ID
-      variant: "info",
       title: "Loading...",
       description: "This toast can be dismissed programmatically.",
     });
@@ -122,8 +133,7 @@ import { toast } from "@movementlabsxyz/movement-design-system";
 
 function MyComponent() {
   const showLongToast = () => {
-    toast({
-      variant: "info",
+    toast.info({
       title: "Long Duration",
       description: "This toast will stay for 10 seconds.",
       duration: 10000, // 10 seconds
@@ -131,8 +141,7 @@ function MyComponent() {
   };
 
   const showPersistentToast = () => {
-    toast({
-      variant: "warning",
+    toast.warning({
       title: "Persistent",
       description: "This toast will stay until manually dismissed.",
       duration: Infinity, // Never auto-dismiss
@@ -157,12 +166,31 @@ The toast system supports four variants:
 - `warning` - Yellow background for warnings  
 - `info` - Blue background for informational messages
 
-## Toast Props
+## Toast API
+
+### Method-based Usage
 
 ```tsx
-interface ToastProps {
-  variant: "success" | "error" | "warning" | "info";
-  title: string;
+// Simple string usage (title will be empty)
+toast.success("Your action was completed!");
+toast.error("Something went wrong!");
+toast.warning("Please check your input");
+toast.info("New feature available!");
+
+// Full options usage
+toast.success({
+  title: "Success!",
+  description: "Your action was completed successfully.",
+  id: "optional-id",
+  duration: 5000
+});
+```
+
+### Toast Props
+
+```tsx
+interface CreateToastArgs {
+  title?: string;
   description?: string;
   id?: string; // Optional: for programmatic control
   duration?: number; // Optional: in milliseconds, defaults to 5000
