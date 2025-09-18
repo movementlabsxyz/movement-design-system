@@ -78,7 +78,8 @@ export default [
       typescript({ useTsconfigDeclarationDir: true }),
       copy({
         targets: [
-          { src: 'styled-system/**/*', dest: 'dist/styled-system' }
+          { src: 'styled-system/**/*', dest: 'dist/styled-system' },
+          { src: 'src/components', dest: 'dist/src' }
         ]
       })
     ]
