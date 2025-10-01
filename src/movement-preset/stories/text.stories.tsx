@@ -1,9 +1,22 @@
+import { Subtitle, Description, Controls, Stories, Title } from "@storybook/addon-docs/blocks";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { css } from "styled-system/css";
-import { flex, stack } from "styled-system/patterns";
+import { stack } from "styled-system/patterns";
 
 const meta: Meta = {
   title: "Theme/Typography",
+  tags: ["autodocs"],
+  parameters: {
+    docs:{page: () => (
+      <>
+        <Title />
+        <Subtitle />
+        <Description />
+        <Controls />
+        <Stories />
+      </>
+    )},
+  },  
 };
 export default meta;
 
@@ -12,13 +25,14 @@ type Story = StoryObj;
 const TextExample = ({ className }: { className: string }) => {
   return (
     <div className={stack({ align: "start", gap: "2" })}>
-      <p className={className}>Movement Design System</p>
+      <p className={className}>The quick brown fox jumps over the lazy dog.</p>
       <code className={css({ fontSize: "2", color: "moveus-marigold.200" })}>
         {className.replace("textStyle_", "")}
       </code>
     </div>
   );
 };
+
 /** TWK Everett Bold text used for large headings. */
 export const HeadingLarge: Story = {
   render: () => (

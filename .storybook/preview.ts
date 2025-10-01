@@ -26,6 +26,7 @@ const preview: Preview = {
     // Apply the dark theme
     docs: {
       theme: createStorybookTheme(),
+      toc: true, // 👈 Enables the table of contents
     },
 
     // Configure themes addon
@@ -33,6 +34,7 @@ const preview: Preview = {
       default: "dark",
       list: [{ name: "dark", class: "dark", color: "#1a1a1a" }],
     },
+    tags: ["autodocs"],
 
     // Additional styling for code blocks
     backgrounds: {

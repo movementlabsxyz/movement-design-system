@@ -6,8 +6,8 @@ export const createStorybookTheme = () => {
     base: 'dark',
     
     // Brand colors
-    colorPrimary: '#47a872', // moveus-marigold.400
-    colorSecondary: '#6ce2a1', // byzantine-blue.400
+    colorPrimary: '#ffd935', // moveus-marigold.400
+    colorSecondary: '#ffd935', // byzantine-blue.400
     textColor: '#F0F0F0', // off white
 
     // UI

@@ -1,10 +1,24 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { center, flex, stack } from "styled-system/patterns";
+import { center, flex, hstack, stack } from "styled-system/patterns";
 
 import { borderWidths, radii, spacing, zIndex } from "../scales";
+import { Title, Subtitle, Description, Controls, Stories } from "@storybook/addon-docs/blocks";
+import { css } from "styled-system/css";
 
 const meta: Meta = {
   title: "Theme/Scales",
+  tags: ["autodocs"],
+  parameters: {
+    docs:{page: () => (
+      <>
+        <Title />
+        <Subtitle />
+        <Description />
+        <Controls />
+        <Stories />
+      </>
+    )},
+  },  
 };
 export default meta;
 
@@ -57,24 +71,36 @@ export const BorderWidths: Story = {
   ),
 };
 
+const row = css({
+  display: "grid",
+  gridTemplateColumns: "60px 60px auto",
+  alignItems: "center",
+  gap: "8px"
+});
 /** Tokens for use with spacing and size related properties like `margin`, `padding`, `height`, `width`, etc. */
 export const Spacing: Story = {
   render: () => (
-    <div className={flex({ wrap: "wrap", align: "flex-end", gap: "8" })}>
+    <div className={stack({  align: "flex-start", gap: "8" })}>
+      <div className={row}>
+        <span className={css({ textStyle: "label.md" })}>Name</span>
+        <span className={css({ textStyle: "label.md" })}>Value</span>
+        <span className={css({ textStyle: "label.md" })}>Preview</span>
+      </div>
       {Object.entries(spacing).map(([name, spacingValue]) => (
         <div
           key={name}
-          className={stack({ align: "center", textStyle: "label.md" })}
+          className={row}
         >
+          <span className={css({ textStyle: "label.md" })}>{name}</span>
+          <span className={css({ textStyle: "label.md" })}>{spacingValue.value}</span>
           <div
             className={center({
-              w: "8",
+              h: "8",
               bg: "moveus-marigold.400",
               color: "black",
             })}
-            style={{ height: spacingValue.value }}
+            style={{ width: spacingValue.value }}
           />
-          {name}
         </div>
       ))}
     </div>

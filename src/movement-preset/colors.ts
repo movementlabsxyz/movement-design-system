@@ -110,14 +110,13 @@ export const opacity = {
 } satisfies Tokens["opacity"];
 
 export const semanticColors = {
-  // Semantic colors from semantic_labs.json
+  // Semantic colors from semantic_industries.json
   primary: {
-    base: { value: "{colors.moveus-marigold.400}" },
-    darken: { value: "{colors.moveus-marigold.500}" },
-    "darken-2": { value: "{colors.moveus-marigold.600}" },
-    lighten: { value: "{colors.moveus-marigold.300}" },
-    "lighten-2": { value: "{colors.moveus-marigold.200}" },
-    "lighten-3": { value: "{colors.moveus-marigold.100}" },
+    base: { value: "{colors.guild-green.300}" },
+    darken: { value: "{colors.guild-green.500}" },
+    "darken-2": { value: "{colors.guild-green.600}" },
+    lighten: { value: "{colors.guild-green.200}" },
+    "lighten-2": { value: "{colors.guild-green.100}" },
   },
   secondary: {
     base: { value: "{colors.byzantine-blue.400}" },
@@ -133,47 +132,62 @@ export const semanticColors = {
     lighten: { value: "{colors.protocol-pink.200}" },
     "lighten-2": { value: "{colors.protocol-pink.100}" },
   },
-  background: {
-    dark: {
-      base: { value: "{colors.neutrals.black}" },
-      lighten: { value: "{colors.neutrals.blackAlpha.900}" },
-      "lighten-2": { value: "{colors.neutrals.blackAlpha.800}" },
-      "lighten-3": { value: "{colors.neutrals.blackAlpha.600}" },
-    },
-    light: {
-      base: { value: "{colors.neutrals.white}" },
-      lighten: { value: "{colors.neutrals.whiteAlpha.200}" },
-      "lighten-2": { value: "{colors.neutrals.whiteAlpha.300}" },
-      "lighten-3": { value: "{colors.neutrals.whiteAlpha.400}" },
-      "lighten-4": { value: "{colors.neutrals.whiteAlpha.600}" },
-    },
-  },
-  foreground: {
-    dark: {
-      base: { value: "{colors.neutrals.white}" },
-      lighten: { value: "{colors.neutrals.whiteAlpha.700}" },
-      "lighten-2": { value: "{colors.neutrals.whiteAlpha.600}" },
-    },
-    light: {
-      base: { value: "{colors.neutrals.black}" },
-      lighten: { value: "{colors.neutrals.blackAlpha.700}" },
-    },
-  },
-  feedback: {
-    success: {
-      default: { value: "{colors.guild-green.400}" },
-      dark: { value: "{colors.guild-green.700}" },
-      light: { value: "{colors.guild-green.100}" },
-    },
-    error: {
-      default: { value: "#D82C2D" },
-      dark: { value: "#b61a1c" },
-      light: { value: "#ffc2c2" },
-    },
-    warning: {
-      default: { value: "{colors.oracle-orange.500}" },
-      dark: { value: "{colors.oracle-orange.600}" },
-      light: { value: "{colors.oracle-orange.100}" },
-    },
-  },
+  // background: {
+  //   dark: {
+  //     base: { value: "{colors.neutrals.black}" },
+  //     lighten: { value: "{colors.neutrals.blackAlpha.900}" },
+  //     "lighten-2": { value: "{colors.neutrals.blackAlpha.800}" },
+  //     "lighten-3": { value: "{colors.neutrals.blackAlpha.600}" },
+  //   },
+  //   light: {
+  //     base: { value: "{colors.neutrals.white}" },
+  //     lighten: { value: "{colors.neutrals.whiteAlpha.200}" },
+  //     "lighten-2": { value: "{colors.neutrals.whiteAlpha.300}" },
+  //     "lighten-3": { value: "{colors.neutrals.whiteAlpha.400}" },
+  //     "lighten-4": { value: "{colors.neutrals.whiteAlpha.600}" },
+  //   },
+  // },
+  // foreground: {
+  //   dark: {
+  //     base: { value: "{colors.neutrals.white}" },
+  //     lighten: { value: "{colors.neutrals.whiteAlpha.700}" },
+  //     "lighten-2": { value: "{colors.neutrals.whiteAlpha.600}" },
+  //   },
+  //   light: {
+  //     base: { value: "{colors.neutrals.black}" },
+  //     lighten: { value: "{colors.neutrals.blackAlpha.700}" },
+  //   },
+  // },
+  // feedback: {
+  //   info: {
+  //     base: { value: "{primary.base}" },
+  //     darken: { value: "{primary.darken}" },
+  //     fg: { value: "{feedback.fg}" },
+  //   },
+  //   success: {
+  //     base: { value: "{colors.feedback.success.default}" },
+  //     darken: { value: "{colors.feedback.success.dark}" },
+  //     fg: { value: "{secondary.darken-2}" },
+  //   },
+  //   error: {
+  //     base: { value: "{colors.feedback.error.default}" },
+  //     darken: { value: "{colors.feedback.error.dark}" },
+  //     fg: { value: "{foreground.dark.base}" },
+  //   },
+  //   warning: {
+  //     base: { value: "{colors.feedback.warning.default}" },
+  //     darken: { value: "{colors.feedback.warning.dark}" },
+  //     fg: { value: "{foreground.dark.base}" },
+  //   },
+  //   base: { value: "{background.light.base}" },
+  //   fg: { value: "{foreground.light.base}" },
+  // },
+  // text: {
+  //   base: { value: "{foreground.dark.base}" },
+  //   contrast: { value: "{foreground.light.base}" },
+  //   button: { value: "{secondary.darken-2}" },
+  // },
+  // disabled: {
+  //   base: { value: "{colors.neutrals.whiteAlpha.600}" },
+  // },
 } satisfies SemanticTokens["colors"];
