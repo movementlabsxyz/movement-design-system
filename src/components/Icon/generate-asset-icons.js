@@ -8,51 +8,12 @@ const __dirname = path.dirname(__filename);
 const assetsDir = path.join(__dirname, 'assets');
 const outputFilePath = path.join(__dirname, 'AllAssetIcons.tsx');
 
-// List of all SVG files in the assets directory
-const assetFiles = [
-  'aptos-logo.svg',
-  'avalanche.svg',
-  'binance.svg',
-  'bnb-logo.svg',
-  'bnb.svg',
-  'bsc.svg',
-  'coinbase.svg',
-  'dai.svg',
-  'enzo_btc.svg',
-  'enzobtc.svg',
-  'eth-logo.svg',
-  'eth.svg',
-  'ez-eth.svg',
-  'ezeth.svg',
-  'husd.svg',
-  'industries.svg',
-  'kelp-icon.svg',
-  'lbtc.svg',
-  'metamask.svg',
-  'move-icon.svg',
-  'move-logo.svg',
-  'move.svg',
-  'nightly.svg',
-  'petra.svg',
-  'polygon.svg',
-  'rabby.svg',
-  'razor.svg',
-  'rseth.svg',
-  'sender.svg',
-  'solana-logo.svg',
-  'solvbtc.svg',
-  'stbtc.svg',
-  'susda.svg',
-  'usda.svg',
-  'usdc.svg',
-  'usde.svg',
-  'usdt.svg',
-  'usdy.svg',
-  'wbtc.svg',
-  'weeth.svg',
-  'weth.svg',
-  'wsteth.svg',
-];
+// Automatically read all SVG files from the assets directory
+const assetFiles = fs.readdirSync(assetsDir)
+  .filter(file => file.endsWith('.svg'))
+  .sort(); // Sort alphabetically for consistent output
+
+console.log(`Found ${assetFiles.length} SVG files in assets directory:`, assetFiles);
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
