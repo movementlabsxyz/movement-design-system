@@ -5,6 +5,8 @@ export { Card } from "./Card";
 export { Carousel } from "./Carousel";
 export { Collapsible } from "./Collapsible";
 export { Drawer } from "./Drawer";
+// Re-export all Phosphor icons and custom crypto icons
+export * from "./Icon";
 export { Input } from "./Input";
 export { Menu } from "./Menu";
 export { Modal } from "./Modal";
