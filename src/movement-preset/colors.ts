@@ -158,30 +158,30 @@ export const semanticColors = {
   //     lighten: { value: "{colors.neutrals.blackAlpha.700}" },
   //   },
   // },
-  // feedback: {
-  //   info: {
-  //     base: { value: "{primary.base}" },
-  //     darken: { value: "{primary.darken}" },
-  //     fg: { value: "{feedback.fg}" },
-  //   },
-  //   success: {
-  //     base: { value: "{colors.feedback.success.default}" },
-  //     darken: { value: "{colors.feedback.success.dark}" },
-  //     fg: { value: "{secondary.darken-2}" },
-  //   },
-  //   error: {
-  //     base: { value: "{colors.feedback.error.default}" },
-  //     darken: { value: "{colors.feedback.error.dark}" },
-  //     fg: { value: "{foreground.dark.base}" },
-  //   },
-  //   warning: {
-  //     base: { value: "{colors.feedback.warning.default}" },
-  //     darken: { value: "{colors.feedback.warning.dark}" },
-  //     fg: { value: "{foreground.dark.base}" },
-  //   },
-  //   base: { value: "{background.light.base}" },
-  //   fg: { value: "{foreground.light.base}" },
-  // },
+  feedback: {
+    info: {
+      base: { value: "{primary.base}" },
+      darken: { value: "{primary.darken}" },
+      fg: { value: "{feedback.fg}" },
+    },
+    success: {
+      base: { value: "{colors.feedback.success.default}" },
+      darken: { value: "{colors.feedback.success.dark}" },
+      fg: { value: "{secondary.darken-2}" },
+    },
+    error: {
+      base: { value: "{colors.feedback.error.default}" },
+      darken: { value: "{colors.feedback.error.dark}" },
+      fg: { value: "{foreground.dark.base}" },
+    },
+    warning: {
+      base: { value: "{colors.feedback.warning.default}" },
+      darken: { value: "{colors.feedback.warning.dark}" },
+      fg: { value: "{foreground.dark.base}" },
+    },
+    base: { value: "{background.light.base}" },
+    fg: { value: "{foreground.light.base}" },
+  },
   // text: {
   //   base: { value: "{foreground.dark.base}" },
   //   contrast: { value: "{foreground.light.base}" },
