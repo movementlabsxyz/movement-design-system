@@ -15,16 +15,26 @@ const assetFiles = fs.readdirSync(assetsDir)
 
 console.log(`Found ${assetFiles.length} SVG files in assets directory:`, assetFiles);
 
+// Component name overrides to avoid conflicts
+const NAME_OVERRIDES = {
+  'polygon.svg': 'PolygonNetworkIcon', // Avoid conflict with Phosphor's PolygonIcon
+};
+
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function formatComponentName(filename) {
+  // Check for override first
+  if (NAME_OVERRIDES[filename]) {
+    return NAME_OVERRIDES[filename];
+  }
+  
   const name = filename.replace('.svg', '');
   return name
     .split('-')
     .map((part) => capitalizeFirstLetter(part))
-    .join('');
+    .join('') + 'Icon';
 }
 
 const generateIcons = () => {
@@ -33,7 +43,7 @@ const generateIcons = () => {
 
   assetFiles.forEach(file => {
     const svgContent = fs.readFileSync(path.join(assetsDir, file), 'utf-8');
-    const componentName = formatComponentName(file) + 'Icon';
+    const componentName = formatComponentName(file);
 
     // Extract viewBox from SVG content
     const viewBoxMatch = svgContent.match(/viewBox="([^"]*)"/);
