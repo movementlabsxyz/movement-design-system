@@ -1,4 +1,10 @@
-import { Subtitle, Description, Controls, Stories, Title } from "@storybook/addon-docs/blocks";
+import {
+  Subtitle,
+  Description,
+  Controls,
+  Stories,
+  Title,
+} from "@storybook/addon-docs/blocks";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { css } from "styled-system/css";
 import { stack } from "styled-system/patterns";
@@ -7,16 +13,18 @@ const meta: Meta = {
   title: "Theme/Typography",
   tags: ["autodocs"],
   parameters: {
-    docs:{page: () => (
-      <>
-        <Title />
-        <Subtitle />
-        <Description />
-        <Controls />
-        <Stories />
-      </>
-    )},
-  },  
+    docs: {
+      page: () => (
+        <>
+          <Title />
+          <Subtitle />
+          <Description />
+          <Controls />
+          <Stories />
+        </>
+      ),
+    },
+  },
 };
 export default meta;
 
@@ -109,6 +117,84 @@ export const MonoLight: Story = {
       <TextExample className={css({ textStyle: "mono-light.md" })} />
       <TextExample className={css({ textStyle: "mono-light.sm" })} />
       <TextExample className={css({ textStyle: "mono-light.xs" })} />
+    </div>
+  ),
+};
+
+/** TWK Everett Mono Hairline text. */
+export const MonoHairline: Story = {
+  render: () => (
+    <div className={stack({ gap: "4" })}>
+      <TextExample className={css({ textStyle: "mono-hairline.xl" })} />
+      <TextExample className={css({ textStyle: "mono-hairline.lg" })} />
+      <TextExample className={css({ textStyle: "mono-hairline.md" })} />
+      <TextExample className={css({ textStyle: "mono-hairline.sm" })} />
+      <TextExample className={css({ textStyle: "mono-hairline.xs" })} />
+    </div>
+  ),
+};
+
+/** TWK Everett Mono Thin text. */
+export const MonoThin: Story = {
+  render: () => (
+    <div className={stack({ gap: "4" })}>
+      <TextExample className={css({ textStyle: "mono-thin.xl" })} />
+      <TextExample className={css({ textStyle: "mono-thin.lg" })} />
+      <TextExample className={css({ textStyle: "mono-thin.md" })} />
+      <TextExample className={css({ textStyle: "mono-thin.sm" })} />
+      <TextExample className={css({ textStyle: "mono-thin.xs" })} />
+    </div>
+  ),
+};
+
+/** TWK Everett Mono Ultralight text. */
+export const MonoUltralight: Story = {
+  render: () => (
+    <div className={stack({ gap: "4" })}>
+      <TextExample className={css({ textStyle: "mono-ultralight.xl" })} />
+      <TextExample className={css({ textStyle: "mono-ultralight.lg" })} />
+      <TextExample className={css({ textStyle: "mono-ultralight.md" })} />
+      <TextExample className={css({ textStyle: "mono-ultralight.sm" })} />
+      <TextExample className={css({ textStyle: "mono-ultralight.xs" })} />
+    </div>
+  ),
+};
+
+/** TWK Everett Mono Extrabold text. */
+export const MonoExtrabold: Story = {
+  render: () => (
+    <div className={stack({ gap: "4" })}>
+      <TextExample className={css({ textStyle: "mono-extrabold.xl" })} />
+      <TextExample className={css({ textStyle: "mono-extrabold.lg" })} />
+      <TextExample className={css({ textStyle: "mono-extrabold.md" })} />
+      <TextExample className={css({ textStyle: "mono-extrabold.sm" })} />
+      <TextExample className={css({ textStyle: "mono-extrabold.xs" })} />
+    </div>
+  ),
+};
+
+/** TWK Everett Mono Super text. */
+export const MonoSuper: Story = {
+  render: () => (
+    <div className={stack({ gap: "4" })}>
+      <TextExample className={css({ textStyle: "mono-super.xl" })} />
+      <TextExample className={css({ textStyle: "mono-super.lg" })} />
+      <TextExample className={css({ textStyle: "mono-super.md" })} />
+      <TextExample className={css({ textStyle: "mono-super.sm" })} />
+      <TextExample className={css({ textStyle: "mono-super.xs" })} />
+    </div>
+  ),
+};
+
+/** TWK Everett Mono Black text. */
+export const MonoBlack: Story = {
+  render: () => (
+    <div className={stack({ gap: "4" })}>
+      <TextExample className={css({ textStyle: "mono-black.xl" })} />
+      <TextExample className={css({ textStyle: "mono-black.lg" })} />
+      <TextExample className={css({ textStyle: "mono-black.md" })} />
+      <TextExample className={css({ textStyle: "mono-black.sm" })} />
+      <TextExample className={css({ textStyle: "mono-black.xs" })} />
     </div>
   ),
 };

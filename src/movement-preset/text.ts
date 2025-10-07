@@ -215,6 +215,54 @@ const createMonoLightStyle = createTextVariant(
   twkEverettFontMetrics
 );
 
+const createMonoHairlineStyle = createTextVariant(
+  {
+    fontFamily: fonts.mono.value,
+    fontWeight: fontWeights.hairline.value,
+  },
+  twkEverettFontMetrics
+);
+
+const createMonoThinStyle = createTextVariant(
+  {
+    fontFamily: fonts.mono.value,
+    fontWeight: fontWeights.thin.value,
+  },
+  twkEverettFontMetrics
+);
+
+const createMonoUltralightStyle = createTextVariant(
+  {
+    fontFamily: fonts.mono.value,
+    fontWeight: fontWeights.ultralight.value,
+  },
+  twkEverettFontMetrics
+);
+
+const createMonoExtraboldStyle = createTextVariant(
+  {
+    fontFamily: fonts.mono.value,
+    fontWeight: fontWeights.extrabold.value,
+  },
+  twkEverettFontMetrics
+);
+
+const createMonoSuperStyle = createTextVariant(
+  {
+    fontFamily: fonts.mono.value,
+    fontWeight: fontWeights.super.value,
+  },
+  twkEverettFontMetrics
+);
+
+const createMonoBlackStyle = createTextVariant(
+  {
+    fontFamily: fonts.mono.value,
+    fontWeight: fontWeights.black.value,
+  },
+  twkEverettFontMetrics
+);
+
 // Body styles with Neue Haas Unica Pro
 const createBodyHeavyStyle = createTextVariant(
   {
@@ -307,6 +355,48 @@ export const textStyles = defineTextStyles({
     md: createMonoLightStyle({ fontSize: 4, lineHeight: 0 }), // 16px, 100%
     lg: createMonoLightStyle({ fontSize: 5, lineHeight: 0 }), // 18px, 100%
     xl: createMonoLightStyle({ fontSize: 6, lineHeight: 0 }), // 20px, 100%
+  },
+  "mono-hairline": {
+    xs: createMonoHairlineStyle({ fontSize: 2, lineHeight: 0 }), // 12px, 100%
+    sm: createMonoHairlineStyle({ fontSize: 3, lineHeight: 0 }), // 14px, 100%
+    md: createMonoHairlineStyle({ fontSize: 4, lineHeight: 0 }), // 16px, 100%
+    lg: createMonoHairlineStyle({ fontSize: 5, lineHeight: 0 }), // 18px, 100%
+    xl: createMonoHairlineStyle({ fontSize: 6, lineHeight: 0 }), // 20px, 100%
+  },
+  "mono-thin": {
+    xs: createMonoThinStyle({ fontSize: 2, lineHeight: 0 }), // 12px, 100%
+    sm: createMonoThinStyle({ fontSize: 3, lineHeight: 0 }), // 14px, 100%
+    md: createMonoThinStyle({ fontSize: 4, lineHeight: 0 }), // 16px, 100%
+    lg: createMonoThinStyle({ fontSize: 5, lineHeight: 0 }), // 18px, 100%
+    xl: createMonoThinStyle({ fontSize: 6, lineHeight: 0 }), // 20px, 100%
+  },
+  "mono-ultralight": {
+    xs: createMonoUltralightStyle({ fontSize: 2, lineHeight: 0 }), // 12px, 100%
+    sm: createMonoUltralightStyle({ fontSize: 3, lineHeight: 0 }), // 14px, 100%
+    md: createMonoUltralightStyle({ fontSize: 4, lineHeight: 0 }), // 16px, 100%
+    lg: createMonoUltralightStyle({ fontSize: 5, lineHeight: 0 }), // 18px, 100%
+    xl: createMonoUltralightStyle({ fontSize: 6, lineHeight: 0 }), // 20px, 100%
+  },
+  "mono-extrabold": {
+    xs: createMonoExtraboldStyle({ fontSize: 2, lineHeight: 0 }), // 12px, 100%
+    sm: createMonoExtraboldStyle({ fontSize: 3, lineHeight: 0 }), // 14px, 100%
+    md: createMonoExtraboldStyle({ fontSize: 4, lineHeight: 0 }), // 16px, 100%
+    lg: createMonoExtraboldStyle({ fontSize: 5, lineHeight: 0 }), // 18px, 100%
+    xl: createMonoExtraboldStyle({ fontSize: 6, lineHeight: 0 }), // 20px, 100%
+  },
+  "mono-super": {
+    xs: createMonoSuperStyle({ fontSize: 2, lineHeight: 0 }), // 12px, 100%
+    sm: createMonoSuperStyle({ fontSize: 3, lineHeight: 0 }), // 14px, 100%
+    md: createMonoSuperStyle({ fontSize: 4, lineHeight: 0 }), // 16px, 100%
+    lg: createMonoSuperStyle({ fontSize: 5, lineHeight: 0 }), // 18px, 100%
+    xl: createMonoSuperStyle({ fontSize: 6, lineHeight: 0 }), // 20px, 100%
+  },
+  "mono-black": {
+    xs: createMonoBlackStyle({ fontSize: 2, lineHeight: 0 }), // 12px, 100%
+    sm: createMonoBlackStyle({ fontSize: 3, lineHeight: 0 }), // 14px, 100%
+    md: createMonoBlackStyle({ fontSize: 4, lineHeight: 0 }), // 16px, 100%
+    lg: createMonoBlackStyle({ fontSize: 5, lineHeight: 0 }), // 18px, 100%
+    xl: createMonoBlackStyle({ fontSize: 6, lineHeight: 0 }), // 20px, 100%
   },
 
   // Body styles with Neue Haas Unica Pro
