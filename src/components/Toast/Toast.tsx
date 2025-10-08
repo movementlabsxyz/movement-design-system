@@ -4,8 +4,7 @@ import { css, cva } from "styled-system/css";
 import { stack } from "styled-system/patterns";
 
 import { type ToastProps, type ToastVariant } from "./types";
-import { InfoIcon, WarningIcon, CheckIcon,XIcon } from "@phosphor-icons/react";
-
+import { InfoIcon, WarningIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
 
 /**
  * A message that appears on the screen to provide feedback on an action, or provide a notification
@@ -17,9 +16,11 @@ export function Toast({ variant, title, description, id }: ToastProps) {
     <ArkToast.Root className={toastRecipe({ variant })} id={id}>
       <Icon className={iconRecipe({ variant })} />
       <div className={stack({ gap: "4" })}>
-        <ArkToast.Title className={titleRecipe({ variant })}>
-          {title}
-        </ArkToast.Title>
+        {title && (
+          <ArkToast.Title className={titleRecipe({ variant })}>
+            {title}
+          </ArkToast.Title>
+        )}
         <ArkToast.Description className={descriptionRecipe({ variant })}>
           {typeof description === "function" ? description() : description}
         </ArkToast.Description>
