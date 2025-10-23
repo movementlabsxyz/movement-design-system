@@ -53,12 +53,13 @@ const toastRecipe = cva({
   base: {
     display: "grid",
     gridTemplateColumns: "[auto minmax(0, 1fr) auto]",
-    columnGap: "2",
-    rounded: "primary",
+    columnGap: {base: "0", md: "2"},
+    rounded: {base: "none", md: "primary"},
     p: "3",
     pb: "4",
-    w: "[calc(100vw - 48px)]",
-    maxW: "[356px]",
+    m: {base: "-4", md: "0"},
+    w: {base: "100vw", md: "[calc(100vw - 48px)]"},
+    maxW: {base: "100vw", md: "[356px]"},
     position: "relative",
     scale: "var(--scale)",
     translate: "[var(--x) var(--y) 0]",
@@ -68,8 +69,8 @@ const toastRecipe = cva({
     transitionDuration: "100",
     transitionProperty: "translate, scale, opacity",
     transitionTimingFunction: "default",
-    _open: { animation: "slideInFromBottom {durations.100} ease-out" },
-    _closed: { animation: "slideOutToBottom {durations.100} ease-in" },
+    _open: { animation: {base: "slideInFromTop {durations.100} ease-out", md: "slideInFromBottom {durations.100} ease-out"} },
+    _closed: { animation: {base: "slideOutToTop {durations.100} ease-out", md: "slideOutToBottom {durations.100} ease-in"} },
   },
   variants: {
     variant: {

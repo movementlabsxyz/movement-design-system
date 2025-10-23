@@ -8,7 +8,49 @@ import { css } from "styled-system/css";
 
 import { Toast } from "./Toast";
 import { type ToastProps } from "./types";
+import { useState, useEffect } from "react";
 
+interface WindowSize {
+  width: number | undefined;
+  height: number | undefined;
+}
+
+export function useWindowSize(): WindowSize {
+  const [windowSize, setWindowSize] = useState<WindowSize>({
+    width: undefined,
+    height: undefined,
+  });
+
+  useEffect(() => {
+    // Handler to call on window resize
+    function handleResize() {
+      // Set window width/height to state
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+
+    // Call handler right away so state gets updated with initial window size
+    handleResize();
+
+    // Remove event listener on cleanup
+    return () => window.removeEventListener('resize', handleResize);
+  }, []); // Empty array ensures that effect is only run on mount
+
+  return windowSize;
+}
+
+// Helper function to determine if screen is mobile
+export function useIsMobile(): boolean {
+  const { width } = useWindowSize();
+
+  // Consider mobile if width is less than 768px (md breakpoint)
+  return width !== undefined && width < 900;
+}
 export interface CreateToastArgs extends Omit<ToastProps, "id"> {
   /** The optional id of the toast. This can be used to update or dismiss the toast programmatically. */
   id?: string;
@@ -27,13 +69,24 @@ export function createToaster() {
     // gap: 120, // Add gap between toasts (12px)
   });
 
+  const mobileToaster = arkCreateToaster({
+    placement: "top",
+    removeDelay: 100,
+    max: 1
+  });
+
+  // Track the current mobile state to ensure toast creation and rendering use the same toaster
+  let currentIsMobile = false;
+
   const createToast = (props: CreateToastArgs) => {
     // Ensure we always have an id
     const toastId =
       props.id ||
       `toast-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
 
-    toaster.create({
+    const activeToaster = currentIsMobile ? mobileToaster : toaster;
+
+    return activeToaster.create({
       id: toastId,
       type: props.duration === Infinity ? "loading" : "custom",
       duration: props.duration ?? 5000,
@@ -42,7 +95,8 @@ export function createToaster() {
   };
 
   const dismissToast = (id?: string) => {
-    toaster.dismiss(id);
+    const activeToaster = currentIsMobile ? mobileToaster : toaster;
+    return activeToaster.dismiss(id);
   };
 
   /**
@@ -92,14 +146,20 @@ export function createToaster() {
    * The component from which toasts will appear.
    * This component should be placed once at the root of your application.
    */
-  const Toaster = () => (
-    <ArkToaster toaster={toaster} className={css({ zIndex: "toast!" })}>
-      {(toast) => {
-        const props = toast.meta as unknown as ToastProps;
-        return <Toast {...props} />;
-      }}
-    </ArkToaster>
-  );
+  const Toaster = () => {
+    const isMobile = useIsMobile();
+    // Update the current mobile state so toast creation uses the correct toaster
+    currentIsMobile = isMobile;
+
+    return (
+      <ArkToaster toaster={isMobile ? mobileToaster : toaster} className={css({ zIndex: "toast!" })}>
+        {(toast) => {
+          const props = toast.meta as unknown as ToastProps;
+          return <Toast {...props} />;
+        }}
+      </ArkToaster>
+    );
+  };
 
   return [Toaster, toast] as const;
 }
