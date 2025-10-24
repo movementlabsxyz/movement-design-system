@@ -71,6 +71,8 @@ export function createToaster() {
 
   const mobileToaster = arkCreateToaster({
     placement: "top",
+    offsets: "1rem",
+    overlap: false,
     removeDelay: 100,
     max: 1
   });
