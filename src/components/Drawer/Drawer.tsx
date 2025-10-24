@@ -435,8 +435,12 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
         open={open}
         onOpenChange={(details: { open: boolean }) => {
           if (!details.open) {
-            onClose();
+            // onClose();
           }
+        }}
+        // this is called AFTER drawer animation is complete
+        onExitComplete={() => {
+          onClose();
         }}
         closeOnEscape={closeOnEscape}
         closeOnInteractOutside={closeOnBackdropClick}
