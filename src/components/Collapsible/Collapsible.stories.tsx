@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { center } from "styled-system/patterns";
 
 import { Button } from "../Button";
 import * as Collapsible from "./Collapsible";
@@ -20,7 +19,9 @@ export const Default: Story = {
           <Button>Toggle</Button>
         </Collapsible.Trigger>
         <Collapsible.Content>
-          <div className={center({ height: "[240px]", bg: "neutrals.whiteAlpha.100" })}>Content</div>
+          <div className="flex items-center justify-center h-60 bg-white/10">
+            Content
+          </div>
         </Collapsible.Content>
       </>
     ),

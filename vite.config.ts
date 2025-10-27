@@ -44,7 +44,6 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "styled-system": resolve(__dirname, "./styled-system"),
       "@": resolve(__dirname, "./src"),
     },
   },

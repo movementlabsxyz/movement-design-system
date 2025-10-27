@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useId, useState } from "react";
-import { css } from "styled-system/css";
-import { stack } from "styled-system/patterns";
 
 import { Button } from "../Button";
 import { Toast } from "./Toast";
@@ -21,17 +19,11 @@ export default meta;
 
 type Story = StoryObj<typeof Toast>;
 
-// NOTE:
-// In the stories below, we create individual Toaster instances for each story so that
-// opening a toast in one story doesn't open it in all of them. `createToaster` is internal
-// to this package and won't be available to consumers. If you're a consumer, just import
-// `Toaster` and `toast` from the package directly.
-
 export const BasicUsage: Story = {
   render: (props) => {
     const [Toaster, toast] = createToaster();
     return (
-      <div className={css({ pb: "120" })}>
+      <div style={{ paddingBottom: "120px" }}>
         <Toaster />
         <Button onClick={() => toast(props)}>Create Toast</Button>
       </div>
@@ -48,7 +40,7 @@ export const AllVariants: Story = {
   render: (props) => {
     const [Toaster, toast] = createToaster();
     return (
-      <div className={stack({ gap: "16", align: "flex-start", pb: "96" })}>
+      <div className="flex flex-col gap-16 items-start pb-96">
         <Toaster />
         {toastVariants.map((variant) => (
           <Button
@@ -72,7 +64,7 @@ export const MethodBasedAPI: Story = {
   render: () => {
     const [Toaster, toast] = createToaster();
     return (
-      <div className={stack({ gap: "16", align: "flex-start", pb: "96" })}>
+      <div className="flex flex-col gap-16 items-start pb-96">
         <Toaster />
         <Button
           onClick={() => toast.success("Operation completed successfully!")}
@@ -113,15 +105,11 @@ export const MethodBasedAPI: Story = {
   },
 };
 
-/**
- * By passing `duration: Infinity` to the `toast` function, you can create a toast message that
- * will not automatically be dismissed.
- */
 export const PersistentToast: Story = {
   render: (props) => {
     const [Toaster, toast] = createToaster();
     return (
-      <div className={css({ pb: "120" })}>
+      <div style={{ paddingBottom: "120px" }}>
         <Toaster />
         <Button onClick={() => toast({ ...props, duration: Infinity })}>
           Create Toast
@@ -136,11 +124,6 @@ export const PersistentToast: Story = {
   },
 };
 
-/**
- * You can pass a function that returns a `ReactNode` to `toast`'s `description` field to allow for
- * complex text formatting in the toast message's description. For example, you can make a certain
- * word bold or embed a link.
- */
 export const WithComplexDescription: Story = {
   render: BasicUsage.render,
   args: {
@@ -153,12 +136,6 @@ export const WithComplexDescription: Story = {
   },
 };
 
-/**
- * If an id is passed to the `toast` function, any subsequent calls to the toast function with that
- * id will update the toast if it is still visible instead of creating a new one.
- *
- * Additionally, `toast.dismiss` can be called to programmatically dismiss the toast early.
- */
 export const UpdateAndRemoveToast: Story = {
   render: (args) => {
     const [[Toaster, toast]] = useState(createToaster());
@@ -179,7 +156,10 @@ export const UpdateAndRemoveToast: Story = {
     };
 
     return (
-      <div className={stack({ pb: "120", gap: "16", align: "flex-start" })}>
+      <div
+        className="flex flex-col pb-120 gap-16 items-start"
+        style={{ paddingBottom: "120px" }}
+      >
         <Toaster />
         <Button onClick={upsertToast}>Upsert Toast</Button>
         <Button onClick={removeToast}>Remove Toast</Button>
@@ -197,7 +177,6 @@ export const MultipleToasts: Story = {
     const [Toaster, toast] = createToaster();
 
     const createMultipleToasts = () => {
-      // Create several toasts quickly to test stacking
       toast({
         variant: "info",
         title: "Info Toast",
@@ -230,7 +209,10 @@ export const MultipleToasts: Story = {
     };
 
     return (
-      <div className={stack({ pb: "120", gap: "16", align: "flex-start" })}>
+      <div
+        className="flex flex-col pb-120 gap-16 items-start"
+        style={{ paddingBottom: "120px" }}
+      >
         <Toaster />
         <Button onClick={createMultipleToasts}>Create Multiple Toasts</Button>
         <Button onClick={() => toast.dismiss()}>Dismiss All Toasts</Button>
@@ -244,7 +226,6 @@ export const MethodBasedMultipleToasts: Story = {
     const [Toaster, toast] = createToaster();
 
     const createMultipleToasts = () => {
-      // Create several toasts quickly using method-based API
       toast.info("This is the first toast message.");
 
       setTimeout(() => {
@@ -261,7 +242,10 @@ export const MethodBasedMultipleToasts: Story = {
     };
 
     return (
-      <div className={stack({ pb: "120", gap: "16", align: "flex-start" })}>
+      <div
+        className="flex flex-col pb-120 gap-16 items-start"
+        style={{ paddingBottom: "120px" }}
+      >
         <Toaster />
         <Button onClick={createMultipleToasts}>
           Create Multiple Toasts (Method API)
@@ -272,28 +256,18 @@ export const MethodBasedMultipleToasts: Story = {
   },
 };
 
-/**
- * This story demonstrates the global toast usage pattern that would be used in a real application.
- * The GlobalToaster is set up once at the root level, and the global toast functions can be used
- * anywhere in the component tree.
- */
 export const GlobalToastUsage: Story = {
   render: () => {
     return (
-      <div className={stack({ pb: "120", gap: "16", align: "flex-start" })}>
-        {/* In a real app, this would be at the root level */}
+      <div
+        className="flex flex-col pb-120 gap-16 items-start"
+        style={{ paddingBottom: "120px" }}
+      >
         <GlobalToaster />
 
-        <div className={stack({ gap: "8", align: "flex-start" })}>
-          <h3 className={css({ textStyle: "heading.regular.md", mb: "2" })}>
-            Global Toast Usage
-          </h3>
-          <p
-            className={css({
-              textStyle: "body-regular.sm",
-              color: "neutrals.gray.600",
-            })}
-          >
+        <div className="flex flex-col gap-8 items-start">
+          <h3 className="text-base font-medium mb-2">Global Toast Usage</h3>
+          <p className="text-sm text-gray-600">
             These buttons use the global toast system. The GlobalToaster is set
             up once at the root level.
           </p>

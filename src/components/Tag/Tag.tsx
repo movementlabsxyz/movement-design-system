@@ -1,6 +1,7 @@
 import { ReactNode, forwardRef } from "react";
-import { cx, cva } from "styled-system/css";
+import { cva, type VariantProps } from "class-variance-authority";
 
+import { cn } from "../../lib/utils";
 import { type TagVariant, type TagColor, type TagSize } from "./types";
 
 // Mock icon components for tag
@@ -50,150 +51,94 @@ export interface TagProps {
 }
 
 // Tag recipe using CVA
-const tagRecipe = cva({
-  base: {
-    display: "inline-flex",
-    alignItems: "center",
-    gap: "2",
-    borderRadius: "primary",
-    fontFamily: "body",
-    fontWeight: "400",
-    lineHeight: "1",
-    cursor: "default",
-    transition: "all 0.2s ease",
-  },
-  variants: {
-    variant: {
-      outline: {
-        border: "1px solid",
-        bg: "transparent",
-      },
-      solid: {
-        border: "1px solid",
-        bg: "currentColor",
-      },
-    },
-    color: {
-      yellow: {
-        color: "primary.base",
-        borderColor: "primary.base",
-      },
-      blue: {
-        color: "blue.500",
-        borderColor: "blue.500",
-      },
-      pink: {
-        color: "pink.500",
-        borderColor: "pink.500",
-      },
-      red: {
-        color: "red.500",
-        borderColor: "red.500",
-      },
-      green: {
-        color: "green.500",
-        borderColor: "green.500",
-      },
-    },
-    size: {
-      sm: {
-        px: "2",
-        py: "1",
-        fontSize: "xs",
-        gap: "1",
-      },
-      md: {
-        px: "3",
-        py: "1.5",
-        fontSize: "sm",
-        gap: "2",
-      },
-      lg: {
-        px: "4",
-        py: "2",
-        fontSize: "md",
-        gap: "2",
-      },
-      xl: {
-        px: "5",
-        py: "2.5",
-        fontSize: "lg",
-        gap: "3",
-      },
-    },
-  },
-  compoundVariants: [
-    // Solid variant with different text colors
-    {
-      variant: "solid",
-      color: "yellow",
-      css: {
-        color: "black",
-        borderColor: "black",
-      },
-    },
-    {
-      variant: "solid",
-      color: "blue",
-      css: {
-        color: "white",
-        borderColor: "black",
-      },
-    },
-    {
-      variant: "solid",
-      color: "pink",
-      css: {
-        color: "white",
-        borderColor: "black",
-      },
-    },
-    {
-      variant: "solid",
-      color: "red",
-      css: {
-        color: "white",
-        borderColor: "black",
-      },
-    },
-    {
-      variant: "solid",
-      color: "green",
-      css: {
-        color: "white",
-        borderColor: "black",
-      },
-    },
+const tagRecipe = cva(
+  [
+    "inline-flex",
+    "items-center",
+    "rounded",
+    "font-body",
+    "font-regular",
+    "leading-none",
+    "cursor-default",
+    "transition-all",
+    "duration-200",
+    "ease-in-out",
   ],
-  defaultVariants: {
-    variant: "outline",
-    color: "yellow",
-    size: "md",
-  },
-});
+  {
+    variants: {
+      variant: {
+        outline: ["border", "bg-transparent"],
+        solid: ["border"],
+      },
+      color: {
+        yellow: ["text-guild-green-300", "border-guild-green-300"],
+        blue: ["text-byzantine-blue-500", "border-byzantine-blue-500"],
+        pink: ["text-protocol-pink-500", "border-protocol-pink-500"],
+        red: ["text-oracle-orange-500", "border-oracle-orange-500"],
+        green: ["text-guild-green-500", "border-guild-green-500"],
+      },
+      size: {
+        sm: ["px-2", "py-1", "text-xs", "gap-1"],
+        md: ["px-3", "py-1.5", "text-sm", "gap-2"],
+        lg: ["px-4", "py-2", "text-base", "gap-2"],
+        xl: ["px-5", "py-2.5", "text-lg", "gap-3"],
+      },
+    },
+    compoundVariants: [
+      // Solid variant with different text colors
+      {
+        variant: "solid",
+        color: "yellow",
+        className: ["text-black", "border-black", "bg-guild-green-300"],
+      },
+      {
+        variant: "solid",
+        color: "blue",
+        className: ["text-white", "border-black", "bg-byzantine-blue-500"],
+      },
+      {
+        variant: "solid",
+        color: "pink",
+        className: ["text-white", "border-black", "bg-protocol-pink-500"],
+      },
+      {
+        variant: "solid",
+        color: "red",
+        className: ["text-white", "border-black", "bg-oracle-orange-500"],
+      },
+      {
+        variant: "solid",
+        color: "green",
+        className: ["text-white", "border-black", "bg-guild-green-500"],
+      },
+    ],
+    defaultVariants: {
+      variant: "outline",
+      color: "yellow",
+      size: "md",
+    },
+  }
+);
 
 // Tag icon recipe using CVA
-const tagIconRecipe = cva({
-  base: {
-    flexShrink: "0",
-  },
+const tagIconRecipe = cva(["flex-shrink-0"], {
   variants: {
     variant: {
-      outline: {},
-      solid: {},
+      outline: [],
+      solid: [],
     },
     color: {
-      yellow: {},
-      blue: {},
-      pink: {},
-      red: {},
-      green: {},
+      yellow: [],
+      blue: [],
+      pink: [],
+      red: [],
+      green: [],
     },
     size: {
-      sm: { w: "3", h: "3" },
-      md: { w: "4", h: "4" },
-      lg: { w: "5", h: "5" },
-      xl: { w: "6", h: "6" },
+      sm: ["w-3", "h-3"],
+      md: ["w-4", "h-4"],
+      lg: ["w-5", "h-5"],
+      xl: ["w-6", "h-6"],
     },
   },
   compoundVariants: [
@@ -201,27 +146,27 @@ const tagIconRecipe = cva({
     {
       variant: "solid",
       color: "yellow",
-      css: { color: "black" },
+      className: ["text-black"],
     },
     {
       variant: "solid",
       color: "blue",
-      css: { color: "white" },
+      className: ["text-white"],
     },
     {
       variant: "solid",
       color: "pink",
-      css: { color: "white" },
+      className: ["text-white"],
     },
     {
       variant: "solid",
       color: "red",
-      css: { color: "white" },
+      className: ["text-white"],
     },
     {
       variant: "solid",
       color: "green",
-      css: { color: "white" },
+      className: ["text-white"],
     },
   ],
   defaultVariants: {
@@ -232,72 +177,74 @@ const tagIconRecipe = cva({
 });
 
 // Tag close button recipe using CVA
-const tagCloseRecipe = cva({
-  base: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    cursor: "pointer",
-    borderRadius: "sm",
-    transition: "all 0.2s ease",
-    _hover: {
-      bg: "currentColor",
-      opacity: "0.1",
-    },
-  },
-  variants: {
-    variant: {
-      outline: {},
-      solid: {},
-    },
-    color: {
-      yellow: {},
-      blue: {},
-      pink: {},
-      red: {},
-      green: {},
-    },
-    size: {
-      sm: { w: "3", h: "3" },
-      md: { w: "4", h: "4" },
-      lg: { w: "5", h: "5" },
-      xl: { w: "6", h: "6" },
-    },
-  },
-  compoundVariants: [
-    // Solid variant with different close button colors
-    {
-      variant: "solid",
-      color: "yellow",
-      css: { color: "black" },
-    },
-    {
-      variant: "solid",
-      color: "blue",
-      css: { color: "white" },
-    },
-    {
-      variant: "solid",
-      color: "pink",
-      css: { color: "white" },
-    },
-    {
-      variant: "solid",
-      color: "red",
-      css: { color: "white" },
-    },
-    {
-      variant: "solid",
-      color: "green",
-      css: { color: "white" },
-    },
+const tagCloseRecipe = cva(
+  [
+    "flex",
+    "items-center",
+    "justify-center",
+    "cursor-pointer",
+    "rounded-sm",
+    "transition-all",
+    "duration-200",
+    "ease-in-out",
+    "hover:bg-current",
+    "hover:opacity-10",
   ],
-  defaultVariants: {
-    variant: "outline",
-    color: "yellow",
-    size: "md",
-  },
-});
+  {
+    variants: {
+      variant: {
+        outline: [],
+        solid: [],
+      },
+      color: {
+        yellow: [],
+        blue: [],
+        pink: [],
+        red: [],
+        green: [],
+      },
+      size: {
+        sm: ["w-3", "h-3"],
+        md: ["w-4", "h-4"],
+        lg: ["w-5", "h-5"],
+        xl: ["w-6", "h-6"],
+      },
+    },
+    compoundVariants: [
+      // Solid variant with different close button colors
+      {
+        variant: "solid",
+        color: "yellow",
+        className: ["text-black"],
+      },
+      {
+        variant: "solid",
+        color: "blue",
+        className: ["text-white"],
+      },
+      {
+        variant: "solid",
+        color: "pink",
+        className: ["text-white"],
+      },
+      {
+        variant: "solid",
+        color: "red",
+        className: ["text-white"],
+      },
+      {
+        variant: "solid",
+        color: "green",
+        className: ["text-white"],
+      },
+    ],
+    defaultVariants: {
+      variant: "outline",
+      color: "yellow",
+      size: "md",
+    },
+  }
+);
 
 /** A tag component for displaying labels or categories */
 export const Tag = forwardRef<HTMLDivElement, TagProps>(
@@ -317,7 +264,7 @@ export const Tag = forwardRef<HTMLDivElement, TagProps>(
     return (
       <div
         ref={ref}
-        className={cx(tagRecipe({ variant, color, size }), className)}
+        className={cn(tagRecipe({ variant, color, size }), className)}
       >
         {hasIcon && (
           <IconStar className={tagIconRecipe({ variant, color, size })} />

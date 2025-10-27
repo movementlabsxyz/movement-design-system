@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { css } from "styled-system/css";
 
 import { IconButton } from "./IconButton";
 
@@ -100,14 +99,7 @@ export const Default: Story = {
 
 export const AllSizes: Story = {
   render: () => (
-    <div
-      className={css({
-        display: "flex",
-        alignItems: "center",
-        gap: "4",
-        flexWrap: "wrap",
-      })}
-    >
+    <div className="flex items-center gap-4 flex-wrap">
       <IconButton size="sm">
         <MockIcon />
       </IconButton>
@@ -131,14 +123,7 @@ export const AllSizes: Story = {
 
 export const AllVariants: Story = {
   render: () => (
-    <div
-      className={css({
-        display: "flex",
-        alignItems: "center",
-        gap: "4",
-        flexWrap: "wrap",
-      })}
-    >
+    <div className="flex items-center gap-4 flex-wrap">
       <IconButton variant="filled">
         <MockIcon />
       </IconButton>
@@ -165,14 +150,7 @@ export const AllVariants: Story = {
 
 export const AllColors: Story = {
   render: () => (
-    <div
-      className={css({
-        display: "flex",
-        alignItems: "center",
-        gap: "4",
-        flexWrap: "wrap",
-      })}
-    >
+    <div className="flex items-center gap-4 flex-wrap">
       <IconButton color="primary">
         <MockIcon />
       </IconButton>
@@ -205,14 +183,7 @@ export const AllColors: Story = {
 
 export const AllRadius: Story = {
   render: () => (
-    <div
-      className={css({
-        display: "flex",
-        alignItems: "center",
-        gap: "4",
-        flexWrap: "wrap",
-      })}
-    >
+    <div className="flex items-center gap-4 flex-wrap">
       <IconButton radius="sm">
         <MockIcon />
       </IconButton>
@@ -239,14 +210,7 @@ export const AllRadius: Story = {
 
 export const DifferentIcons: Story = {
   render: () => (
-    <div
-      className={css({
-        display: "flex",
-        alignItems: "center",
-        gap: "4",
-        flexWrap: "wrap",
-      })}
-    >
+    <div className="flex items-center gap-4 flex-wrap">
       <IconButton>
         <MockIcon />
       </IconButton>
@@ -285,14 +249,7 @@ export const Disabled: Story = {
 
 export const Interactive: Story = {
   render: () => (
-    <div
-      className={css({
-        display: "flex",
-        alignItems: "center",
-        gap: "4",
-        flexWrap: "wrap",
-      })}
-    >
+    <div className="flex items-center gap-4 flex-wrap">
       <IconButton
         onClick={() => alert("Star clicked!")}
         ariaLabel="Add to favorites"
@@ -325,39 +282,14 @@ export const Interactive: Story = {
 
 export const WithCustomStyling: Story = {
   render: () => (
-    <div
-      className={css({
-        display: "flex",
-        alignItems: "center",
-        gap: "4",
-        flexWrap: "wrap",
-      })}
-    >
-      <IconButton
-        className={css({
-          bg: "moveus-marigold.100",
-          border: "2px solid",
-          borderColor: "moveus-marigold.400",
-        })}
-      >
+    <div className="flex items-center gap-4 flex-wrap">
+      <IconButton className="bg-moveus-marigold-100 border-2 border-moveus-marigold-400">
         <MockIcon />
       </IconButton>
-      <IconButton
-        className={css({
-          bg: "byzantine-blue.100",
-          border: "2px solid",
-          borderColor: "byzantine-blue.400",
-        })}
-      >
+      <IconButton className="bg-byzantine-blue-100 border-2 border-byzantine-blue-400">
         <MockHeartIcon />
       </IconButton>
-      <IconButton
-        className={css({
-          bg: "protocol-pink.100",
-          border: "2px solid",
-          borderColor: "protocol-pink.400",
-        })}
-      >
+      <IconButton className="bg-protocol-pink-100 border-2 border-protocol-pink-400">
         <MockSettingsIcon />
       </IconButton>
     </div>
@@ -374,58 +306,27 @@ export const WithCustomStyling: Story = {
 
 export const AllStates: Story = {
   render: () => (
-    <div
-      className={css({
-        display: "flex",
-        flexDirection: "column",
-        gap: "6",
-        alignItems: "flex-start",
-      })}
-    >
-      <div
-        className={css({
-          display: "flex",
-          alignItems: "center",
-          gap: "4",
-        })}
-      >
-        <span className={css({ w: "20", fontSize: "sm" })}>Default:</span>
+    <div className="flex flex-col gap-6 items-start">
+      <div className="flex items-center gap-4">
+        <span className="w-20 text-sm">Default:</span>
         <IconButton>
           <MockIcon />
         </IconButton>
       </div>
-      <div
-        className={css({
-          display: "flex",
-          alignItems: "center",
-          gap: "4",
-        })}
-      >
-        <span className={css({ w: "20", fontSize: "sm" })}>Disabled:</span>
+      <div className="flex items-center gap-4">
+        <span className="w-20 text-sm">Disabled:</span>
         <IconButton disabled>
           <MockIcon />
         </IconButton>
       </div>
-      <div
-        className={css({
-          display: "flex",
-          alignItems: "center",
-          gap: "4",
-        })}
-      >
-        <span className={css({ w: "20", fontSize: "sm" })}>Large:</span>
+      <div className="flex items-center gap-4">
+        <span className="w-20 text-sm">Large:</span>
         <IconButton size="lg">
           <MockIcon />
         </IconButton>
       </div>
-      <div
-        className={css({
-          display: "flex",
-          alignItems: "center",
-          gap: "4",
-        })}
-      >
-        <span className={css({ w: "20", fontSize: "sm" })}>Outlined:</span>
+      <div className="flex items-center gap-4">
+        <span className="w-20 text-sm">Outlined:</span>
         <IconButton variant="outlined">
           <MockIcon />
         </IconButton>

@@ -1,37 +1,36 @@
 import { forwardRef } from "react";
-import { css } from "styled-system/css";
 
+import { cn } from "../../lib/utils";
 import { BaseButton, type CommonButtonProps } from "./BaseButton";
 
 /** A specialized bridge button component with unique styling and hover effects. */
 export const BridgeButton = forwardRef<HTMLButtonElement, CommonButtonProps>(
-  ({ disabled, fullWidth, iconSize = "md", ...props }, ref) => {
-    const bridgeButtonStyles = css({
-      width: fullWidth ? "full" : "auto",
-      padding: "1rem",
-      backgroundColor: "var(--Primary, #81FFBA)",
-      color: "#000",
-      border: "none",
-      borderRadius: "var(--border-radius-sm, 8px)",
-      fontSize: "lg",
-      fontWeight: "bold",
-      cursor: disabled ? "not-allowed" : "pointer",
-      boxShadow: "8px 8px 0 0 #0337FF",
-      transition: "all 0.2s ease",
-      opacity: disabled ? 0.6 : 1,
-      "&:hover": {
-        transform: disabled ? "none" : "translateY(-1px)",
-        backgroundColor: disabled ? "var(--Primary, #81FFBA)" : "#FFD935",
-        boxShadow: disabled ? "8px 8px 0 0 #0337FF" : "-8px -8px 0 0 #0337FF",
-      },
-      "&:active": {
-        transform: disabled ? "none" : "translateY(0)",
-      },
-      "&:focus": {
-        outline: "2px solid #0337FF",
-        outlineOffset: "2px",
-      },
-    });
+  ({ disabled, fullWidth, iconSize = "md", className, ...props }, ref) => {
+    const bridgeButtonStyles = cn(
+      "p-4",
+      "bg-guild-green-300",
+      "text-black",
+      "border-none",
+      "rounded-lg",
+      "text-[18px]",
+      "font-bold",
+      "transition-all",
+      "duration-200",
+      "ease-in-out",
+      "[box-shadow:8px_8px_0_0_#0337FF]",
+      disabled ? "cursor-not-allowed opacity-60" : "cursor-pointer",
+      !disabled && [
+        "hover:-translate-y-0.5",
+        "hover:bg-moveus-marigold-400",
+        "hover:[box-shadow:-8px_-8px_0_0_#0337FF]",
+        "active:translate-y-0",
+        "focus:outline-2",
+        "focus:outline-byzantine-blue-400",
+        "focus:outline-offset-2",
+      ],
+      fullWidth && "w-full",
+      className
+    );
 
     return (
       <BaseButton
@@ -41,6 +40,7 @@ export const BridgeButton = forwardRef<HTMLButtonElement, CommonButtonProps>(
         fontWeight="bold"
         fullWidth={fullWidth}
         iconSize={iconSize}
+        disabled={disabled}
         {...props}
       />
     );

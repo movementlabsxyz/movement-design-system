@@ -1,8 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { fn } from "storybook/test";
-import { css } from "styled-system/css";
-import { flex, stack } from "styled-system/patterns";
 
 import { Button } from "./Button";
 
@@ -70,102 +68,60 @@ export const Default: Story = {
   },
 };
 
-const sectionHeadingStyles = css({
-  color: "text.secondary",
-  borderBottomStyle: "solid",
-  borderBottomWidth: "1",
-  borderBottomColor: "border.secondary",
-  pb: "2",
-  mb: "4",
-});
+const sectionHeadingStyles =
+  "text-muted-foreground border-b border-border pb-2 mb-4";
 
 export const FilledButtons: Story = {
   render: (props) => (
-    <div className={stack({ gap: "6" })}>
-      <div className={stack({ gap: "4" })}>
+    <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-4">
         <h2 className={sectionHeadingStyles}>Default</h2>
-        <div
-          className={flex({
-            gap: "16",
-            align: "center",
-            justify: "space-between",
-          })}
-        >
+        <div className="flex items-center justify-between gap-16">
           <Button {...props} size="sm" />
           <Button {...props} size="md" />
           <Button {...props} size="lg" />
         </div>
       </div>
 
-      <div className={stack({ gap: "4" })}>
+      <div className="flex flex-col gap-4">
         <h2 className={sectionHeadingStyles}>Disabled</h2>
-        <div
-          className={flex({
-            gap: "16",
-            align: "center",
-            justify: "space-between",
-          })}
-        >
+        <div className="flex items-center justify-between gap-16">
           <Button {...props} size="sm" disabled />
           <Button {...props} size="md" disabled />
           <Button {...props} size="lg" disabled />
         </div>
       </div>
 
-      <div className={stack({ gap: "4" })}>
+      <div className="flex flex-col gap-4">
         <h2 className={sectionHeadingStyles}>With Lead Icon</h2>
-        <div
-          className={flex({
-            gap: "16",
-            align: "center",
-            justify: "space-between",
-          })}
-        >
+        <div className="flex items-center justify-between gap-16">
           <Button {...props} size="sm" LeadIcon={Icon} />
           <Button {...props} size="md" LeadIcon={Icon} />
           <Button {...props} size="lg" LeadIcon={Icon} />
         </div>
       </div>
 
-      <div className={stack({ gap: "4" })}>
+      <div className="flex flex-col gap-4">
         <h2 className={sectionHeadingStyles}>With Tail Icon</h2>
-        <div
-          className={flex({
-            gap: "16",
-            align: "center",
-            justify: "space-between",
-          })}
-        >
+        <div className="flex items-center justify-between gap-16">
           <Button {...props} size="sm" TailIcon={Icon} />
           <Button {...props} size="md" TailIcon={Icon} />
           <Button {...props} size="lg" TailIcon={Icon} />
         </div>
       </div>
 
-      <div className={stack({ gap: "4" })}>
+      <div className="flex flex-col gap-4">
         <h2 className={sectionHeadingStyles}>With Lead and Tail Icons</h2>
-        <div
-          className={flex({
-            gap: "16",
-            align: "center",
-            justify: "space-between",
-          })}
-        >
+        <div className="flex items-center justify-between gap-16">
           <Button {...props} size="sm" LeadIcon={Icon} TailIcon={Icon} />
           <Button {...props} size="md" LeadIcon={Icon} TailIcon={Icon} />
           <Button {...props} size="lg" LeadIcon={Icon} TailIcon={Icon} />
         </div>
       </div>
 
-      <div className={stack({ gap: "4" })}>
+      <div className="flex flex-col gap-4">
         <h2 className={sectionHeadingStyles}>Border Radius Variants</h2>
-        <div
-          className={flex({
-            gap: "16",
-            align: "center",
-            justify: "space-between",
-          })}
-        >
+        <div className="flex items-center justify-between gap-16">
           <Button {...props} size="md" radius="none" />
           <Button {...props} size="md" radius="sm" />
           <Button {...props} size="md" radius="md" />
@@ -232,91 +188,55 @@ export const FilledButtons: Story = {
 
 export const OutlinedButtons: Story = {
   render: (props) => (
-    <div className={stack({ gap: "24" })}>
-      <div className={stack({ gap: "16" })}>
+    <div className="flex flex-col gap-24">
+      <div className="flex flex-col gap-16">
         <h2 className={sectionHeadingStyles}>Default</h2>
-        <div
-          className={flex({
-            gap: "16",
-            align: "center",
-            justify: "space-between",
-          })}
-        >
+        <div className="flex items-center justify-between gap-16">
           <Button {...props} size="sm" />
           <Button {...props} size="md" />
           <Button {...props} size="lg" />
         </div>
       </div>
 
-      <div className={stack({ gap: "16" })}>
+      <div className="flex flex-col gap-16">
         <h2 className={sectionHeadingStyles}>Disabled</h2>
-        <div
-          className={flex({
-            gap: "16",
-            align: "center",
-            justify: "space-between",
-          })}
-        >
+        <div className="flex items-center justify-between gap-16">
           <Button {...props} size="sm" disabled />
           <Button {...props} size="md" disabled />
           <Button {...props} size="lg" disabled />
         </div>
       </div>
 
-      <div className={stack({ gap: "16" })}>
+      <div className="flex flex-col gap-16">
         <h2 className={sectionHeadingStyles}>With Lead Icon</h2>
-        <div
-          className={flex({
-            gap: "16",
-            align: "center",
-            justify: "space-between",
-          })}
-        >
+        <div className="flex items-center justify-between gap-16">
           <Button {...props} size="sm" LeadIcon={Icon} />
           <Button {...props} size="md" LeadIcon={Icon} />
           <Button {...props} size="lg" LeadIcon={Icon} />
         </div>
       </div>
 
-      <div className={stack({ gap: "16" })}>
+      <div className="flex flex-col gap-16">
         <h2 className={sectionHeadingStyles}>With Tail Icon</h2>
-        <div
-          className={flex({
-            gap: "16",
-            align: "center",
-            justify: "space-between",
-          })}
-        >
+        <div className="flex items-center justify-between gap-16">
           <Button {...props} size="sm" TailIcon={Icon} />
           <Button {...props} size="md" TailIcon={Icon} />
           <Button {...props} size="lg" TailIcon={Icon} />
         </div>
       </div>
 
-      <div className={stack({ gap: "16" })}>
+      <div className="flex flex-col gap-16">
         <h2 className={sectionHeadingStyles}>With Lead and Tail Icons</h2>
-        <div
-          className={flex({
-            gap: "16",
-            align: "center",
-            justify: "space-between",
-          })}
-        >
+        <div className="flex items-center justify-between gap-16">
           <Button {...props} size="sm" LeadIcon={Icon} TailIcon={Icon} />
           <Button {...props} size="md" LeadIcon={Icon} TailIcon={Icon} />
           <Button {...props} size="lg" LeadIcon={Icon} TailIcon={Icon} />
         </div>
       </div>
 
-      <div className={stack({ gap: "16" })}>
+      <div className="flex flex-col gap-16">
         <h2 className={sectionHeadingStyles}>Border Radius Variants</h2>
-        <div
-          className={flex({
-            gap: "16",
-            align: "center",
-            justify: "space-between",
-          })}
-        >
+        <div className="flex items-center justify-between gap-16">
           <Button {...props} size="md" radius="none" />
           <Button {...props} size="md" radius="sm" />
           <Button {...props} size="md" radius="md" />
@@ -370,19 +290,19 @@ export const OutlinedButtons: Story = {
  */
 export const FullWidthButtons: Story = {
   render: (props) => (
-    <div className={stack({ gap: "24" })}>
-      <div className={stack({ gap: "16" })}>
+    <div className="flex flex-col gap-24">
+      <div className="flex flex-col gap-16">
         <h2 className={sectionHeadingStyles}>Filled Full Width</h2>
-        <div className={stack({ gap: "16" })}>
+        <div className="flex flex-col gap-16">
           <Button {...props} variant="filled" color="yellow" fullWidth />
           <Button {...props} variant="filled" color="blue" fullWidth />
           <Button {...props} variant="filled" color="pink" fullWidth />
         </div>
       </div>
 
-      <div className={stack({ gap: "16" })}>
+      <div className="flex flex-col gap-16">
         <h2 className={sectionHeadingStyles}>Outlined Full Width</h2>
-        <div className={stack({ gap: "16" })}>
+        <div className="flex flex-col gap-16">
           <Button {...props} variant="outlined" color="yellow" fullWidth />
           <Button {...props} variant="outlined" color="blue" fullWidth />
           <Button {...props} variant="outlined" color="red" fullWidth />
@@ -407,10 +327,10 @@ export const FullWidthButtons: Story = {
 // Color showcase
 export const ColorShowcase: Story = {
   render: () => (
-    <div className={stack({ gap: "24" })}>
-      <div className={stack({ gap: "16" })}>
+    <div className="flex flex-col gap-24">
+      <div className="flex flex-col gap-16">
         <h2 className={sectionHeadingStyles}>Filled Buttons</h2>
-        <div className={flex({ gap: "16", align: "center", wrap: "wrap" })}>
+        <div className="flex items-center flex-wrap gap-16">
           <Button variant="filled" color="yellow">
             Button
           </Button>
@@ -432,9 +352,9 @@ export const ColorShowcase: Story = {
         </div>
       </div>
 
-      <div className={stack({ gap: "16" })}>
+      <div className="flex flex-col gap-16">
         <h2 className={sectionHeadingStyles}>Outlined Buttons</h2>
-        <div className={flex({ gap: "16", align: "center", wrap: "wrap" })}>
+        <div className="flex items-center flex-wrap gap-16">
           <Button variant="outlined" color="yellow">
             Button
           </Button>

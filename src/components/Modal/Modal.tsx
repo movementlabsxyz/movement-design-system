@@ -1,6 +1,7 @@
 import { Dialog as ArkDialog } from "@ark-ui/react/dialog";
 import { ComponentType, ReactNode, forwardRef } from "react";
-import { css, cx } from "styled-system/css";
+
+import { cn } from "../../lib/utils";
 
 // Mock icon components for modal
 const IconX = ({ className }: { className?: string }) => (
@@ -56,108 +57,30 @@ export interface ModalProps {
   className?: string;
 }
 
-const modalOverlayStyles = css({
-  position: "fixed",
-  inset: "0",
-  bg: "neutrals.blackAlpha.600",
-  zIndex: "overlay",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  p: "4",
-  // Ensure it covers the entire viewport
-  width: "100vw",
-  height: "100vh",
-});
-
-const modalContentStyles = css({
-  bg: "transparent",
-  borderRadius: "lg",
-  boxShadow: "2xl",
-  maxH: "90vh",
-  overflow: "hidden",
-  position: "fixed",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  zIndex: "modal",
-});
-
 const sizeStyles = {
-  sm: { maxW: "400px", w: "full" },
-  md: { maxW: "500px", w: "full" },
-  lg: { maxW: "700px", w: "full" },
-  xl: { maxW: "900px", w: "full" },
-  full: { maxW: "95vw", maxH: "95vh", w: "full" },
-  dynamic: { maxW: "100%", maxH: "100%", w: "auto" },
+  sm: "max-w-[400px] w-full",
+  md: "max-w-[500px] w-full",
+  lg: "max-w-[700px] w-full",
+  xl: "max-w-[900px] w-full",
+  full: "max-w-[95vw] max-h-[95vh] w-full",
+  dynamic: "max-w-full max-h-full w-auto",
 };
-
-const modalHeaderStyles = css({
-  display: "flex",
-  alignItems: "center",
-  gap: "3",
-  p: "6",
-  pb: "4",
-  borderBottom: "1px solid",
-  borderColor: "neutrals.blackAlpha.200",
-});
-
-const modalTitleStyles = css({
-  fontSize: "lg",
-  fontWeight: "semibold",
-  color: "neutrals.blackAlpha.900",
-  flex: "1",
-});
-
-const modalCloseButtonStyles = css({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  w: "8",
-  h: "8",
-  borderRadius: "md",
-  cursor: "pointer",
-  color: "neutrals.blackAlpha.600",
-  transition: "all 0.2s ease",
-  _hover: {
-    bg: "neutrals.blackAlpha.100",
-    color: "neutrals.blackAlpha.800",
-  },
-});
-
-const modalBodyStyles = css({
-  p: "6",
-  overflow: "auto",
-  flex: "1",
-});
-
-const modalFooterStyles = css({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "flex-end",
-  gap: "3",
-  p: "6",
-  pt: "4",
-  borderTop: "1px solid",
-  borderColor: "neutrals.blackAlpha.200",
-  bg: "neutrals.blackAlpha.50",
-});
-
-const iconStyles = css({
-  w: "6",
-  h: "6",
-  color: "neutrals.blackAlpha.600",
-});
 
 /** Modal header component with title and close button */
 export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
   ({ title, icon: Icon, className }, ref) => {
     return (
-      <div ref={ref} className={cx(modalHeaderStyles, className)}>
-        {Icon && <Icon className={iconStyles} />}
-        <h2 className={modalTitleStyles}>{title}</h2>
-        <ArkDialog.CloseTrigger className={modalCloseButtonStyles}>
-          <IconX className={css({ w: "5", h: "5" })} />
+      <div
+        ref={ref}
+        className={cn(
+          "flex items-center gap-3 p-6 pb-4 border-b border-black/20",
+          className
+        )}
+      >
+        {Icon && <Icon className="w-6 h-6 text-black/60" />}
+        <h2 className="text-lg font-semibold text-black/90 flex-1">{title}</h2>
+        <ArkDialog.CloseTrigger className="flex items-center justify-center w-8 h-8 rounded-md cursor-pointer text-black/60 transition-all duration-200 ease-in-out hover:bg-black/10 hover:text-black/80">
+          <IconX className="w-5 h-5" />
         </ArkDialog.CloseTrigger>
       </div>
     );
@@ -169,7 +92,7 @@ ModalHeader.displayName = "ModalHeader";
 export const ModalBody = forwardRef<HTMLDivElement, ModalBodyProps>(
   ({ children, className }, ref) => {
     return (
-      <div ref={ref} className={cx(modalBodyStyles, className)}>
+      <div ref={ref} className={cn("p-6 overflow-auto flex-1", className)}>
         {children}
       </div>
     );
@@ -181,7 +104,13 @@ ModalBody.displayName = "ModalBody";
 export const ModalFooter = forwardRef<HTMLDivElement, ModalFooterProps>(
   ({ children, className }, ref) => {
     return (
-      <div ref={ref} className={cx(modalFooterStyles, className)}>
+      <div
+        ref={ref}
+        className={cn(
+          "flex items-center justify-end gap-3 p-6 pt-4 border-t border-black/20 bg-black/5",
+          className
+        )}
+      >
         {children}
       </div>
     );
@@ -214,13 +143,13 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
         closeOnEscape={closeOnEscape}
         closeOnInteractOutside={closeOnBackdropClick}
       >
-        <ArkDialog.Backdrop className={modalOverlayStyles} />
+        <ArkDialog.Backdrop className="fixed inset-0 bg-black/60 z-overlay flex items-center justify-center p-4 w-screen h-screen" />
         <ArkDialog.Positioner>
           <ArkDialog.Content
             ref={ref}
-            className={cx(
-              modalContentStyles,
-              css({ ...sizeStyles[size] }),
+            className={cn(
+              "bg-transparent rounded-lg shadow-2xl max-h-[90vh] overflow-hidden fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-modal",
+              sizeStyles[size],
               className
             )}
           >

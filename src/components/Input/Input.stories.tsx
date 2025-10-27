@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useCallback, useState } from "react";
-import { css } from "styled-system/css";
-import { flex } from "styled-system/patterns";
 
 import { IconButton } from "../Button";
 // import { FormField } from "../FormField";
@@ -98,7 +96,7 @@ export const WithTailIcon: Story = {
           <IconButton
             size="sm"
             variant="text"
-            className={css({ p: "0", h: "[unset]" })} // Remove padding from button
+            className="p-0 h-auto" // Remove padding from button
             ariaLabel="Toggle Visibility"
             onClick={() =>
               setIsVisible((prevIsVisible) => {
@@ -135,15 +133,7 @@ export const WithTailIcon: Story = {
 
 export const AllSizes: Story = {
   render: (props) => (
-    <div
-      className={flex({
-        align: "center",
-        justify: "space-between",
-        gap: "24",
-        wrap: "wrap",
-        "& > *": { w: "[unset]" },
-      })}
-    >
+    <div className="flex items-center justify-between gap-24 flex-wrap [&>*]:w-auto">
       {(["sm", "md", "lg"] as const).map((size) => (
         <Input key={size} size={size} {...props} />
       ))}

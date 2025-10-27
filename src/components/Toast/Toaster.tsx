@@ -4,7 +4,6 @@ import {
   createToaster as arkCreateToaster,
   Toaster as ArkToaster,
 } from "@ark-ui/react/toast";
-import { css } from "styled-system/css";
 
 import { Toast } from "./Toast";
 import { type ToastProps } from "./types";
@@ -32,13 +31,13 @@ export function useWindowSize(): WindowSize {
     }
 
     // Add event listener
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Call handler right away so state gets updated with initial window size
     handleResize();
 
     // Remove event listener on cleanup
-    return () => window.removeEventListener('resize', handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []); // Empty array ensures that effect is only run on mount
 
   return windowSize;
@@ -72,7 +71,7 @@ export function createToaster() {
   const mobileToaster = arkCreateToaster({
     placement: "top",
     removeDelay: 100,
-    max: 1
+    max: 1,
   });
 
   // Track the current mobile state to ensure toast creation and rendering use the same toaster
@@ -152,7 +151,10 @@ export function createToaster() {
     currentIsMobile = isMobile;
 
     return (
-      <ArkToaster toaster={isMobile ? mobileToaster : toaster} className={css({ zIndex: "toast!" })}>
+      <ArkToaster
+        toaster={isMobile ? mobileToaster : toaster}
+        className="z-toast"
+      >
         {(toast) => {
           const props = toast.meta as unknown as ToastProps;
           return <Toast {...props} />;

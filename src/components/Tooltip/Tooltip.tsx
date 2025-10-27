@@ -1,7 +1,7 @@
 import { forwardRef, ReactNode } from "react";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 
-import { cx } from "styled-system/css";
+import { cn } from "../../lib/utils";
 
 export interface TooltipProps {
   id?: string;
@@ -19,7 +19,7 @@ export const Tooltip = forwardRef<any, TooltipProps>((props, ref) => {
       ref={ref}
       id={props.id}
       render={() => props.children}
-      className={cx("font-neue text-center leading-[140%]", props.className)}
+      className={cn("font-body text-center leading-[140%]", props.className)}
       isOpen={props.isOpen}
       style={{
         backgroundColor: props.bgColor || "#FFE162",

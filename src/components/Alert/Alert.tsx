@@ -1,6 +1,7 @@
 import { ComponentType, ReactNode, forwardRef } from "react";
-import { cx, cva } from "styled-system/css";
+import { cva } from "class-variance-authority";
 
+import { cn } from "../../lib/utils";
 import { type AlertVariant } from "./types";
 
 // Mock icon components for alert
@@ -87,150 +88,52 @@ export interface AlertProps {
 }
 
 // Alert recipe using CVA
-const alertRecipe = cva({
-  base: {
-    display: "flex",
-    alignItems: "flex-start",
-    gap: "3",
-    p: "4",
-    borderRadius: "lg",
-    // border: "1px solid",
-    position: "relative",
-  },
-  variants: {
-    variant: {
-      info: {
-        color: "black",
-        bg: "primary.base",
-      },
-      error: {
-        color: "white",
-        bg: "feedback.warning.default",
-      },
-      warning: {
-        color: "white",
-        bg: "feedback.warning.default",
-      },
-      success: {
-        color: "black",
-        bg: "feedback.success.default",
+const alertRecipe = cva(
+  ["flex", "items-start", "gap-3", "p-4", "rounded-lg", "relative"],
+  {
+    variants: {
+      variant: {
+        info: ["text-black", "bg-guild-green-300"],
+        error: ["text-white", "bg-moveus-marigold-400"],
+        warning: ["text-white", "bg-moveus-marigold-400"],
+        success: ["text-black", "bg-guild-green-400"],
       },
     },
-  },
-  defaultVariants: {
-    variant: "info",
-  },
-});
+    defaultVariants: {
+      variant: "info",
+    },
+  }
+);
 
 // Alert icon recipe using CVA
-const alertIconRecipe = cva({
-  base: {
-    flexShrink: "0",
-    mt: "0.5",
-  },
-  variants: {
-    variant: {
-      info: {},
-      warning: {},
-      error: {},
-      success: {},
-    },
-  },
-  defaultVariants: {
-    variant: "info",
-  },
-});
+const alertIconRecipe = cva(["flex-shrink-0", "mt-0.5"]);
 
 // Alert content recipe using CVA
-const alertContentRecipe = cva({
-  base: {
-    flex: "1",
-    minW: "0",
-  },
-  variants: {
-    variant: {
-      info: {},
-      warning: {},
-      error: {},
-      success: {},
-    },
-  },
-  defaultVariants: {
-    variant: "info",
-  },
-});
+const alertContentRecipe = cva(["flex-1", "min-w-0"]);
 
 // Alert title recipe using CVA
-const alertTitleRecipe = cva({
-  base: {
-    fontSize: "sm",
-    fontWeight: "semibold",
-    mb: "1",
-  },
-  variants: {
-    variant: {
-      info: {},
-      warning: {},
-      error: {},
-      success: {},
-    },
-  },
-  defaultVariants: {
-    variant: "info",
-  },
-});
+const alertTitleRecipe = cva(["text-sm", "font-semibold", "mb-1"]);
 
 // Alert description recipe using CVA
-const alertDescriptionRecipe = cva({
-  base: {
-    fontSize: "sm",
-    color: "inherit",
-    opacity: "0.9",
-  },
-  variants: {
-    variant: {
-      info: {},
-      warning: {},
-      error: {},
-      success: {},
-    },
-  },
-  defaultVariants: {
-    variant: "info",
-  },
-});
+const alertDescriptionRecipe = cva(["text-sm", "opacity-90"]);
 
 // Alert dismiss button recipe using CVA
-const alertDismissButtonRecipe = cva({
-  base: {
-    flexShrink: "0",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    w: "6",
-    h: "6",
-    borderRadius: "md",
-    cursor: "pointer",
-    color: "inherit",
-    opacity: "0.7",
-    transition: "all 0.2s ease",
-    _hover: {
-      opacity: "1",
-      bg: "currentColor",
-    },
-  },
-  variants: {
-    variant: {
-      info: {},
-      warning: {},
-      error: {},
-      success: {},
-    },
-  },
-  defaultVariants: {
-    variant: "info",
-  },
-});
+const alertDismissButtonRecipe = cva([
+  "flex-shrink-0",
+  "flex",
+  "items-center",
+  "justify-center",
+  "w-6",
+  "h-6",
+  "rounded-md",
+  "cursor-pointer",
+  "opacity-70",
+  "transition-all",
+  "duration-200",
+  "ease-in-out",
+  "hover:opacity-100",
+  "hover:bg-current",
+]);
 
 const iconMap: Record<AlertVariant, ComponentType<{ className?: string }>> = {
   info: IconInfo,
@@ -256,18 +159,16 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
     const Icon = icon || iconMap[variant];
 
     return (
-      <div ref={ref} className={cx(alertRecipe({ variant }), className)}>
-        <Icon className={alertIconRecipe({ variant })} />
-        <div className={alertContentRecipe({ variant })}>
-          {title && (
-            <div className={alertTitleRecipe({ variant })}>{title}</div>
-          )}
-          <div className={alertDescriptionRecipe({ variant })}>{children}</div>
+      <div ref={ref} className={cn(alertRecipe({ variant }), className)}>
+        <Icon className={alertIconRecipe()} />
+        <div className={alertContentRecipe()}>
+          {title && <div className={alertTitleRecipe()}>{title}</div>}
+          <div className={alertDescriptionRecipe()}>{children}</div>
         </div>
         {dismissible && (
           <button
             type="button"
-            className={alertDismissButtonRecipe({ variant })}
+            className={alertDismissButtonRecipe()}
             onClick={onDismiss}
             aria-label="Dismiss alert"
           >

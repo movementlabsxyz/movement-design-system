@@ -1,319 +1,239 @@
-import { cva } from "styled-system/css";
+import { cva } from "class-variance-authority";
 
-export const buttonStyles = cva({
-  base: {
-    display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",
-    outline: "none",
-    borderStyle: "solid",
-    cursor: "pointer",
-    whiteSpace: "nowrap",
-    transition: "all 0.2s ease",
-    _disabled: {
-      cursor: "not-allowed",
-      opacity: 0.6,
-    },
-    _focus: {
-      outline: "2px solid",
-      outlineColor: "blue.400",
-      outlineOffset: "2px",
-    },
-  },
-
-  variants: {
-    variant: {
-      filled: {
-        borderWidth: "0",
-      },
-      outlined: {
-        bg: "transparent",
-        borderWidth: "1",
-      },
-    },
-    color: {
-      yellow: {
-        bg: "moveus-marigold.400",
-        color: "black",
-        borderColor: "moveus-marigold.400",
-        "&:hover:not(:disabled)": {
-          bg: "moveus-marigold.500",
-          borderColor: "moveus-marigold.500",
-        },
-        "&:active:not(:disabled)": {
-          bg: "moveus-marigold.600",
-          borderColor: "moveus-marigold.600",
-        },
-      },
-      blue: {
-        bg: "byzantine-blue.400",
-        color: "white",
-        borderColor: "byzantine-blue.400",
-        "&:hover:not(:disabled)": {
-          bg: "byzantine-blue.500",
-          borderColor: "byzantine-blue.500",
-        },
-        "&:active:not(:disabled)": {
-          bg: "byzantine-blue.600",
-          borderColor: "byzantine-blue.600",
-        },
-      },
-      pink: {
-        bg: "protocol-pink.400",
-        color: "white",
-        borderColor: "protocol-pink.400",
-        "&:hover:not(:disabled)": {
-          bg: "protocol-pink.500",
-          borderColor: "protocol-pink.500",
-        },
-        "&:active:not(:disabled)": {
-          bg: "protocol-pink.600",
-          borderColor: "protocol-pink.600",
-        },
-      },
-      green: {
-        bg: "guild-green.400",
-        color: "white",
-        borderColor: "guild-green.400",
-        "&:hover:not(:disabled)": {
-          bg: "guild-green.500",
-          borderColor: "guild-green.500",
-        },
-        "&:active:not(:disabled)": {
-          bg: "guild-green.600",
-          borderColor: "guild-green.600",
-        },
-      },
-      orange: {
-        bg: "oracle-orange.400",
-        color: "white",
-        borderColor: "oracle-orange.400",
-        "&:hover:not(:disabled)": {
-          bg: "oracle-orange.500",
-          borderColor: "oracle-orange.500",
-        },
-        "&:active:not(:disabled)": {
-          bg: "oracle-orange.600",
-          borderColor: "oracle-orange.600",
-        },
-      },
-      gray: {
-        bg: "neutrals.blackAlpha.200",
-        color: "neutrals.black",
-        borderColor: "neutrals.blackAlpha.200",
-        "&:hover:not(:disabled)": {
-          bg: "neutrals.blackAlpha.300",
-          borderColor: "neutrals.blackAlpha.300",
-        },
-        "&:active:not(:disabled)": {
-          bg: "neutrals.blackAlpha.400",
-          borderColor: "neutrals.blackAlpha.400",
-        },
-      },
-      red: {
-        bg: "transparent",
-        color: "feedback.error.default",
-        borderColor: "feedback.error.default",
-        "&:hover:not(:disabled)": {
-          bg: "feedback.error.light",
-          borderColor: "feedback.error.dark",
-        },
-        "&:active:not(:disabled)": {
-          bg: "feedback.error.dark",
-          borderColor: "feedback.error.dark",
-          color: "white",
-        },
-      },
-      white: {
-        bg: "transparent",
-        color: "white",
-        borderColor: "white",
-        "&:hover:not(:disabled)": {
-          bg: "neutrals.whiteAlpha.100",
-          borderColor: "neutrals.whiteAlpha.200",
-        },
-        "&:active:not(:disabled)": {
-          bg: "neutrals.whiteAlpha.200",
-          borderColor: "neutrals.whiteAlpha.300",
-        },
-      },
-    },
-    size: {
-      sm: {
-        px: "4",
-        py: "2",
-        h: "8",
-        fontSize: "14px",
-      },
-      md: {
-        px: "5",
-        py: "3",
-        h: "10",
-        fontSize: "16px",
-      },
-      lg: {
-        px: "6",
-        py: "4",
-        h: "12",
-        fontSize: "18px",
-      },
-    },
-    radius: {
-      none: {
-        rounded: "0",
-      },
-      sm: {
-        rounded: "100",
-      },
-      md: {
-        rounded: "200",
-      },
-      lg: {
-        rounded: "300",
-      },
-      full: {
-        rounded: "full",
-      },
-    },
-  },
-
-  compoundVariants: [
-    // Outlined variants with different border styles
-    {
-      variant: "outlined",
-      color: "yellow",
-      css: {
-        bg: "transparent",
-        color: "moveus-marigold.400",
-        borderColor: "moveus-marigold.400",
-        "&:hover:not(:disabled)": {
-          bg: "moveus-marigold.400",
-          borderColor: "moveus-marigold.500",
-          color: "neutrals.blackAlpha.600",
-        },
-        "&:active:not(:disabled)": {
-          bg: "moveus-marigold.100",
-          borderColor: "moveus-marigold.600",
-          color: "moveus-marigold.600",
-        },
-      },
-    },
-    {
-      variant: "outlined",
-      color: "blue",
-      css: {
-        bg: "transparent",
-        color: "byzantine-blue.400",
-        borderColor: "byzantine-blue.400",
-        "&:hover:not(:disabled)": {
-          bg: "byzantine-blue.400",
-          borderColor: "byzantine-blue.500",
-          color: "neutrals.blackAlpha.600",
-        },
-        "&:active:not(:disabled)": {
-          bg: "byzantine-blue.100",
-          borderColor: "byzantine-blue.600",
-          color: "byzantine-blue.600",
-        },
-      },
-    },
-    {
-      variant: "outlined",
-      color: "pink",
-      css: {
-        bg: "transparent",
-        color: "protocol-pink.400",
-        borderColor: "protocol-pink.400",
-        "&:hover:not(:disabled)": {
-          bg: "protocol-pink.400",
-          borderColor: "protocol-pink.500",
-          color: "neutrals.blackAlpha.600",
-        },
-        "&:active:not(:disabled)": {
-          bg: "protocol-pink.100",
-          borderColor: "protocol-pink.600",
-          color: "protocol-pink.600",
-        },
-      },
-    },
-    {
-      variant: "outlined",
-      color: "green",
-      css: {
-        bg: "transparent",
-        color: "guild-green.400",
-        borderColor: "guild-green.400",
-        "&:hover:not(:disabled)": {
-          bg: "guild-green.400",
-          borderColor: "guild-green.500",
-          color: "neutrals.blackAlpha.600",
-        },
-        "&:active:not(:disabled)": {
-          bg: "guild-green.100",
-          borderColor: "guild-green.600",
-          color: "guild-green.600",
-        },
-      },
-    },
-    {
-      variant: "outlined",
-      color: "orange",
-      css: {
-        bg: "transparent",
-        color: "oracle-orange.400",
-        borderColor: "oracle-orange.400",
-        "&:hover:not(:disabled)": {
-          bg: "oracle-orange.400",
-          borderColor: "oracle-orange.500",
-          color: "neutrals.blackAlpha.600",
-        },
-        "&:active:not(:disabled)": {
-          bg: "oracle-orange.100",
-          borderColor: "oracle-orange.600",
-          color: "oracle-orange.600",
-        },
-      },
-    },
-    {
-      variant: "outlined",
-      color: "gray",
-      css: {
-        bg: "transparent",
-        color: "neutrals.blackAlpha.600",
-        borderColor: "neutrals.blackAlpha.300",
-        "&:hover:not(:disabled)": {
-          bg: "neutrals.blackAlpha.200",
-          borderColor: "neutrals.blackAlpha.400",
-          color: "neutrals.blackAlpha.700",
-        },
-        "&:active:not(:disabled)": {
-          bg: "neutrals.blackAlpha.100",
-          borderColor: "neutrals.blackAlpha.500",
-          color: "neutrals.blackAlpha.800",
-        },
-      },
-    },
+export const buttonStyles = cva(
+  [
+    "inline-flex",
+    "items-center",
+    "justify-center",
+    "outline-none",
+    "border-solid",
+    "cursor-pointer",
+    "whitespace-nowrap",
+    "transition-all",
+    "duration-200",
+    "ease-in-out",
+    "disabled:cursor-not-allowed",
+    "disabled:opacity-60",
+    "focus:outline-2",
+    "focus:outline-byzantine-blue-400",
+    "focus:outline-offset-2",
   ],
+  {
+    variants: {
+      variant: {
+        filled: ["border-0"],
+        outlined: ["bg-transparent", "border"],
+      },
+      color: {
+        yellow: [
+          "bg-moveus-marigold-400",
+          "text-black",
+          "border-moveus-marigold-400",
+          "hover:bg-moveus-marigold-500",
+          "hover:border-moveus-marigold-500",
+          "active:bg-moveus-marigold-600",
+          "active:border-moveus-marigold-600",
+          "disabled:hover:bg-moveus-marigold-400",
+          "disabled:hover:border-moveus-marigold-400",
+        ],
+        blue: [
+          "bg-byzantine-blue-400",
+          "text-white",
+          "border-byzantine-blue-400",
+          "hover:bg-byzantine-blue-500",
+          "hover:border-byzantine-blue-500",
+          "active:bg-byzantine-blue-600",
+          "active:border-byzantine-blue-600",
+          "disabled:hover:bg-byzantine-blue-400",
+          "disabled:hover:border-byzantine-blue-400",
+        ],
+        pink: [
+          "bg-protocol-pink-400",
+          "text-white",
+          "border-protocol-pink-400",
+          "hover:bg-protocol-pink-500",
+          "hover:border-protocol-pink-500",
+          "active:bg-protocol-pink-600",
+          "active:border-protocol-pink-600",
+          "disabled:hover:bg-protocol-pink-400",
+          "disabled:hover:border-protocol-pink-400",
+        ],
+        green: [
+          "bg-guild-green-400",
+          "text-white",
+          "border-guild-green-400",
+          "hover:bg-guild-green-500",
+          "hover:border-guild-green-500",
+          "active:bg-guild-green-600",
+          "active:border-guild-green-600",
+          "disabled:hover:bg-guild-green-400",
+          "disabled:hover:border-guild-green-400",
+        ],
+        orange: [
+          "bg-oracle-orange-400",
+          "text-white",
+          "border-oracle-orange-400",
+          "hover:bg-oracle-orange-500",
+          "hover:border-oracle-orange-500",
+          "active:bg-oracle-orange-600",
+          "active:border-oracle-orange-600",
+          "disabled:hover:bg-oracle-orange-400",
+          "disabled:hover:border-oracle-orange-400",
+        ],
+        gray: [
+          "bg-black/20",
+          "text-black",
+          "border-black/20",
+          "hover:bg-black/30",
+          "hover:border-black/30",
+          "active:bg-black/40",
+          "active:border-black/40",
+          "disabled:hover:bg-black/20",
+          "disabled:hover:border-black/20",
+        ],
+        red: [
+          "bg-transparent",
+          "text-oracle-orange-400",
+          "border-oracle-orange-400",
+          "hover:bg-oracle-orange-200",
+          "hover:border-oracle-orange-600",
+          "active:bg-oracle-orange-600",
+          "active:border-oracle-orange-600",
+          "active:text-white",
+          "disabled:hover:bg-transparent",
+        ],
+        white: [
+          "bg-transparent",
+          "text-white",
+          "border-white",
+          "hover:bg-white/10",
+          "hover:border-white/20",
+          "active:bg-white/20",
+          "active:border-white/30",
+          "disabled:hover:bg-transparent",
+        ],
+      },
+      size: {
+        sm: ["px-4", "py-2", "h-8", "text-[14px]"],
+        md: ["px-5", "py-3", "h-10", "text-[16px]"],
+        lg: ["px-6", "py-4", "h-12", "text-[18px]"],
+      },
+      radius: {
+        none: ["rounded-none"],
+        sm: ["rounded-sm"],
+        md: ["rounded-md"],
+        lg: ["rounded-lg"],
+        full: ["rounded-full"],
+      },
+    },
+    compoundVariants: [
+      // Outlined variants
+      {
+        variant: "outlined",
+        color: "yellow",
+        className: [
+          "bg-transparent",
+          "text-moveus-marigold-400",
+          "border-moveus-marigold-400",
+          "hover:bg-moveus-marigold-400",
+          "hover:border-moveus-marigold-500",
+          "hover:text-black/60",
+          "active:bg-moveus-marigold-100",
+          "active:border-moveus-marigold-600",
+          "active:text-moveus-marigold-600",
+        ],
+      },
+      {
+        variant: "outlined",
+        color: "blue",
+        className: [
+          "bg-transparent",
+          "text-byzantine-blue-400",
+          "border-byzantine-blue-400",
+          "hover:bg-byzantine-blue-400",
+          "hover:border-byzantine-blue-500",
+          "hover:text-black/60",
+          "active:bg-byzantine-blue-100",
+          "active:border-byzantine-blue-600",
+          "active:text-byzantine-blue-600",
+        ],
+      },
+      {
+        variant: "outlined",
+        color: "pink",
+        className: [
+          "bg-transparent",
+          "text-protocol-pink-400",
+          "border-protocol-pink-400",
+          "hover:bg-protocol-pink-400",
+          "hover:border-protocol-pink-500",
+          "hover:text-black/60",
+          "active:bg-protocol-pink-100",
+          "active:border-protocol-pink-600",
+          "active:text-protocol-pink-600",
+        ],
+      },
+      {
+        variant: "outlined",
+        color: "green",
+        className: [
+          "bg-transparent",
+          "text-guild-green-400",
+          "border-guild-green-400",
+          "hover:bg-guild-green-400",
+          "hover:border-guild-green-500",
+          "hover:text-black/60",
+          "active:bg-guild-green-100",
+          "active:border-guild-green-600",
+          "active:text-guild-green-600",
+        ],
+      },
+      {
+        variant: "outlined",
+        color: "orange",
+        className: [
+          "bg-transparent",
+          "text-oracle-orange-400",
+          "border-oracle-orange-400",
+          "hover:bg-oracle-orange-400",
+          "hover:border-oracle-orange-500",
+          "hover:text-black/60",
+          "active:bg-oracle-orange-100",
+          "active:border-oracle-orange-600",
+          "active:text-oracle-orange-600",
+        ],
+      },
+      {
+        variant: "outlined",
+        color: "gray",
+        className: [
+          "bg-transparent",
+          "text-black/60",
+          "border-black/30",
+          "hover:bg-black/20",
+          "hover:border-black/40",
+          "hover:text-black/70",
+          "active:bg-black/10",
+          "active:border-black/50",
+          "active:text-black/80",
+        ],
+      },
+    ],
+    defaultVariants: {
+      variant: "filled",
+      color: "yellow",
+      size: "md",
+      radius: "md",
+    },
+  }
+);
 
-  defaultVariants: {
-    variant: "filled",
-    color: "yellow",
-    size: "md",
-    radius: "md",
-  },
-});
-
-export const iconStyles = cva({
-  base: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
+export const iconStyles = cva(["flex", "items-center", "justify-center"], {
   variants: {
     size: {
-      sm: { h: "16", w: "16" },
-      md: { h: "18", w: "18" },
-      lg: { h: "20", w: "20" },
+      sm: ["h-4", "w-4"],
+      md: ["h-[18px]", "w-[18px]"],
+      lg: ["h-5", "w-5"],
     },
   },
   defaultVariants: {

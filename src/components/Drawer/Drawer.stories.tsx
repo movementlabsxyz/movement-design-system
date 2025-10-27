@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
-import { css } from "styled-system/css";
 
 import { Button } from "../Button";
 import { Drawer, DrawerHeader, DrawerBody, DrawerFooter } from "./Drawer";

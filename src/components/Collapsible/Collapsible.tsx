@@ -2,7 +2,8 @@
 
 import { Collapsible as ArkCollapsible } from "@ark-ui/react/collapsible";
 import { forwardRef } from "react";
-import { css, cx } from "styled-system/css";
+
+import { cn } from "../../lib/utils";
 import type { CollapsibleComponentProps, CollapsibleProps } from "./types";
 
 /**
@@ -45,24 +46,15 @@ export const Content = forwardRef<HTMLDivElement, CollapsibleComponentProps>(
     return (
       <ArkCollapsible.Content
         ref={ref}
-        className={cx(contentStyles, className)}
+        className={cn(
+          "overflow-hidden",
+          "data-[state=open]:animate-expandHeight",
+          "data-[state=closed]:animate-collapseHeight",
+          className
+        )}
         {...props}
       />
     );
   }
 );
 Content.displayName = "Collapsible.Content";
-
-/**
- * CSS styles for the collapsible content with smooth animations.
- * Uses CSS animations for expand/collapse transitions with proper duration timing.
- */
-const contentStyles = css({
-  overflow: "hidden",
-  "&[data-state='open']": {
-    animation: "[expandHeight {durations.100} ease]",
-  },
-  "&[data-state='closed']": {
-    animation: "[collapseHeight {durations.100} ease]",
-  },
-});

@@ -1,4 +1,3 @@
-import { ark } from "@ark-ui/react/factory";
 import {
   ComponentPropsWithoutRef,
   ComponentType,
@@ -6,13 +5,13 @@ import {
   JSX,
   ReactNode,
 } from "react";
-import { css, cx } from "styled-system/css";
 
+import { cn } from "../../lib/utils";
 import { iconStyles } from "./button.styles";
 
 export type BaseButtonProps = Omit<
-  ComponentPropsWithoutRef<typeof ark.button>,
-  "asChild" | "aria-label"
+  ComponentPropsWithoutRef<"button">,
+  "aria-label"
 >;
 
 export interface CommonButtonProps extends BaseButtonProps {
@@ -37,7 +36,7 @@ export interface CommonButtonProps extends BaseButtonProps {
    */
   render?: (children: ReactNode) => JSX.Element;
   /** Custom CSS styles to apply to the button */
-  customStyles?: any;
+  customStyles?: string;
   /** Additional CSS classes */
   className?: string;
   /** Gap between icon and text */
@@ -76,15 +75,14 @@ export const BaseButton = forwardRef<HTMLButtonElement, CommonButtonProps>(
 
     const childrenToRender = (
       <div
-        className={css({
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap,
-          h: "full",
-          textTransform,
-          fontWeight,
-        })}
+        className={cn(
+          "flex items-center justify-center h-full",
+          gap === "8" ? "gap-2" : "gap-3",
+          textTransform === "uppercase" ? "uppercase" : "normal-case",
+          fontWeight === "normal" && "font-regular",
+          fontWeight === "medium" && "font-medium",
+          fontWeight === "bold" && "font-bold"
+        )}
       >
         {LeadIcon && <LeadIcon className={iconStyles({ size: iconSize })} />}
         <span>{children}</span>
@@ -92,17 +90,20 @@ export const BaseButton = forwardRef<HTMLButtonElement, CommonButtonProps>(
       </div>
     );
 
+    if (render) {
+      return render(childrenToRender);
+    }
+
     return (
-      <ark.button
+      <button
         ref={ref}
         disabled={disabled}
         aria-label={resolvedAriaLabel}
-        className={cx(customStyles, fullWidth && css({ w: "full" }), className)}
-        asChild={!!render}
+        className={cn(customStyles, fullWidth && "w-full", className)}
         {...props}
       >
-        {render ? render(childrenToRender) : childrenToRender}
-      </ark.button>
+        {childrenToRender}
+      </button>
     );
   }
 );

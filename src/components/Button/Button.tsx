@@ -1,14 +1,13 @@
 import { forwardRef } from "react";
-import { cx, type RecipeVariantProps } from "styled-system/css";
+import { type VariantProps } from "class-variance-authority";
 
 import { buttonStyles } from "./button.styles";
 import { BaseButton, type CommonButtonProps } from "./BaseButton";
 
-export type ButtonVariants = NonNullable<
-  RecipeVariantProps<typeof buttonStyles>
->;
+export type ButtonVariants = VariantProps<typeof buttonStyles>;
 
-export interface ButtonProps extends CommonButtonProps {
+export interface ButtonProps
+  extends Omit<CommonButtonProps, "iconSize" | "color"> {
   /** The style variant of the button */
   variant?: ButtonVariants["variant"];
   /** The color theme of the button */
@@ -17,6 +16,8 @@ export interface ButtonProps extends CommonButtonProps {
   size?: ButtonVariants["size"];
   /** The border radius of the button */
   radius?: ButtonVariants["radius"];
+  /** Icon size for LeadIcon and TailIcon */
+  iconSize?: "sm" | "md" | "lg";
 }
 
 /** An interactive button component with comprehensive styling options. */
@@ -40,7 +41,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         customStyles={buttonCustomStyles}
         gap={gap}
-        iconSize={iconSize}
+        iconSize={iconSize ?? "md"}
         {...props}
       />
     );

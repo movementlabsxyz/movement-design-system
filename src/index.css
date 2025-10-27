@@ -1,4 +1,6 @@
-@layer reset, base, tokens, recipes, utilities;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Font face declarations for TWK Everett */
 @font-face {
@@ -327,51 +329,95 @@
   font-family:"neue-haas-unica";
   src:url("https://use.typekit.net/af/4a8091/00000000000000007735bb02/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3") format("woff2"),url("https://use.typekit.net/af/4a8091/00000000000000007735bb02/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3") format("woff"),url("https://use.typekit.net/af/4a8091/00000000000000007735bb02/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3") format("opentype");
   font-display:auto;font-style:normal;font-weight:800;font-stretch:normal;
-  }
-  
-  @font-face {
+}
+
+@font-face {
   font-family:"neue-haas-unica";
   src:url("https://use.typekit.net/af/762099/00000000000000007735bb04/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i8&v=3") format("woff2"),url("https://use.typekit.net/af/762099/00000000000000007735bb04/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i8&v=3") format("woff"),url("https://use.typekit.net/af/762099/00000000000000007735bb04/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i8&v=3") format("opentype");
   font-display:auto;font-style:italic;font-weight:800;font-stretch:normal;
-  }
-  
-  @font-face {
+}
+
+@font-face {
   font-family:"neue-haas-unica";
   src:url("https://use.typekit.net/af/98fb6b/00000000000000007735bb14/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"),url("https://use.typekit.net/af/98fb6b/00000000000000007735bb14/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"),url("https://use.typekit.net/af/98fb6b/00000000000000007735bb14/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype");
   font-display:auto;font-style:normal;font-weight:700;font-stretch:normal;
-  }
-  
-  @font-face {
+}
+
+@font-face {
   font-family:"neue-haas-unica";
   src:url("https://use.typekit.net/af/900894/00000000000000007735bb17/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("woff2"),url("https://use.typekit.net/af/900894/00000000000000007735bb17/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("woff"),url("https://use.typekit.net/af/900894/00000000000000007735bb17/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("opentype");
   font-display:auto;font-style:italic;font-weight:700;font-stretch:normal;
-  }
-  
-  @font-face {
+}
+
+@font-face {
   font-family:"neue-haas-unica";
   src:url("https://use.typekit.net/af/81e838/00000000000000007735bb1b/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("woff2"),url("https://use.typekit.net/af/81e838/00000000000000007735bb1b/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("woff"),url("https://use.typekit.net/af/81e838/00000000000000007735bb1b/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("opentype");
   font-display:auto;font-style:italic;font-weight:400;font-stretch:normal;
-  }
-  
-  @font-face {
+}
+
+@font-face {
   font-family:"neue-haas-unica";
   src:url("https://use.typekit.net/af/404934/00000000000000007735bb2a/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/404934/00000000000000007735bb2a/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/404934/00000000000000007735bb2a/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
   font-display:auto;font-style:normal;font-weight:400;font-stretch:normal;
+}
+
+@layer base {
+  :root {
+    /* Define CSS custom properties for your fonts */
+    --font-neue-haas-unica-pro: 'neue-haas-unica', sans-serif;
+    --font-twk-everett: 'TWK Everett', sans-serif;
+    --font-twk-everett-mono: 'TWK Everett Mono', monospace;
+    
+    /* Semantic color tokens using HSL */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
+    
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
+    
+    --primary: 159 100% 75%; /* guild-green-300 */
+    --primary-foreground: 0 0% 0%;
+    
+    --secondary: 230 100% 51%; /* byzantine-blue-400 */
+    --secondary-foreground: 0 0% 100%;
+    
+    --accent: 307 100% 73%; /* protocol-pink-300 */
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 12 100% 63%; /* oracle-orange-400 */
+    --destructive-foreground: 0 0% 100%;
+    
+    --success: 159 77% 68%; /* guild-green-400 */
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 47 100% 60%; /* moveus-marigold-400 */
+    --warning-foreground: 0 0% 0%;
+    
+    --info: 230 100% 51%; /* byzantine-blue-400 */
+    --info-foreground: 0 0% 100%;
+    
+    --muted: 0 0% 100%;
+    --muted-foreground: 0 0% 60%;
+    
+    --border: 159 100% 75%;
+    --input: 159 100% 75%;
+    --ring: 159 100% 75%;
   }
   
-
-:root {
-  /* Define CSS custom properties for your fonts */
-  --font-neue-haas-unica-pro: 'neue-haas-unica', sans-serif;
-  --font-twk-everett: 'TWK Everett', sans-serif;
-  --font-twk-everett-mono: 'TWK Everett Mono', monospace;
+  * {
+    border-color: hsl(var(--border));
+  }
   
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-
-  color:aliceblue;
-  /* Remove default browser styles */
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }

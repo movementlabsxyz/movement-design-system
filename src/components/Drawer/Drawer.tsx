@@ -7,7 +7,8 @@ import {
   useState,
   useEffect,
 } from "react";
-import { css, cx } from "styled-system/css";
+
+import { cn } from "../../lib/utils";
 
 // Mock icon component for drawer
 const IconX = ({ className }: { className?: string }) => (
@@ -66,210 +67,49 @@ export interface DrawerProps {
   className?: string;
 }
 
-const drawerOverlayStyles = css({
-  position: "fixed",
-  inset: "0",
-  bg: "neutrals.blackAlpha.600",
-  zIndex: "overlay",
-  animation: "fadeIn 0.2s ease-out",
-  _closed: {
-    animation: "fadeOut 0.2s ease-in",
-  },
-});
-
-const drawerContentStyles = css({
-  position: "fixed",
-  bg: "neutrals.blackAlpha.900",
-  boxShadow: "2xl",
-  display: "flex",
-  flexDirection: "column",
-  overflow: "hidden",
-  transition: "transform 0.3s ease-out",
-  zIndex: "modal",
-});
-
 const getPlacementStyles = (placement: string) => {
   switch (placement) {
     case "top":
-      return css({
-        top: "0",
-        left: "0",
-        right: "0",
-        borderBottomRadius: "lg",
-        transform: "translateY(-100%)",
-        animation: "slideInFromTop 0.3s ease-out forwards",
-        _closed: {
-          animation: "slideOutToTop 0.3s ease-in forwards",
-        },
-      });
+      return "top-0 left-0 right-0 rounded-b-lg -translate-y-full animate-slideInFromTop data-[state=closed]:animate-slideOutToTop";
     case "bottom":
-      return css({
-        bottom: "0",
-        left: "0",
-        right: "0",
-        borderTopRadius: "lg",
-        transform: "translateY(100%)",
-        animation: "slideInFromBottom 0.3s ease-out forwards",
-        _closed: {
-          animation: "slideOutToBottom 0.3s ease-in forwards",
-        },
-      });
+      return "bottom-0 left-0 right-0 rounded-t-lg translate-y-full animate-slideInFromBottom data-[state=closed]:animate-slideOutToBottom";
     case "left":
-      return css({
-        top: "0",
-        left: "0",
-        bottom: "0",
-        borderRightRadius: "lg",
-        transform: "translateX(-100%)",
-        animation: "slideInFromLeft 0.3s ease-out forwards",
-        _closed: {
-          animation: "slideOutToLeft 0.3s ease-in forwards",
-        },
-      });
+      return "top-0 left-0 bottom-0 rounded-r-lg -translate-x-full animate-slideInFromLeft data-[state=closed]:animate-slideOutToLeft";
     case "right":
     default:
-      return css({
-        top: "0",
-        right: "0",
-        bottom: "0",
-        borderLeftRadius: "lg",
-        // transform: "translateX(100%)",
-        // _closed: {
-        //   transform: "translateX(-100%)",
-        // }
-        animation: "slideInFromRight 0.3s ease-out forwards",
-        _closed: {
-          animation: "slideOutToRight 0.3s ease-in forwards",
-        },
-      });
+      return "top-0 right-0 bottom-0 rounded-l-lg animate-slideInFromRight data-[state=closed]:animate-slideOutToRight";
   }
 };
 
 const getSizeStyles = (size: string, placement: string) => {
   const sizeMap = {
-    sm: { h: "300px", w: "300px" },
-    md: { h: "400px", w: "400px" },
-    lg: { h: "500px", w: "500px" },
-    xl: { h: "600px", w: "600px" },
-    full: { h: "100vh", w: "100vw" },
+    sm: { h: "h-[300px]", w: "w-[300px]" },
+    md: { h: "h-[400px]", w: "w-[400px]" },
+    lg: { h: "h-[500px]", w: "w-[500px]" },
+    xl: { h: "h-[600px]", w: "w-[600px]" },
+    full: { h: "h-screen", w: "w-screen" },
   };
 
   const dimensions = sizeMap[size as keyof typeof sizeMap] || sizeMap.md;
 
   if (placement === "top" || placement === "bottom") {
-    return css({ h: dimensions.h });
+    return dimensions.h;
   } else {
-    return css({ w: dimensions.w });
+    return dimensions.w;
   }
 };
-
-const drawerHeaderStyles = css({
-  display: "flex",
-  alignItems: "center",
-  gap: "3",
-  p: "6",
-  pb: "4",
-  borderBottom: "1px solid",
-  borderColor: "neutrals.blackAlpha.200",
-  flexShrink: "0",
-});
-
-const drawerTitleStyles = css({
-  fontSize: "lg",
-  fontWeight: "semibold",
-  color: "neutrals.blackAlpha.900",
-  flex: "1",
-});
-
-const drawerCloseButtonStyles = css({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  w: "8",
-  h: "8",
-  borderRadius: "md",
-  cursor: "pointer",
-  color: "neutrals.blackAlpha.600",
-  transition: "all 0.2s ease",
-  _hover: {
-    bg: "neutrals.blackAlpha.100",
-    color: "neutrals.blackAlpha.800",
-  },
-});
-
-const drawerBodyStyles = css({
-  p: "6",
-  overflow: "auto",
-  flex: "1",
-});
-
-const drawerFooterStyles = css({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "flex-end",
-  gap: "3",
-  p: "6",
-  pt: "4",
-  borderTop: "1px solid",
-  borderColor: "neutrals.blackAlpha.200",
-  bg: "neutrals.blackAlpha.50",
-  flexShrink: "0",
-});
-
-const iconStyles = css({
-  w: "5",
-  h: "5",
-  color: "neutrals.blackAlpha.600",
-});
-
-const dragHandleStyles = css({
-  position: "absolute",
-  bg: "neutrals.blackAlpha.300",
-  borderRadius: "full",
-  cursor: "grab",
-  _active: {
-    cursor: "grabbing",
-  },
-  "@media (min-width: 768px)": {
-    display: "none",
-  },
-});
 
 const getDragHandlePosition = (placement: string) => {
   switch (placement) {
     case "top":
-      return css({
-        bottom: "8px",
-        left: "50%",
-        transform: "translateX(-50%)",
-        w: "40px",
-        h: "4px",
-      });
+      return "bottom-2 left-1/2 -translate-x-1/2 w-10 h-1";
     case "bottom":
-      return css({
-        top: "8px",
-        left: "50%",
-        transform: "translateX(-50%)",
-        w: "40px",
-        h: "4px",
-      });
+      return "top-2 left-1/2 -translate-x-1/2 w-10 h-1";
     case "left":
-      return css({
-        right: "8px",
-        top: "50%",
-        transform: "translateY(-50%)",
-        w: "4px",
-        h: "40px",
-      });
+      return "right-2 top-1/2 -translate-y-1/2 w-1 h-10";
     case "right":
     default:
-      return css({
-        left: "8px",
-        top: "50%",
-        transform: "translateY(-50%)",
-        w: "4px",
-        h: "40px",
-      });
+      return "left-2 top-1/2 -translate-y-1/2 w-1 h-10";
   }
 };
 
@@ -277,11 +117,17 @@ const getDragHandlePosition = (placement: string) => {
 export const DrawerHeader = forwardRef<HTMLDivElement, DrawerHeaderProps>(
   ({ title, icon: Icon, className }, ref) => {
     return (
-      <div ref={ref} className={cx(drawerHeaderStyles, className)}>
-        {Icon && <Icon className={iconStyles} />}
-        <h2 className={drawerTitleStyles}>{title}</h2>
-        <ArkDialog.CloseTrigger className={drawerCloseButtonStyles}>
-          <IconX className={css({ w: "5", h: "5" })} />
+      <div
+        ref={ref}
+        className={cn(
+          "flex items-center gap-3 p-6 pb-4 border-b border-black/20 flex-shrink-0",
+          className
+        )}
+      >
+        {Icon && <Icon className="w-5 h-5 text-black/60" />}
+        <h2 className="text-lg font-semibold text-black/90 flex-1">{title}</h2>
+        <ArkDialog.CloseTrigger className="flex items-center justify-center w-8 h-8 rounded-md cursor-pointer text-black/60 transition-all duration-200 ease-in-out hover:bg-black/10 hover:text-black/80">
+          <IconX className="w-5 h-5" />
         </ArkDialog.CloseTrigger>
       </div>
     );
@@ -293,7 +139,7 @@ DrawerHeader.displayName = "DrawerHeader";
 export const DrawerBody = forwardRef<HTMLDivElement, DrawerBodyProps>(
   ({ children, className }, ref) => {
     return (
-      <div ref={ref} className={cx(drawerBodyStyles, className)}>
+      <div ref={ref} className={cn("p-6 overflow-auto flex-1", className)}>
         {children}
       </div>
     );
@@ -305,7 +151,13 @@ DrawerBody.displayName = "DrawerBody";
 export const DrawerFooter = forwardRef<HTMLDivElement, DrawerFooterProps>(
   ({ children, className }, ref) => {
     return (
-      <div ref={ref} className={cx(drawerFooterStyles, className)}>
+      <div
+        ref={ref}
+        className={cn(
+          "flex items-center justify-end gap-3 p-6 pt-4 border-t border-black/20 bg-black/5 flex-shrink-0",
+          className
+        )}
+      >
         {children}
       </div>
     );
@@ -315,18 +167,16 @@ DrawerFooter.displayName = "DrawerFooter";
 
 /** A drawer component for displaying slide-out content */
 export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
-  (
-    {
-      open,
-      onClose,
-      children,
-      placement = "right",
-      size = "md",
-      closeOnBackdropClick = true,
-      closeOnEscape = true,
-      className,
-    },
-  ) => {
+  ({
+    open,
+    onClose,
+    children,
+    placement = "right",
+    size = "md",
+    closeOnBackdropClick = true,
+    closeOnEscape = true,
+    className,
+  }) => {
     const placementStyle = getPlacementStyles(placement);
     const sizeStyle = getSizeStyles(size, placement);
 
@@ -427,7 +277,6 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
       }
     };
 
-
     const dragHandlePosition = getDragHandlePosition(placement);
 
     return (
@@ -445,15 +294,12 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
         closeOnEscape={closeOnEscape}
         closeOnInteractOutside={closeOnBackdropClick}
       >
-        <ArkDialog.Backdrop
-          className={drawerOverlayStyles}
-          // style={getBackdropOpacity()}
-        />
+        <ArkDialog.Backdrop className="fixed inset-0 bg-black/60 z-overlay animate-fadeIn data-[state=closed]:animate-fadeOut" />
         <ArkDialog.Positioner>
           <ArkDialog.Content
             ref={contentRef}
-            className={cx(
-              drawerContentStyles,
+            className={cn(
+              "fixed bg-black/90 shadow-2xl flex flex-col overflow-hidden transition-transform duration-300 ease-out z-modal",
               placementStyle,
               sizeStyle,
               className
@@ -464,9 +310,11 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
             onTouchEnd={handleTouchEnd}
           >
             {/* Drag handle for mobile */}
-
             <div
-              className={cx(dragHandleStyles, dragHandlePosition)}
+              className={cn(
+                "absolute bg-black/30 rounded-full cursor-grab active:cursor-grabbing md:hidden",
+                dragHandlePosition
+              )}
               aria-label="Drag to close"
             />
 
