@@ -1,0 +1,116 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Theme Scales/radii" />
+
+# radii
+
+A scale for border radius values.
+
+## Import
+
+```tsx
+import { radii } from "@movementlabsxyz/movement-design-system";
+```
+
+## Available Values
+
+- `sm`: 2px
+- `base`: 4px
+- `md`: 6px
+- `lg`: 8px
+- `xl`: 12px
+- `2xl`: 16px
+- `3xl`: 24px
+- `full`: 9999px (pill shape)
+
+## Basic Usage
+
+```tsx
+import { radii } from "@movementlabsxyz/movement-design-system";
+
+console.log(radii.md.value);   // "6px"
+console.log(radii.full.value); // "9999px"
+```
+
+## Rounded Card
+
+```tsx
+import { radii } from "@movementlabsxyz/movement-design-system";
+
+export function RoundedCard() {
+  return (
+    <div style={{ borderRadius: radii.lg.value, padding: "16px" }}>
+      Card with rounded corners
+    </div>
+  );
+}
+```
+
+## Pill Button
+
+```tsx
+import { radii } from "@movementlabsxyz/movement-design-system";
+
+export function PillButton() {
+  return (
+    <button style={{ 
+      borderRadius: radii.full.value, 
+      padding: "8px 16px" 
+    }}>
+      Pill Button
+    </button>
+  );
+}
+```
+
+## Circle Avatar
+
+```tsx
+import { radii } from "@movementlabsxyz/movement-design-system";
+
+export function Avatar() {
+  return (
+    <div style={{
+      width: "40px",
+      height: "40px",
+      borderRadius: radii.full.value,
+      overflow: "hidden"
+    }}>
+      <img src="/avatar.jpg" alt="Avatar" />
+    </div>
+  );
+}
+```
+
+## Mixed Radius
+
+```tsx
+import { radii } from "@movementlabsxyz/movement-design-system";
+
+export function Card() {
+  return (
+    <div style={{
+      borderTopLeftRadius: radii.lg.value,
+      borderTopRightRadius: radii.lg.value,
+      borderBottomLeftRadius: radii.sm.value,
+      borderBottomRightRadius: radii.sm.value,
+    }}>
+      Card with mixed radius
+    </div>
+  );
+}
+```
+
+## Common Uses
+
+| Value | Size | Common Use |
+|-------|------|------------|
+| `radii.sm` | 2px | Minimal rounding |
+| `radii.base` | 4px | Default rounding |
+| `radii.md` | 6px | Cards, panels |
+| `radii.lg` | 8px | Large cards |
+| `radii.xl` | 12px | Prominent elements |
+| `radii.2xl` | 16px | Hero sections |
+| `radii.3xl` | 24px | Very rounded |
+| `radii.full` | 9999px | Pills, circles |
+

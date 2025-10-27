@@ -1,0 +1,91 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Theme Scales/spacing" />
+
+# spacing
+
+A scale for spacing values (padding, margin, gap, etc.) based on a 4px base unit.
+
+## Import
+
+```tsx
+import { spacing } from "@movementlabsxyz/movement-design-system";
+```
+
+## Available Values
+
+- `0` through `100` in increments (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96, 100)
+- `px`: 1px
+
+## Basic Usage
+
+```tsx
+import { spacing } from "@movementlabsxyz/movement-design-system";
+
+console.log(spacing[4].value); // "16px"
+console.log(spacing[8].value); // "32px"
+console.log(spacing.px.value); // "1px"
+```
+
+## Component Example
+
+```tsx
+import { spacing } from "@movementlabsxyz/movement-design-system";
+
+export function SpacedComponent() {
+  return (
+    <div style={{ padding: spacing[4].value, gap: spacing[2].value }}>
+      Content with consistent spacing
+    </div>
+  );
+}
+```
+
+## Responsive Spacing
+
+```tsx
+import { spacing, useIsMobile } from "@movementlabsxyz/movement-design-system";
+
+export function ResponsiveCard() {
+  const isMobile = useIsMobile();
+  
+  return (
+    <div style={{ 
+      padding: isMobile ? spacing[4].value : spacing[6].value 
+    }}>
+      Card with responsive spacing
+    </div>
+  );
+}
+```
+
+## Multiple Properties
+
+```tsx
+import { spacing } from "@movementlabsxyz/movement-design-system";
+
+export function Container() {
+  return (
+    <div style={{
+      padding: spacing[6].value,
+      margin: spacing[4].value,
+      gap: spacing[2].value,
+    }}>
+      Container with multiple spacing values
+    </div>
+  );
+}
+```
+
+## Common Spacings
+
+| Value | Pixels | Common Use |
+|-------|--------|------------|
+| `spacing[1]` | 4px | Minimal spacing |
+| `spacing[2]` | 8px | Tight spacing |
+| `spacing[4]` | 16px | Default spacing |
+| `spacing[6]` | 24px | Comfortable spacing |
+| `spacing[8]` | 32px | Large spacing |
+| `spacing[12]` | 48px | Section spacing |
+| `spacing[16]` | 64px | Major sections |
+

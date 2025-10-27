@@ -1,6 +1,5 @@
-// import "./index.css";
-// Export components
-export * from "./components";
+//  styling for components
+import "./index.css";
+export * from "@/components/ui/button";
 
-// Export the movement preset for PandaCSS
-export { movementPreset } from "./movement-preset";
+

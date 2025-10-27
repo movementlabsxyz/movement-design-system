@@ -3,9 +3,12 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 // https://vite.dev/config/
-import path, { resolve } from "node:path";
+// import path from 'node:path';
+import path from "path";
+import tailwindcss from "@tailwindcss/vite";
 import { fileURLToPath } from "node:url";
 import { storybookTest } from "@storybook/addon-vitest/vitest-plugin";
+import { playwright } from "@vitest/browser-playwright";
 const dirname =
   typeof __dirname !== "undefined"
     ? __dirname
@@ -13,7 +16,12 @@ const dirname =
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
   test: {
     projects: [
       {
@@ -30,7 +38,7 @@ export default defineConfig({
           browser: {
             enabled: true,
             headless: true,
-            provider: "playwright",
+            provider: playwright({}),
             instances: [
               {
                 browser: "chromium",
@@ -41,11 +49,5 @@ export default defineConfig({
         },
       },
     ],
-  },
-  resolve: {
-    alias: {
-      "styled-system": resolve(__dirname, "./styled-system"),
-      "@": resolve(__dirname, "./src"),
-    },
   },
 });

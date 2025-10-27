@@ -1,0 +1,154 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Theme Scales/zIndex" />
+
+# zIndex
+
+A scale for z-index values to maintain consistent layering.
+
+## Import
+
+```tsx
+import { zIndex } from "@movementlabsxyz/movement-design-system";
+```
+
+## Available Values (in order)
+
+- `hide`: -1 (hidden behind)
+- `auto`: "auto"
+- `base`: 0
+- `docked`: 10 (docked elements)
+- `dropdown`: 1000 (dropdown menus)
+- `sticky`: 1100 (sticky headers)
+- `banner`: 1200 (banner notifications)
+- `overlay`: 1300 (overlays)
+- `modal`: 1400 (modal dialogs)
+- `popover`: 1500 (popovers)
+- `skipLink`: 1600 (skip links)
+- `toast`: 1700 (toast notifications)
+- `tooltip`: 1800 (tooltips - highest)
+
+## Basic Usage
+
+```tsx
+import { zIndex } from "@movementlabsxyz/movement-design-system";
+
+console.log(zIndex.modal.value);   // 1400
+console.log(zIndex.tooltip.value); // 1800
+```
+
+## Modal
+
+```tsx
+import { zIndex } from "@movementlabsxyz/movement-design-system";
+
+export function Modal() {
+  return (
+    <div style={{ 
+      position: "fixed",
+      inset: 0,
+      zIndex: zIndex.modal.value 
+    }}>
+      Modal content
+    </div>
+  );
+}
+```
+
+## Toast Notification
+
+```tsx
+import { zIndex } from "@movementlabsxyz/movement-design-system";
+
+export function Toast() {
+  return (
+    <div style={{ 
+      position: "fixed",
+      top: "16px",
+      right: "16px",
+      zIndex: zIndex.toast.value 
+    }}>
+      Toast notification
+    </div>
+  );
+}
+```
+
+## Sticky Header
+
+```tsx
+import { zIndex } from "@movementlabsxyz/movement-design-system";
+
+export function StickyHeader() {
+  return (
+    <header style={{ 
+      position: "sticky",
+      top: 0,
+      zIndex: zIndex.sticky.value 
+    }}>
+      Sticky header
+    </header>
+  );
+}
+```
+
+## Dropdown Menu
+
+```tsx
+import { zIndex } from "@movementlabsxyz/movement-design-system";
+
+export function Dropdown({ isOpen }: { isOpen: boolean }) {
+  if (!isOpen) return null;
+  
+  return (
+    <div style={{ 
+      position: "absolute",
+      zIndex: zIndex.dropdown.value 
+    }}>
+      Dropdown menu
+    </div>
+  );
+}
+```
+
+## Overlay
+
+```tsx
+import { zIndex } from "@movementlabsxyz/movement-design-system";
+
+export function Overlay() {
+  return (
+    <div style={{ 
+      position: "fixed",
+      inset: 0,
+      backgroundColor: "rgba(0,0,0,0.5)",
+      zIndex: zIndex.overlay.value 
+    }}>
+      Overlay backdrop
+    </div>
+  );
+}
+```
+
+## Z-Index Hierarchy
+
+| Value | Level | Purpose |
+|-------|-------|---------|
+| `zIndex.hide` | -1 | Hidden behind |
+| `zIndex.auto` | auto | Default |
+| `zIndex.base` | 0 | Base layer |
+| `zIndex.docked` | 10 | Docked UI elements |
+| `zIndex.dropdown` | 1000 | Dropdown menus |
+| `zIndex.sticky` | 1100 | Sticky headers/footers |
+| `zIndex.banner` | 1200 | Banner notifications |
+| `zIndex.overlay` | 1300 | Modal overlays |
+| `zIndex.modal` | 1400 | Modal dialogs |
+| `zIndex.popover` | 1500 | Popovers |
+| `zIndex.skipLink` | 1600 | Skip navigation links |
+| `zIndex.toast` | 1700 | Toast notifications |
+| `zIndex.tooltip` | 1800 | Tooltips (highest) |
+
+## Best Practices
+
+Use these predefined z-index values to ensure consistent layering across your application. Tooltips should always be visible above everything else, followed by toasts, then modals, etc.
+

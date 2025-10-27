@@ -1,14 +1,10 @@
 import type { Preview } from "@storybook/react-vite";
-import { createStorybookTheme } from "./theme";
 import "../src/index.css";
+import { createStorybookTheme } from "./theme";
 
+// controls the preview of the storybook
 const preview: Preview = {
   parameters: {
-    options: {
-      storySort: {
-        order: ["Theme", "Components"],
-      },
-    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -25,26 +21,8 @@ const preview: Preview = {
 
     // Apply the dark theme
     docs: {
-      theme: createStorybookTheme(),
+      // theme: createStorybookTheme(),
       toc: true, // 👈 Enables the table of contents
-    },
-
-    // Configure themes addon
-    themes: {
-      default: "dark",
-      list: [{ name: "dark", class: "dark", color: "#1a1a1a" }],
-    },
-    tags: ["autodocs"],
-
-    // Additional styling for code blocks
-    backgrounds: {
-      default: "dark",
-      values: [
-        {
-          name: "dark",
-          value: "#1a1a1a",
-        },
-      ],
     },
   },
 };
