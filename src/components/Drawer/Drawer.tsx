@@ -326,6 +326,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
       closeOnEscape = true,
       className,
     },
+    ref
   ) => {
     const placementStyle = getPlacementStyles(placement);
     const sizeStyle = getSizeStyles(size, placement);
