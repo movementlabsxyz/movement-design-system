@@ -8,6 +8,8 @@ import {
   useEffect,
 } from "react";
 import { css, cx } from "styled-system/css";
+import { useIsMobile } from "@/hooks/useIsMobile";
+
 
 // Mock icon component for drawer
 const IconX = ({ className }: { className?: string }) => (
@@ -336,18 +338,9 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
     const [isDragging, setIsDragging] = useState(false);
     const [dragOffset, setDragOffset] = useState(0);
     const [startPos, setStartPos] = useState(0);
-    const [isMobile, setIsMobile] = useState(false);
     const [hasInteracted, setHasInteracted] = useState(false);
 
-    // Detect if device is mobile
-    useEffect(() => {
-      const checkMobile = () => {
-        setIsMobile(window.innerWidth < 768 || "ontouchstart" in window);
-      };
-      checkMobile();
-      window.addEventListener("resize", checkMobile);
-      return () => window.removeEventListener("resize", checkMobile);
-    }, []);
+    const isMobile = useIsMobile();
 
     // Reset drag state when drawer closes
     useEffect(() => {

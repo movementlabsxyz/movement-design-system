@@ -8,49 +8,8 @@ import { css } from "styled-system/css";
 
 import { Toast } from "./Toast";
 import { type ToastProps } from "./types";
-import { useState, useEffect } from "react";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
-interface WindowSize {
-  width: number | undefined;
-  height: number | undefined;
-}
-
-export function useWindowSize(): WindowSize {
-  const [windowSize, setWindowSize] = useState<WindowSize>({
-    width: undefined,
-    height: undefined,
-  });
-
-  useEffect(() => {
-    // Handler to call on window resize
-    function handleResize() {
-      // Set window width/height to state
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    }
-
-    // Add event listener
-    window.addEventListener('resize', handleResize);
-
-    // Call handler right away so state gets updated with initial window size
-    handleResize();
-
-    // Remove event listener on cleanup
-    return () => window.removeEventListener('resize', handleResize);
-  }, []); // Empty array ensures that effect is only run on mount
-
-  return windowSize;
-}
-
-// Helper function to determine if screen is mobile
-export function useIsMobile(): boolean {
-  const { width } = useWindowSize();
-
-  // Consider mobile if width is less than 768px (md breakpoint)
-  return width !== undefined && width < 900;
-}
 export interface CreateToastArgs extends Omit<ToastProps, "id"> {
   /** The optional id of the toast. This can be used to update or dismiss the toast programmatically. */
   id?: string;
