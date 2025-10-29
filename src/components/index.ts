@@ -15,3 +15,4 @@ export { Tag } from "./Tag";
 export { Toast, createToaster, GlobalToaster, toast } from "./Toast";
 export { ToggleGroup } from "./ToggleGroup";
 export { Tooltip } from "./Tooltip";
+export { WalletModal } from "./WalletModal";
