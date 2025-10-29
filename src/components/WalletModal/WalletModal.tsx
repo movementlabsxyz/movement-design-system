@@ -11,7 +11,7 @@ import {
   WalletReadyState,
 } from '@aptos-labs/wallet-adapter-react';
 
-import { useMemo, useState, useEffect, forwardRef } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { css } from 'styled-system/css';
 import { OKXWallet } from '@okwallet/aptos-wallet-adapter';
@@ -40,7 +40,6 @@ const IconX = ({ className }: { className?: string }) => (
     <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
   </svg>
 );
-IconX.displayName = 'IconX';
 
 interface ConnectWalletDialogProps extends WalletSortingOptions {
   onClose: () => void;
@@ -75,11 +74,11 @@ interface ConnectWalletContentProps extends WalletSortingOptions {
   showCloseButton?: boolean;
 }
 
-const ConnectWalletContent = forwardRef<HTMLDivElement, ConnectWalletContentProps>(({
+function ConnectWalletContent({
   onClose,
   showCloseButton = true,
   ...walletSortingOptions
-}, ref) => {
+}: ConnectWalletContentProps) {
   const { wallets } = useWallet();
   const [isMoreWalletsOpen, setIsMoreWalletsOpen] = useState(false);
   const isMobile = useIsMobile();
@@ -120,11 +119,10 @@ const ConnectWalletContent = forwardRef<HTMLDivElement, ConnectWalletContentProp
       };
     }, [wallets, walletSortingOptions]);
 
-  const hasAptosConnectWallets = aptosConnectWallets.length > 0;
+  const hasAptosConnectWallets = false; // keep original logic toggle
 
   return (
     <div
-      ref={ref}
       className={css({
         display: 'flex',
         flexDirection: 'column',
@@ -519,13 +517,12 @@ const ConnectWalletContent = forwardRef<HTMLDivElement, ConnectWalletContentProp
       )}
     </div>
   );
-});
-ConnectWalletContent.displayName = 'ConnectWalletContent';
+}
 
-export const WalletModal = forwardRef<HTMLDivElement, ConnectWalletDialogProps>(({
+export function WalletModal({
   onClose,
   ...walletSortingOptions
-}, ref) => {
+}: ConnectWalletDialogProps) {
   const [mounted, setMounted] = useState(false);
   const isMobile = useIsMobile();
 
@@ -546,7 +543,6 @@ export const WalletModal = forwardRef<HTMLDivElement, ConnectWalletDialogProps>(
   // Portal the modal to document.body to escape parent stacking context
   const modalContent = isMobile ? (
     <Drawer
-      ref={ref}
       open={true}
       onClose={onClose}
       placement="bottom"
@@ -560,14 +556,13 @@ export const WalletModal = forwardRef<HTMLDivElement, ConnectWalletDialogProps>(
       <ConnectWalletContent {...contentProps} showCloseButton={false} />
     </Drawer>
   ) : (
-    <Modal ref={ref} open={true} onClose={onClose}>
+    <Modal open={true} onClose={onClose}>
       <ConnectWalletContent {...contentProps} />
     </Modal>
   );
 
   return createPortal(modalContent, document.body);
-});
-WalletModal.displayName = 'WalletModal';
+}
 
 interface WalletRowProps {
   wallet: AdapterWallet | AdapterNotDetectedWallet;
