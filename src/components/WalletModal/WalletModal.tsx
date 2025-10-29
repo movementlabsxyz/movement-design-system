@@ -65,7 +65,7 @@ function cleanWalletList(
     .filter((wallet) => {
       if (!wallet) return false;
       if (unsupportedWallets.includes(wallet.name)) return false;
-      return true;
+      return wallet;
     });
 }
 
