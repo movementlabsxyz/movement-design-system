@@ -12,7 +12,6 @@ import {
 } from '@aptos-labs/wallet-adapter-react';
 
 import { useMemo, useState, useEffect } from 'react';
-import { createPortal } from 'react-dom';
 import { css } from 'styled-system/css';
 import { OKXWallet } from '@okwallet/aptos-wallet-adapter';
 import { MSafeWalletAdapter } from '@msafe/aptos-wallet-adapter';
@@ -531,7 +530,7 @@ export function WalletModal({
     return () => setMounted(false);
   }, []);
 
-  if (!mounted) {
+  if (!mounted || typeof window === 'undefined') {
     return null;
   }
 
@@ -540,8 +539,8 @@ export function WalletModal({
     ...walletSortingOptions,
   };
 
-  // Portal the modal to document.body to escape parent stacking context
-  const modalContent = isMobile ? (
+  // Ark UI Dialog components handle portals internally, no need for createPortal
+  return isMobile ? (
     <Drawer
       open={true}
       onClose={onClose}
@@ -560,8 +559,6 @@ export function WalletModal({
       <ConnectWalletContent {...contentProps} />
     </Modal>
   );
-
-  return createPortal(modalContent, document.body);
 }
 
 interface WalletRowProps {
