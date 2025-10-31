@@ -1,5 +1,5 @@
 // Styles
-import "./theme.css";
+import "./index.css";
 
 // Components
 export {
