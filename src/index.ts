@@ -303,12 +303,23 @@ export {
   TooltipProvider,
   TooltipTrigger,
 } from "./components/ui/tooltip";
+export { Typography, typographyVariants } from "./components/ui/typography";
 
 // Utilities
 export { cn } from "./lib/utils";
 
 // Hooks
 export { useIsMobile } from "./hooks/use-mobile";
+
+// Theme scales
+export {
+  spacing,
+  sizes,
+  radii,
+  borderWidths,
+  shadows,
+  zIndex,
+} from "./lib/scales";
 
 // Re-export useful types
 export type { VariantProps } from "class-variance-authority";

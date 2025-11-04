@@ -153,7 +153,7 @@ export const HeadingFonts: Story = {
           <p className="text-sm text-muted-foreground mb-4">
             Desktop Sizes (lg, xl, 2xl breakpoints)
           </p>
-          <div className="space-y-6">
+          <div className="space-y-6 font-family-heading">
             <FontWeightSample
               label="7xl - 80px"
               className="text-[80px] leading-none font-heading font-bold"
