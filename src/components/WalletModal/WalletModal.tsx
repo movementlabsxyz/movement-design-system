@@ -89,32 +89,34 @@ function ConnectWalletContent({
       const grouped = groupAndSortWallets(wallets, walletSortingOptions);
 
       // Add OKX and MSafe as installable wallets if not already present
-      const additionalInstallableWallets = [];
+      const additionalInstallableWallets: (AdapterWallet | AdapterNotDetectedWallet)[] = [];
 
       // Check if OKX wallet is already in the lists
       const hasOKX = [
-        ...grouped.availableWallets,
-        ...grouped.installableWallets,
+        ...(grouped?.availableWallets ?? []),
+        ...(grouped?.installableWallets ?? []),
       ].some((w) => w.name.toLowerCase().includes('okx'));
       if (!hasOKX) {
-        additionalInstallableWallets.push(new OKXWallet());
+        additionalInstallableWallets.push(new OKXWallet() as AdapterNotDetectedWallet);
       }
 
       // Check if MSafe wallet is already in the lists
       const hasMSafe = [
-        ...grouped.availableWallets,
-        ...grouped.installableWallets,
+        ...(grouped?.availableWallets ?? []),
+        ...(grouped?.installableWallets ?? []),
       ].some((w) => w.name.toLowerCase().includes('msafe'));
       if (!hasMSafe) {
         additionalInstallableWallets.push(
-          new MSafeWalletAdapter(undefined, 'MOVEMENT'),
+          new MSafeWalletAdapter(undefined, 'MOVEMENT') as unknown as AdapterNotDetectedWallet,
         );
       }
       return {
         aptosConnectWallets: grouped?.aptosConnectWallets ?? [],
         availableWallets: grouped?.availableWallets ?? [],
-        installableWallets: grouped?.installableWallets ?? [],
-        additionalInstallableWallets
+        installableWallets: [
+          ...(grouped?.installableWallets ?? []),
+          ...additionalInstallableWallets,
+        ],
       };
     }, [wallets, walletSortingOptions]);
 
