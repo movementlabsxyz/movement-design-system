@@ -89,7 +89,6 @@ function ConnectWalletContent({
       const grouped = groupAndSortWallets(wallets, walletSortingOptions);
 
       // Add OKX and MSafe as installable wallets if not already present
-      // Add OKX and MSafe as installable wallets if not already present
       const additionalInstallableWallets = [];
 
       // Check if OKX wallet is already in the lists
@@ -115,6 +114,7 @@ function ConnectWalletContent({
         aptosConnectWallets: grouped?.aptosConnectWallets ?? [],
         availableWallets: grouped?.availableWallets ?? [],
         installableWallets: grouped?.installableWallets ?? [],
+        additionalInstallableWallets
       };
     }, [wallets, walletSortingOptions]);
 
