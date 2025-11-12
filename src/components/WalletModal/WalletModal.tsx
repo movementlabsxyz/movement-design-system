@@ -9,6 +9,8 @@ import {
   isInstallRequired,
   WalletReadyState,
 } from '@aptos-labs/wallet-adapter-react';
+import { OKXWallet } from '@okwallet/aptos-wallet-adapter';
+import { MSafeWalletAdapter } from '@msafe/aptos-wallet-adapter';
 
 import { useMemo, useState, useEffect } from 'react';
 import { css } from 'styled-system/css';
@@ -52,6 +54,7 @@ function cleanWalletList(
     'Tokenpocket',
     'Martian',
     'Rise',
+    'Petra'
   ];
   return wallets
     .filter(
@@ -86,7 +89,28 @@ function ConnectWalletContent({
       const grouped = groupAndSortWallets(wallets, walletSortingOptions);
 
       // Add OKX and MSafe as installable wallets if not already present
+      // Add OKX and MSafe as installable wallets if not already present
+      const additionalInstallableWallets = [];
 
+      // Check if OKX wallet is already in the lists
+      const hasOKX = [
+        ...grouped.availableWallets,
+        ...grouped.installableWallets,
+      ].some((w) => w.name.toLowerCase().includes('okx'));
+      if (!hasOKX) {
+        additionalInstallableWallets.push(new OKXWallet());
+      }
+
+      // Check if MSafe wallet is already in the lists
+      const hasMSafe = [
+        ...grouped.availableWallets,
+        ...grouped.installableWallets,
+      ].some((w) => w.name.toLowerCase().includes('msafe'));
+      if (!hasMSafe) {
+        additionalInstallableWallets.push(
+          new MSafeWalletAdapter(undefined, 'MOVEMENT'),
+        );
+      }
       return {
         aptosConnectWallets: grouped?.aptosConnectWallets ?? [],
         availableWallets: grouped?.availableWallets ?? [],
