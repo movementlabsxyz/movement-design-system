@@ -7,14 +7,11 @@ import {
   WalletSortingOptions,
   groupAndSortWallets,
   isInstallRequired,
-  useWallet,
   WalletReadyState,
 } from '@aptos-labs/wallet-adapter-react';
 
 import { useMemo, useState, useEffect } from 'react';
 import { css } from 'styled-system/css';
-import { OKXWallet } from '@okwallet/aptos-wallet-adapter';
-import { MSafeWalletAdapter } from '@msafe/aptos-wallet-adapter';
 import { useIsMobile } from '@/hooks/useIsMobile';
 import { Drawer } from '../Drawer/Drawer';
 import { Modal } from '../Modal/Modal';
@@ -42,6 +39,7 @@ const IconX = ({ className }: { className?: string }) => (
 
 interface ConnectWalletDialogProps extends WalletSortingOptions {
   onClose: () => void;
+  wallets: AdapterWallet[] | AdapterNotDetectedWallet[];
 }
 
 function cleanWalletList(
@@ -70,15 +68,16 @@ function cleanWalletList(
 // Separate content component for reuse in both Drawer and Modal
 interface ConnectWalletContentProps extends WalletSortingOptions {
   onClose: () => void;
+  wallets: AdapterWallet[] | AdapterNotDetectedWallet[];
   showCloseButton?: boolean;
 }
 
 function ConnectWalletContent({
   onClose,
+  wallets,
   showCloseButton = true,
   ...walletSortingOptions
 }: ConnectWalletContentProps) {
-  const { wallets } = useWallet();
   const [isMoreWalletsOpen, setIsMoreWalletsOpen] = useState(false);
   const isMobile = useIsMobile();
 
@@ -87,34 +86,11 @@ function ConnectWalletContent({
       const grouped = groupAndSortWallets(wallets, walletSortingOptions);
 
       // Add OKX and MSafe as installable wallets if not already present
-      const additionalInstallableWallets = [];
-
-      // Check if OKX wallet is already in the lists
-      const hasOKX = [
-        ...grouped.availableWallets,
-        ...grouped.installableWallets,
-      ].some((w) => w.name.toLowerCase().includes('okx'));
-      if (!hasOKX) {
-        additionalInstallableWallets.push(new OKXWallet() as any);
-      }
-
-      // Check if MSafe wallet is already in the lists
-      const hasMSafe = [
-        ...grouped.availableWallets,
-        ...grouped.installableWallets,
-      ].some((w) => w.name.toLowerCase().includes('msafe'));
-      if (!hasMSafe) {
-        additionalInstallableWallets.push(
-          new MSafeWalletAdapter(undefined, 'MOVEMENT') as any,
-        );
-      }
 
       return {
-        ...grouped,
-        installableWallets: [
-          ...grouped.installableWallets,
-          ...additionalInstallableWallets,
-        ],
+        aptosConnectWallets: grouped?.aptosConnectWallets ?? [],
+        availableWallets: grouped?.availableWallets ?? [],
+        installableWallets: grouped?.installableWallets ?? [],
       };
     }, [wallets, walletSortingOptions]);
 
@@ -520,6 +496,7 @@ function ConnectWalletContent({
 
 export function WalletModal({
   onClose,
+  wallets,
   ...walletSortingOptions
 }: ConnectWalletDialogProps) {
   const [mounted, setMounted] = useState(false);
@@ -536,6 +513,7 @@ export function WalletModal({
 
   const contentProps = {
     onClose,
+    wallets,
     ...walletSortingOptions,
   };
 
