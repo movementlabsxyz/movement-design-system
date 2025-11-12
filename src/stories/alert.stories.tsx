@@ -1,9 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Alert, AlertTitle, AlertDescription } from "../components/ui/alert";
+import {
+  Alert,
+  AlertTitle,
+  AlertDescription,
+} from "../components/shadcn/alert";
 import { Terminal, AlertCircle } from "lucide-react";
 
 const meta = {
-  title: "UI/Alert",
+  title: "movement-design-system/Alert",
   component: Alert,
   parameters: {
     layout: "centered",

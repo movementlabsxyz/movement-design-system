@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Toaster } from "../components/ui/sonner";
-import { Button } from "../components/ui/button";
+import { Toaster } from "../components/shadcn/sonner";
+import { Button } from "../components/shadcn/button";
 import { toast } from "sonner";
 
 const meta = {
-  title: "UI/Sonner",
+  title: "movement-design-system/Sonner",
   component: Toaster,
   parameters: {
     layout: "centered",

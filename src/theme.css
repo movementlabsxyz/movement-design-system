@@ -299,11 +299,11 @@
   
   /* Backgrounds & Foregrounds */
   --background: hsl(0 0% 100%); /* white */
-  --foreground: hsl(0 0% 0%); /* black */
+  --foreground: hsl(0 0% 100%); /* white */
   --card: hsl(0 0% 100%);
-  --card-foreground: hsl(0 0% 0%);
+  --card-foreground: hsl(0 0% 100%);
   --popover: hsl(0 0% 100%);
-  --popover-foreground: hsl(0 0% 0%);
+  --popover-foreground: hsl(0 0% 100%);
   
   /* Brand semantic colors (light mode) */
   --primary: hsl(150 100% 75%); /* guild-green.300 */
@@ -321,7 +321,7 @@
   --success: hsl(154 66% 66%); /* guild-green.400 */
   --success-foreground: hsl(0 0% 100%);
   --warning: hsl(47 100% 60%); /* moveus-marigold.400 */
-  --warning-foreground: hsl(0 0% 0%);
+  --warning-foreground: hsl(0 0% 100%);
   --error: hsl(13 100% 63%); /* oracle-orange.400 */
   --error-foreground: hsl(0 0% 100%);
   
@@ -341,11 +341,11 @@
   
   /* Sidebar */
   --sidebar: hsl(0 0% 98%);
-  --sidebar-foreground: hsl(0 0% 0%);
+  --sidebar-foreground: hsl(0 0% 100%);
   --sidebar-primary: hsl(150 100% 75%); /* guild-green.300 */
   --sidebar-primary-foreground: hsl(0 0% 100%);
   --sidebar-accent: hsl(150 100% 95%); /* guild-green.50 */
-  --sidebar-accent-foreground: hsl(0 0% 0%);
+  --sidebar-accent-foreground: hsl(0 0% 100%);
   --sidebar-border: hsl(0 0% 90%);
   --sidebar-ring: hsl(150 100% 75%);
 }

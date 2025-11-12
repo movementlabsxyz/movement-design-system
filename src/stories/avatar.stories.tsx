@@ -1,8 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Avatar, AvatarImage, AvatarFallback } from "../components/ui/avatar";
+import {
+  Avatar,
+  AvatarImage,
+  AvatarFallback,
+} from "../components/shadcn/avatar";
 
 const meta = {
-  title: "UI/Avatar",
+  title: "movement-design-system/Avatar",
   component: Avatar,
   parameters: {
     layout: "centered",

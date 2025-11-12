@@ -7,13 +7,13 @@ import {
   DialogTitle,
   DialogTrigger,
   DialogFooter,
-} from "../components/ui/dialog";
-import { Button } from "../components/ui/button";
-import { Input } from "../components/ui/input";
-import { Label } from "../components/ui/label";
+} from "../components/shadcn/dialog";
+import { Button } from "../components/shadcn/button";
+import { Input } from "../components/shadcn/input";
+import { Label } from "../components/shadcn/label";
 
 const meta = {
-  title: "UI/Dialog",
+  title: "movement-design-system/Dialog",
   component: Dialog,
   parameters: {
     layout: "centered",

@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Progress } from "../components/ui/progress";
+import { Progress } from "../components/shadcn/progress";
 import { useState, useEffect } from "react";
 
 const meta = {
-  title: "UI/Progress",
+  title: "movement-design-system/Progress",
   component: Progress,
   parameters: {
     layout: "centered",

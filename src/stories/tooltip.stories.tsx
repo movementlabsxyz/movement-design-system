@@ -4,11 +4,11 @@ import {
   TooltipContent,
   TooltipTrigger,
   TooltipProvider,
-} from "../components/ui/tooltip";
-import { Button } from "../components/ui/button";
+} from "../components/shadcn/tooltip";
+import { Button } from "../components/shadcn/button";
 
 const meta = {
-  title: "UI/Tooltip",
+  title: "movement-design-system/Tooltip",
   component: Tooltip,
   parameters: {
     layout: "centered",

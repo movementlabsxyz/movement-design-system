@@ -8,11 +8,11 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "../components/ui/drawer";
-import { Button } from "../components/ui/button";
+} from "../components/shadcn/drawer";
+import { Button } from "../components/shadcn/button";
 
 const meta = {
-  title: "UI/Drawer",
+  title: "movement-design-system/Drawer",
   component: Drawer,
   parameters: {
     layout: "centered",

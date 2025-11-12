@@ -3,12 +3,13 @@ import "./index.css";
 
 // Components
 export * from "./components/Icon";
+export { DottedBackground } from "./components/DottedBackground";
 export {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "./components/ui/accordion";
+} from "./components/shadcn/accordion";
 export {
   AlertDialog,
   AlertDialogAction,
@@ -19,11 +20,15 @@ export {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "./components/ui/alert-dialog";
-export { Alert, AlertDescription, AlertTitle } from "./components/ui/alert";
-export { AspectRatio } from "./components/ui/aspect-ratio";
-export { Avatar, AvatarFallback, AvatarImage } from "./components/ui/avatar";
-export { Badge, badgeVariants } from "./components/ui/badge";
+} from "./components/shadcn/alert-dialog";
+export { Alert, AlertDescription, AlertTitle } from "./components/shadcn/alert";
+export { AspectRatio } from "./components/shadcn/aspect-ratio";
+export {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "./components/shadcn/avatar";
+export { Badge, badgeVariants } from "./components/shadcn/badge";
 export {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -32,10 +37,10 @@ export {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "./components/ui/breadcrumb";
-export { Button, buttonVariants } from "./components/ui/button";
-export { ButtonGroup } from "./components/ui/button-group";
-export { Calendar } from "./components/ui/calendar";
+} from "./components/shadcn/breadcrumb";
+export { Button, buttonVariants } from "./components/shadcn/button";
+export { ButtonGroup } from "./components/shadcn/button-group";
+export { Calendar } from "./components/shadcn/calendar";
 export {
   Card,
   CardAction,
@@ -44,14 +49,14 @@ export {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "./components/ui/card";
+} from "./components/shadcn/card";
 export {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "./components/ui/carousel";
+} from "./components/shadcn/carousel";
 export {
   ChartContainer,
   ChartLegend,
@@ -59,14 +64,14 @@ export {
   ChartStyle,
   ChartTooltip,
   ChartTooltipContent,
-} from "./components/ui/chart";
-export type { ChartConfig } from "./components/ui/chart";
-export { Checkbox } from "./components/ui/checkbox";
+} from "./components/shadcn/chart";
+export type { ChartConfig } from "./components/shadcn/chart";
+export { Checkbox } from "./components/shadcn/checkbox";
 export {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "./components/ui/collapsible";
+} from "./components/shadcn/collapsible";
 export {
   Command,
   CommandDialog,
@@ -77,7 +82,7 @@ export {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from "./components/ui/command";
+} from "./components/shadcn/command";
 export {
   ContextMenu,
   ContextMenuCheckboxItem,
@@ -94,7 +99,7 @@ export {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from "./components/ui/context-menu";
+} from "./components/shadcn/context-menu";
 export {
   Dialog,
   DialogClose,
@@ -104,7 +109,7 @@ export {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "./components/ui/dialog";
+} from "./components/shadcn/dialog";
 export {
   Drawer,
   DrawerClose,
@@ -114,7 +119,7 @@ export {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "./components/ui/drawer";
+} from "./components/shadcn/drawer";
 export {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -131,8 +136,8 @@ export {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "./components/ui/dropdown-menu";
-export { Empty } from "./components/ui/empty";
+} from "./components/shadcn/dropdown-menu";
+export { Empty } from "./components/shadcn/empty";
 export {
   Field,
   FieldContent,
@@ -144,7 +149,7 @@ export {
   FieldSeparator,
   FieldSet,
   FieldTitle,
-} from "./components/ui/field";
+} from "./components/shadcn/field";
 export {
   Form,
   FormControl,
@@ -154,13 +159,17 @@ export {
   FormLabel,
   FormMessage,
   useFormField,
-} from "./components/ui/form";
+} from "./components/shadcn/form";
 export {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "./components/ui/hover-card";
-export { Input } from "./components/ui/input";
+} from "./components/shadcn/hover-card";
+export { Input } from "./components/shadcn/input";
+export {
+  CryptoAmountInput,
+  WalletIcon,
+} from "./components/shadcn/crypto-amount-input";
 export {
   InputGroup,
   InputGroupAddon,
@@ -168,16 +177,16 @@ export {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "./components/ui/input-group";
+} from "./components/shadcn/input-group";
 export {
   InputOTP,
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
-} from "./components/ui/input-otp";
-export { Item } from "./components/ui/item";
-export { Kbd } from "./components/ui/kbd";
-export { Label } from "./components/ui/label";
+} from "./components/shadcn/input-otp";
+export { Item } from "./components/shadcn/item";
+export { Kbd } from "./components/shadcn/kbd";
+export { Label } from "./components/shadcn/label";
 export {
   Menubar,
   MenubarCheckboxItem,
@@ -195,7 +204,7 @@ export {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-} from "./components/ui/menubar";
+} from "./components/shadcn/menubar";
 export {
   NavigationMenu,
   NavigationMenuContent,
@@ -206,7 +215,7 @@ export {
   NavigationMenuTrigger,
   NavigationMenuViewport,
   navigationMenuTriggerStyle,
-} from "./components/ui/navigation-menu";
+} from "./components/shadcn/navigation-menu";
 export {
   Pagination,
   PaginationContent,
@@ -215,20 +224,20 @@ export {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "./components/ui/pagination";
+} from "./components/shadcn/pagination";
 export {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "./components/ui/popover";
-export { Progress } from "./components/ui/progress";
-export { RadioGroup, RadioGroupItem } from "./components/ui/radio-group";
+} from "./components/shadcn/popover";
+export { Progress } from "./components/shadcn/progress";
+export { RadioGroup, RadioGroupItem } from "./components/shadcn/radio-group";
 export {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "./components/ui/resizable";
-export { ScrollArea, ScrollBar } from "./components/ui/scroll-area";
+} from "./components/shadcn/resizable";
+export { ScrollArea, ScrollBar } from "./components/shadcn/scroll-area";
 export {
   Select,
   SelectContent,
@@ -240,8 +249,8 @@ export {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "./components/ui/select";
-export { Separator } from "./components/ui/separator";
+} from "./components/shadcn/select";
+export { Separator } from "./components/shadcn/separator";
 export {
   Sheet,
   SheetClose,
@@ -251,7 +260,7 @@ export {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "./components/ui/sheet";
+} from "./components/shadcn/sheet";
 export {
   Sidebar,
   SidebarContent,
@@ -277,13 +286,13 @@ export {
   SidebarSeparator,
   SidebarTrigger,
   useSidebar,
-} from "./components/ui/sidebar";
-export { Skeleton } from "./components/ui/skeleton";
-export { Slider } from "./components/ui/slider";
-export { Toaster } from "./components/ui/sonner";
+} from "./components/shadcn/sidebar";
+export { Skeleton } from "./components/shadcn/skeleton";
+export { Slider } from "./components/shadcn/slider";
+export { Toaster } from "./components/shadcn/sonner";
 export { toast } from "sonner";
-export { Spinner } from "./components/ui/spinner";
-export { Switch } from "./components/ui/switch";
+export { Spinner } from "./components/shadcn/spinner";
+export { Switch } from "./components/shadcn/switch";
 export {
   Table,
   TableBody,
@@ -293,21 +302,32 @@ export {
   TableHead,
   TableHeader,
   TableRow,
-} from "./components/ui/table";
-export { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
-export { Textarea } from "./components/ui/textarea";
-export { Toggle, toggleVariants } from "./components/ui/toggle";
-export { ToggleGroup, ToggleGroupItem } from "./components/ui/toggle-group";
+} from "./components/shadcn/table";
+export {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "./components/shadcn/tabs";
+export { Textarea } from "./components/shadcn/textarea";
+export { Toggle, toggleVariants } from "./components/shadcn/toggle";
+export { ToggleGroup, ToggleGroupItem } from "./components/shadcn/toggle-group";
 export {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "./components/ui/tooltip";
-export { Typography, typographyVariants } from "./components/ui/typography";
+} from "./components/shadcn/tooltip";
+export { Typography, typographyVariants } from "./components/shadcn/typography";
 
 // Utilities
 export { cn } from "./lib/utils";
+export {
+  gradientBorderStyles,
+  gradientBorderClasses,
+  glassBackgroundStyles,
+  glassBackgroundClasses,
+} from "./lib/border-styles";
 
 // Hooks
 export { useIsMobile } from "./hooks/use-mobile";

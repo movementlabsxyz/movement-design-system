@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Slider } from "../components/ui/slider";
+import { Slider } from "../components/shadcn/slider";
 
 const meta = {
-  title: "UI/Slider",
+  title: "movement-design-system/Slider",
   component: Slider,
   parameters: {
     layout: "centered",

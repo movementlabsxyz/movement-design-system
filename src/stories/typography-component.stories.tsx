@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Typography } from "../components/ui/typography";
+import { Typography } from "../components/shadcn/typography";
 
 const meta: Meta<typeof Typography> = {
-  title: "Components/Typography",
+  title: "Components/Typog3raphy",
   component: Typography,
   parameters: {
     layout: "padded",
@@ -430,6 +430,3 @@ export const MonospaceVariations: Story = {
     </div>
   ),
 };
-
-
-

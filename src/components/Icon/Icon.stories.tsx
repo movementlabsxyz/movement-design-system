@@ -27,7 +27,7 @@ import {
 } from "./index";
 
 const meta: Meta = {
-  title: "Components/Icons",
+  title: "movement-design-system/Icons",
   tags: ["autodocs"],
   parameters: {
     docs: {

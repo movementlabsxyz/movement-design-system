@@ -5,11 +5,11 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "../components/ui/carousel";
-import { Card, CardContent } from "../components/ui/card";
+} from "../components/shadcn/carousel";
+import { Card, CardContent } from "../components/shadcn/card";
 
 const meta = {
-  title: "UI/Carousel",
+  title: "movement-design-system/Carousel",
   component: Carousel,
   parameters: {
     layout: "centered",

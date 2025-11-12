@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta = {
-  title: "Design System/Typography",
+  title: "movement-design-system/Typography",
   parameters: {
     layout: "padded",
   },

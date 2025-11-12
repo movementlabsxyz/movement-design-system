@@ -1,12 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Button } from "../components/ui/button";
+import { Button } from "../components/shadcn/button";
 
 const meta = {
-  title: "UI/Button",
+  title: "movement-design-system/Button",
   component: Button,
-  parameters: {
-    layout: "centered",
-  },
   tags: ["autodocs"],
   argTypes: {
     variant: {
@@ -18,6 +15,7 @@ const meta = {
         "secondary",
         "ghost",
         "link",
+        "glow",
       ],
       description: "The visual style variant of the button",
     },
@@ -81,6 +79,13 @@ export const Link: Story = {
   args: {
     children: "Link",
     variant: "link",
+  },
+};
+
+export const Glow: Story = {
+  args: {
+    children: "Glow Button",
+    variant: "glow",
   },
 };
 
@@ -235,6 +240,9 @@ export const AllVariants: Story = {
         <Button variant="link">Link</Button>
       </div>
       <div className="flex flex-wrap gap-2">
+        <Button variant="glow">Glow Button</Button>
+      </div>
+      <div className="flex flex-wrap gap-2">
         <Button variant="default" disabled>
           Default
         </Button>
@@ -252,6 +260,11 @@ export const AllVariants: Story = {
         </Button>
         <Button variant="link" disabled>
           Link
+        </Button>
+      </div>
+      <div className="flex flex-wrap gap-2">
+        <Button variant="glow" disabled>
+          Glow Button
         </Button>
       </div>
     </div>

@@ -4,11 +4,11 @@ import {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from "../components/ui/accordion";
+} from "../components/shadcn/accordion";
 import { MoveIcon, Package, Rocket, Settings } from "lucide-react";
 
 const meta = {
-  title: "UI/Accordion",
+  title: "movement-design-system/Accordion",
   component: Accordion,
   parameters: {
     layout: "centered",

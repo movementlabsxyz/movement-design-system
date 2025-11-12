@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Textarea } from "../components/ui/textarea";
-import { Label } from "../components/ui/label";
+import { Textarea } from "../components/shadcn/textarea";
+import { Label } from "../components/shadcn/label";
 
 const meta = {
-  title: "UI/Textarea",
+  title: "movement-design-system/Textarea",
   component: Textarea,
   parameters: {
     layout: "centered",

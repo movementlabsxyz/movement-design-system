@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Badge } from "../components/ui/badge";
+import { Badge } from "../components/shadcn/badge";
 
 const meta = {
-  title: "UI/Badge",
+  title: "movement-design-system/Badge",
   component: Badge,
   parameters: {
     layout: "centered",

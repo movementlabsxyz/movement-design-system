@@ -3,12 +3,12 @@ import {
   ButtonGroup,
   ButtonGroupSeparator,
   ButtonGroupText,
-} from "../components/ui/button-group";
-import { Button } from "../components/ui/button";
+} from "../components/shadcn/button-group";
+import { Button } from "../components/shadcn/button";
 import { Plus, Minus, X } from "lucide-react";
 
 const meta = {
-  title: "UI/ButtonGroup",
+  title: "movement-design-system/ButtonGroup",
   component: ButtonGroup,
   parameters: {
     layout: "centered",
