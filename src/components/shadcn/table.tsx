@@ -2,17 +2,28 @@ import * as React from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { TableContext, type SortDirection } from "./table-hooks";
+import {
+  TableContext,
+  type SortDirection,
+  type SortFunction,
+} from "./table-hooks";
 
 type TableVariant = "simple" | "borders" | "alternating";
 
 interface TableProps extends React.ComponentProps<"table"> {
   variant?: TableVariant;
+  defaultSortFn?: SortFunction;
 }
 
-function Table({ className, variant = "simple", ...props }: TableProps) {
+function Table({
+  className,
+  variant = "simple",
+  defaultSortFn,
+  ...props
+}: TableProps) {
   const [sortColumn, setSortColumn] = React.useState<string | null>(null);
   const [sortDirection, setSortDirection] = React.useState<SortDirection>(null);
+  const columnSortFnsRef = React.useRef<Record<string, SortFunction>>({});
 
   const handleSort = React.useCallback(
     (column: string) => {
@@ -35,14 +46,31 @@ function Table({ className, variant = "simple", ...props }: TableProps) {
     [sortColumn, sortDirection],
   );
 
+  const registerColumnSortFn = React.useCallback(
+    (column: string, sortFn: SortFunction) => {
+      columnSortFnsRef.current[column] = sortFn;
+    },
+    [],
+  );
+
   const contextValue = React.useMemo(
     () => ({
       variant,
       sortColumn,
       sortDirection,
       onSort: handleSort,
+      defaultSortFn,
+      columnSortFns: columnSortFnsRef.current,
+      registerColumnSortFn,
     }),
-    [variant, sortColumn, sortDirection, handleSort],
+    [
+      variant,
+      sortColumn,
+      sortDirection,
+      handleSort,
+      defaultSortFn,
+      registerColumnSortFn,
+    ],
   );
 
   return (
@@ -91,7 +119,8 @@ function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
     <tr
       data-slot="table-row"
       className={cn(
-        "h-12 transition-colors",
+        "h-12",
+        variant !== "alternating" && "transition-colors",
         variant === "borders" &&
           "[&>td]:border-b [&>td]:border-[rgba(255,255,255,0.24)] last:[&>td]:border-b-0",
         variant === "alternating" && "even:bg-[rgba(255,255,255,0.16)]",
@@ -105,16 +134,26 @@ function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
 interface TableHeadProps extends React.ComponentProps<"th"> {
   sortKey?: string;
   sortable?: boolean;
+  sortFn?: SortFunction;
 }
 
 function TableHead({
   className,
   sortKey,
   sortable = !!sortKey,
+  sortFn,
   children,
   ...props
 }: TableHeadProps) {
-  const { sortColumn, sortDirection, onSort } = React.useContext(TableContext);
+  const { sortColumn, sortDirection, onSort, registerColumnSortFn } =
+    React.useContext(TableContext);
+
+  // Register column-specific sort function
+  React.useEffect(() => {
+    if (sortKey && sortFn && registerColumnSortFn) {
+      registerColumnSortFn(sortKey, sortFn);
+    }
+  }, [sortKey, sortFn, registerColumnSortFn]);
 
   const isSorted = sortKey && sortColumn === sortKey;
   const showSortIcon = sortable && sortKey;
