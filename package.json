@@ -33,7 +33,6 @@
     "generate-exports": "barrelsby --config barrelsby.json"
   },
   "dependencies": {
-    "@aptos-labs/wallet-adapter-react": "^7.0.4",
     "@ark-ui/react": "^5.18.3",
     "@msafe/aptos-wallet-adapter": "^1.1.8",
     "@okwallet/aptos-wallet-adapter": "^0.0.7",
@@ -42,6 +41,7 @@
     "swiper": "^11.2.10"
   },
   "devDependencies": {
+    "@aptos-labs/wallet-adapter-react": "^7.0.4",
     "@capsizecss/core": "^4.1.2",
     "@chromatic-com/storybook": "^4.0.1",
     "@eslint/js": "^9.30.1",
@@ -84,6 +84,7 @@
     "vitest": "^3.2.4"
   },
   "peerDependencies": {
+    "@aptos-labs/wallet-adapter-react": "^7.0.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   }

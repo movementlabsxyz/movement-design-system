@@ -8,6 +8,7 @@ import {
   groupAndSortWallets,
   isInstallRequired,
   WalletReadyState,
+  useWallet,
 } from '@aptos-labs/wallet-adapter-react';
 import { OKXWallet } from '@okwallet/aptos-wallet-adapter';
 import { MSafeWalletAdapter } from '@msafe/aptos-wallet-adapter';
@@ -41,7 +42,6 @@ const IconX = ({ className }: { className?: string }) => (
 
 interface ConnectWalletDialogProps extends WalletSortingOptions {
   onClose: () => void;
-  wallets: AdapterWallet[] | AdapterNotDetectedWallet[];
 }
 
 function cleanWalletList(
@@ -71,16 +71,15 @@ function cleanWalletList(
 // Separate content component for reuse in both Drawer and Modal
 interface ConnectWalletContentProps extends WalletSortingOptions {
   onClose: () => void;
-  wallets: AdapterWallet[] | AdapterNotDetectedWallet[];
   showCloseButton?: boolean;
 }
 
 function ConnectWalletContent({
   onClose,
-  wallets,
   showCloseButton = true,
   ...walletSortingOptions
 }: ConnectWalletContentProps) {
+  const { wallets } = useWallet();
   const [isMoreWalletsOpen, setIsMoreWalletsOpen] = useState(false);
   const isMobile = useIsMobile();
 
@@ -522,7 +521,6 @@ function ConnectWalletContent({
 
 export function WalletModal({
   onClose,
-  wallets,
   ...walletSortingOptions
 }: ConnectWalletDialogProps) {
   const [mounted, setMounted] = useState(false);
@@ -539,7 +537,6 @@ export function WalletModal({
 
   const contentProps = {
     onClose,
-    wallets,
     ...walletSortingOptions,
   };
 
