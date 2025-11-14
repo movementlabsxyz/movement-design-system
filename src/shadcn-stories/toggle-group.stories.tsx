@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { useState } from "react";
 import {
   ToggleGroup,
   ToggleGroupItem,
@@ -14,7 +15,7 @@ const meta = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["default"],
+      options: ["default", "contained"],
       description: "The visual style variant of the toggle group",
     },
     size: {
@@ -27,6 +28,11 @@ const meta = {
       options: ["single", "multiple"],
       description: "Whether multiple items can be selected",
     },
+    required: {
+      control: "boolean",
+      description:
+        "If true, prevents deselection (only works with type='single')",
+    },
   },
 } satisfies Meta<typeof ToggleGroup>;
 
@@ -35,6 +41,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Duration: Story = {
   name: "Duration (Default)",
+  // @ts-expect-error - using custom render function
+  args: {},
   render: () => (
     <ToggleGroup type="single" defaultValue="1d">
       <ToggleGroupItem value="1d">1D</ToggleGroupItem>
@@ -47,6 +55,8 @@ export const Duration: Story = {
 
 export const Percentage: Story = {
   name: "Percentage",
+  // @ts-expect-error - using custom render function
+  args: {},
   render: () => (
     <ToggleGroup type="single" defaultValue="25" size="sm">
       <ToggleGroupItem value="25">25%</ToggleGroupItem>
@@ -59,6 +69,8 @@ export const Percentage: Story = {
 
 export const Stake: Story = {
   name: "Stake (Large)",
+  // @ts-expect-error - using custom render function
+  args: {},
   render: () => (
     <ToggleGroup type="single" defaultValue="quick" size="lg">
       <ToggleGroupItem value="quick">Quick Stake</ToggleGroupItem>
@@ -69,6 +81,8 @@ export const Stake: Story = {
 
 export const AllStates: Story = {
   name: "All States",
+  // @ts-expect-error - using custom render function
+  args: {},
   render: () => (
     <div className="flex flex-col gap-8">
       <div className="space-y-2">
@@ -178,4 +192,204 @@ export const Multiple = {
       </div>
     </div>
   ),
+};
+
+export const Contained: Story = {
+  name: "Contained Variant",
+  // @ts-expect-error - using custom render function
+  args: {},
+  render: () => (
+    <div className="flex flex-col gap-8">
+      <div className="space-y-2">
+        <p className="text-muted-foreground text-sm">Contained - Time Period</p>
+        <ToggleGroup type="single" variant="contained" defaultValue="1d">
+          <ToggleGroupItem value="1d">1D</ToggleGroupItem>
+          <ToggleGroupItem value="1w">1W</ToggleGroupItem>
+          <ToggleGroupItem value="1m">1M</ToggleGroupItem>
+          <ToggleGroupItem value="1y">1Y</ToggleGroupItem>
+        </ToggleGroup>
+      </div>
+
+      <div className="space-y-2">
+        <p className="text-muted-foreground text-sm">Contained with Label</p>
+        <div className="flex items-center gap-4">
+          <span className="font-sans text-sm leading-[1.4] text-white/64">
+            Projected Yield
+          </span>
+          <ToggleGroup type="single" variant="contained" defaultValue="1w">
+            <ToggleGroupItem value="1d">1D</ToggleGroupItem>
+            <ToggleGroupItem value="1w">1W</ToggleGroupItem>
+            <ToggleGroupItem value="1m">1M</ToggleGroupItem>
+            <ToggleGroupItem value="1y">1Y</ToggleGroupItem>
+          </ToggleGroup>
+        </div>
+      </div>
+
+      <div className="space-y-2">
+        <p className="text-muted-foreground text-sm">Contained - Small</p>
+        <ToggleGroup
+          type="single"
+          variant="contained"
+          size="sm"
+          defaultValue="25"
+        >
+          <ToggleGroupItem value="25">25%</ToggleGroupItem>
+          <ToggleGroupItem value="50">50%</ToggleGroupItem>
+          <ToggleGroupItem value="75">75%</ToggleGroupItem>
+          <ToggleGroupItem value="100">100%</ToggleGroupItem>
+        </ToggleGroup>
+      </div>
+
+      <div className="space-y-2">
+        <p className="text-muted-foreground text-sm">Contained - Large</p>
+        <ToggleGroup
+          type="single"
+          variant="contained"
+          size="lg"
+          defaultValue="quick"
+        >
+          <ToggleGroupItem value="quick">Quick Stake</ToggleGroupItem>
+          <ToggleGroupItem value="advanced">Advanced Stake</ToggleGroupItem>
+        </ToggleGroup>
+      </div>
+    </div>
+  ),
+};
+
+export const Required: Story = {
+  name: "Required (Always Selected)",
+  // @ts-expect-error - using custom render function
+  args: {},
+  render: () => (
+    <div className="flex flex-col gap-8">
+      <div className="space-y-2">
+        <p className="text-muted-foreground text-sm">
+          Without required (can deselect by clicking selected item)
+        </p>
+        <ToggleGroup type="single" defaultValue="1d">
+          <ToggleGroupItem value="1d">1D</ToggleGroupItem>
+          <ToggleGroupItem value="1w">1W</ToggleGroupItem>
+          <ToggleGroupItem value="1m">1M</ToggleGroupItem>
+          <ToggleGroupItem value="1y">1Y</ToggleGroupItem>
+        </ToggleGroup>
+      </div>
+
+      <div className="space-y-2">
+        <p className="text-muted-foreground text-sm">
+          With required (cannot deselect - try clicking the selected item)
+        </p>
+        <ToggleGroup type="single" required defaultValue="1d">
+          <ToggleGroupItem value="1d">1D</ToggleGroupItem>
+          <ToggleGroupItem value="1w">1W</ToggleGroupItem>
+          <ToggleGroupItem value="1m">1M</ToggleGroupItem>
+          <ToggleGroupItem value="1y">1Y</ToggleGroupItem>
+        </ToggleGroup>
+      </div>
+
+      <div className="space-y-2">
+        <p className="text-muted-foreground text-sm">
+          Contained + Required (full example)
+        </p>
+        <div className="flex items-center gap-4">
+          <span className="font-sans text-sm leading-[1.4] text-white/64">
+            Time Period
+          </span>
+          <ToggleGroup
+            type="single"
+            variant="contained"
+            required
+            defaultValue="1w"
+          >
+            <ToggleGroupItem value="1d">1D</ToggleGroupItem>
+            <ToggleGroupItem value="1w">1W</ToggleGroupItem>
+            <ToggleGroupItem value="1m">1M</ToggleGroupItem>
+            <ToggleGroupItem value="1y">1Y</ToggleGroupItem>
+          </ToggleGroup>
+        </div>
+      </div>
+    </div>
+  ),
+};
+
+export const Controlled: Story = {
+  name: "Controlled vs Uncontrolled",
+  // @ts-expect-error - using custom render function
+  args: {},
+  render: () => {
+    const ControlledExample = () => {
+      const [value, setValue] = useState("1w");
+      return (
+        <div className="space-y-2">
+          <p className="text-muted-foreground text-sm">
+            Controlled (value: {value})
+          </p>
+          <ToggleGroup
+            type="single"
+            variant="contained"
+            value={value}
+            onValueChange={(val: string) => {
+              console.log("Controlled value changed:", val);
+              setValue(val);
+            }}
+          >
+            <ToggleGroupItem value="1d">1D</ToggleGroupItem>
+            <ToggleGroupItem value="1w">1W</ToggleGroupItem>
+            <ToggleGroupItem value="1m">1M</ToggleGroupItem>
+            <ToggleGroupItem value="1y">1Y</ToggleGroupItem>
+          </ToggleGroup>
+        </div>
+      );
+    };
+
+    const ControlledRequiredExample = () => {
+      const [value, setValue] = useState("1w");
+      return (
+        <div className="space-y-2">
+          <p className="text-muted-foreground text-sm">
+            Controlled + Required (value: {value})
+          </p>
+          <ToggleGroup
+            type="single"
+            variant="contained"
+            required
+            value={value}
+            onValueChange={(val: string) => {
+              console.log("Controlled required value changed:", val);
+              setValue(val);
+            }}
+          >
+            <ToggleGroupItem value="1d">1D</ToggleGroupItem>
+            <ToggleGroupItem value="1w">1W</ToggleGroupItem>
+            <ToggleGroupItem value="1m">1M</ToggleGroupItem>
+            <ToggleGroupItem value="1y">1Y</ToggleGroupItem>
+          </ToggleGroup>
+        </div>
+      );
+    };
+
+    return (
+      <div className="flex flex-col gap-8">
+        <ControlledExample />
+        <ControlledRequiredExample />
+        <div className="space-y-2">
+          <p className="text-muted-foreground text-sm">
+            Uncontrolled (using defaultValue)
+          </p>
+          <ToggleGroup
+            type="single"
+            variant="contained"
+            defaultValue="1m"
+            onValueChange={(val: string) =>
+              console.log("Uncontrolled value changed:", val)
+            }
+          >
+            <ToggleGroupItem value="1d">1D</ToggleGroupItem>
+            <ToggleGroupItem value="1w">1W</ToggleGroupItem>
+            <ToggleGroupItem value="1m">1M</ToggleGroupItem>
+            <ToggleGroupItem value="1y">1Y</ToggleGroupItem>
+          </ToggleGroup>
+        </div>
+      </div>
+    );
+  },
 };
