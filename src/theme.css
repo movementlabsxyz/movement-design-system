@@ -262,9 +262,9 @@
   --opacity-10: 1;
   
   /* Font families */
-  --font-family-heading: "TWK Everett", sans-serif;
-  --font-family-body: "Neue Haas Unica Pro", sans-serif;
-  --font-family-mono: "TWK Everett Mono", monospace;
+  --font-heading: "TWK Everett", sans-serif;
+  --font-body: "Neue Haas Unica Pro", sans-serif;
+  --font-mono: "TWK Everett Mono", monospace;
   
   /* Container configuration */
   --container-center: true;
