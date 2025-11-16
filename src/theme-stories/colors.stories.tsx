@@ -148,33 +148,41 @@ const feedbackColors = [
   {
     name: "Success",
     description: "Positive feedback, successful operations",
-    light: "hsl(154 66% 66%)",
-    dark: "hsl(154 66% 66%)",
-    cssVar: "--success",
+    light: "#6ce2a1", // guild-green.400
+    dark: "#6ce2a1",
+    lightBg: "#ccffe3", // guild-green.100
+    darkBg: "#ccffe3",
+    cssVar: "--semantic-feedback-success-default",
     tailwindClass: "bg-success",
   },
   {
     name: "Info",
     description: "Informational messages",
-    light: "hsl(227 100% 50%)",
-    dark: "hsl(227 100% 65%)",
-    cssVar: "--info",
+    light: "#0337ff", // byzantine-blue.400
+    dark: "#0337ff",
+    lightBg: "#859dff", // byzantine-blue.100
+    darkBg: "#859dff",
+    cssVar: "--semantic-feedback-info-default",
     tailwindClass: "bg-info",
   },
   {
     name: "Warning",
     description: "Warning messages, cautionary states",
-    light: "hsl(47 100% 60%)",
-    dark: "hsl(47 100% 60%)",
-    cssVar: "--warning",
+    light: "#ea5330", // oracle-orange.500
+    dark: "#ea5330",
+    lightBg: "#ffcdc2", // oracle-orange.100
+    darkBg: "#ffcdc2",
+    cssVar: "--semantic-feedback-warning-default",
     tailwindClass: "bg-warning",
   },
   {
     name: "Error",
     description: "Error states and messages",
-    light: "hsl(13 100% 63%)",
-    dark: "hsl(13 100% 63%)",
-    cssVar: "--error",
+    light: "#D82C2D", // From brand-colors.json feedback.error.default
+    dark: "#D82C2D",
+    lightBg: "#ffc2c2", // From brand-colors.json feedback.error.light
+    darkBg: "#ffc2c2",
+    cssVar: "--semantic-feedback-error-default",
     tailwindClass: "bg-error",
   },
 ];
@@ -392,7 +400,7 @@ export const FeedbackColors: Story = {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <p className="text-xs font-medium text-muted-foreground uppercase">
-                    Light Mode
+                    Default Color
                   </p>
                   <div className="flex items-center gap-4">
                     <div
@@ -412,27 +420,212 @@ export const FeedbackColors: Story = {
                 </div>
                 <div className="space-y-2">
                   <p className="text-xs font-medium text-muted-foreground uppercase">
-                    Dark Mode
+                    Light Background
                   </p>
                   <div className="flex items-center gap-4">
                     <div
-                      style={{ backgroundColor: color.dark }}
-                      className="h-16 w-16 rounded-lg shrink-0"
+                      style={{ backgroundColor: color.lightBg }}
+                      className="h-16 w-16 rounded-lg shrink-0 border"
                     />
                     <div className="space-y-1">
-                      <p className="text-sm font-mono">{color.cssVar}</p>
+                      <p className="text-sm font-mono">{color.cssVar}-light</p>
                       <p className="text-xs text-muted-foreground font-mono">
-                        {color.dark}
+                        {color.lightBg}
                       </p>
-                      <code className="text-xs bg-muted px-2 py-1 rounded">
-                        {color.tailwindClass}
-                      </code>
+                      <p className="text-xs text-muted-foreground">
+                        For alert/banner backgrounds
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           ))}
+        </div>
+      </div>
+    </div>
+  ),
+};
+
+/**
+ * Demonstrates the layered token system architecture showing how primitive tokens
+ * flow through brand colors to semantic tokens and finally to component tokens.
+ */
+export const TokenReferenceChain: Story = {
+  render: () => (
+    <div className="space-y-12 p-6">
+      <div className="space-y-6">
+        <div>
+          <h2 className="text-2xl font-bold uppercase tracking-wide">
+            Token Reference Chain
+          </h2>
+          <p className="text-sm text-muted-foreground mt-2">
+            Understanding how tokens flow through the layered architecture
+          </p>
+        </div>
+
+        {/* Example 1: Primary Button Chain */}
+        <div className="border rounded-lg p-6 space-y-4">
+          <h3 className="text-lg font-semibold">
+            Example: Primary Button Color
+          </h3>
+          <div className="space-y-3">
+            <div className="flex items-center gap-4">
+              <div className="w-32 text-sm font-medium text-muted-foreground">
+                Layer 1: Primitive
+              </div>
+              <div className="flex-1 p-3 bg-muted rounded font-mono text-sm">
+                #81ffba (guild-green.300)
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="w-32"></div>
+              <div className="text-2xl text-muted-foreground">↓</div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="w-32 text-sm font-medium text-muted-foreground">
+                Layer 2: Brand
+              </div>
+              <div className="flex-1 p-3 bg-muted rounded font-mono text-sm">
+                --color-guild-green-300: #81ffba
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="w-32"></div>
+              <div className="text-2xl text-muted-foreground">↓</div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="w-32 text-sm font-medium text-muted-foreground">
+                Layer 3: Semantic
+              </div>
+              <div className="flex-1 p-3 bg-muted rounded font-mono text-sm">
+                semantic.brand.primary.default → guild-green.300
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="w-32"></div>
+              <div className="text-2xl text-muted-foreground">↓</div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="w-32 text-sm font-medium text-muted-foreground">
+                Layer 5: Legacy
+              </div>
+              <div className="flex-1 p-3 bg-muted rounded font-mono text-sm">
+                --primary → semantic.brand.primary.default
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="w-32"></div>
+              <div className="text-2xl text-muted-foreground">↓</div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="w-32 text-sm font-medium text-muted-foreground">
+                Result
+              </div>
+              <div className="flex-1 flex items-center gap-4">
+                <div
+                  className="h-16 w-24 rounded-lg"
+                  style={{ backgroundColor: "#81ffba" }}
+                />
+                <button className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium">
+                  Primary Button
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Example 2: Feedback Chain */}
+        <div className="border rounded-lg p-6 space-y-4">
+          <h3 className="text-lg font-semibold">Example: Success Feedback</h3>
+          <div className="space-y-3">
+            <div className="flex items-center gap-4">
+              <div className="w-32 text-sm font-medium text-muted-foreground">
+                Layer 1: Primitive
+              </div>
+              <div className="flex-1 p-3 bg-muted rounded font-mono text-sm">
+                #6ce2a1 (guild-green.400)
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="w-32"></div>
+              <div className="text-2xl text-muted-foreground">↓</div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="w-32 text-sm font-medium text-muted-foreground">
+                Layer 2: Brand
+              </div>
+              <div className="flex-1 p-3 bg-muted rounded font-mono text-sm">
+                feedback.success.default → guild-green.400
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="w-32"></div>
+              <div className="text-2xl text-muted-foreground">↓</div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="w-32 text-sm font-medium text-muted-foreground">
+                Layer 3: Semantic
+              </div>
+              <div className="flex-1 p-3 bg-muted rounded font-mono text-sm">
+                --semantic-feedback-success-default
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="w-32"></div>
+              <div className="text-2xl text-muted-foreground">↓</div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="w-32 text-sm font-medium text-muted-foreground">
+                Layer 4: Component
+              </div>
+              <div className="flex-1 p-3 bg-muted rounded font-mono text-sm">
+                semantic.badge.state.success → semantic.feedback.success.default
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="w-32"></div>
+              <div className="text-2xl text-muted-foreground">↓</div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="w-32 text-sm font-medium text-muted-foreground">
+                Result
+              </div>
+              <div className="flex-1 flex items-center gap-4">
+                <div
+                  className="h-16 w-24 rounded-lg"
+                  style={{ backgroundColor: "#6ce2a1" }}
+                />
+                <div className="p-4 bg-success/10 border border-success rounded-lg">
+                  <p className="text-sm font-medium">Success message!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-muted p-6 rounded-lg">
+          <h3 className="font-semibold mb-2">Benefits of Layered Tokens</h3>
+          <ul className="space-y-2 text-sm text-muted-foreground">
+            <li>
+              • <strong>Maintainability:</strong> Change a primitive value and
+              it propagates through all layers
+            </li>
+            <li>
+              • <strong>Semantic Meaning:</strong> Use{" "}
+              <code className="bg-background px-1 rounded">--primary</code>{" "}
+              instead of{" "}
+              <code className="bg-background px-1 rounded">#81ffba</code>
+            </li>
+            <li>
+              • <strong>Theme Switching:</strong> Dark/light modes swap semantic
+              layer values
+            </li>
+            <li>
+              • <strong>Component Consistency:</strong> All buttons use the same
+              primary color automatically
+            </li>
+          </ul>
         </div>
       </div>
     </div>

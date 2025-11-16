@@ -79,7 +79,7 @@ function Table({
         data-slot="table-container"
         className={cn(
           "relative w-full overflow-x-auto",
-          "rounded-base border border-[rgba(255,255,255,0.24)] p-4",
+          "rounded-base border border-border-default p-4",
           className,
         )}
       >
@@ -104,7 +104,7 @@ function TableFooter({ className, ...props }: React.ComponentProps<"tfoot">) {
     <tfoot
       data-slot="table-footer"
       className={cn(
-        "bg-muted/50 border-t font-medium [&>tr]:last:border-b-0",
+        "bg-semantic-alt-1/50 border-t border-border-default font-medium [&>tr]:last:border-b-0",
         className,
       )}
       {...props}

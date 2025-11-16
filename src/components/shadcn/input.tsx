@@ -21,8 +21,8 @@ const inputVariants = cva(
   {
     variants: {
       variant: {
-        default: "border-white/24 focus-within:border-white/24",
-        error: "border-destructive focus-within:border-destructive",
+        default: "border-border-default focus-within:border-border-strong",
+        error: "border-feedback-error focus-within:border-feedback-error",
       },
       size: {
         sm: "h-10 rounded-lg px-4 py-2 text-lg",
@@ -128,7 +128,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {leftIcon && (
           <div
             className={cn(
-              "flex shrink-0 items-center justify-center text-white/60",
+              "flex shrink-0 items-center justify-center text-fg-subtle",
               iconSizeClass,
             )}
           >
@@ -150,7 +150,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             type="button"
             onClick={handleClear}
             className={cn(
-              "flex shrink-0 items-center justify-center text-white/60 transition-colors hover:text-white",
+              "flex shrink-0 items-center justify-center text-fg-subtle transition-colors hover:text-fg-base",
               iconSizeClass,
             )}
             tabIndex={-1}
@@ -161,7 +161,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {rightIcon && !showClearButton && (
           <div
             className={cn(
-              "flex shrink-0 items-center justify-center text-white/60",
+              "flex shrink-0 items-center justify-center text-fg-subtle",
               iconSizeClass,
             )}
           >

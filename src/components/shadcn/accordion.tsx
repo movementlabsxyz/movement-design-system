@@ -26,8 +26,8 @@ function AccordionItem({
     <AccordionPrimitive.Item
       data-slot="accordion-item"
       className={cn(
-        showTopBorder && "border-t",
-        showBottomBorder && "border-b",
+        showTopBorder && "border-t border-border-default",
+        showBottomBorder && "border-b border-border-default",
         "last:border-b-0",
         className
       )}
@@ -68,8 +68,8 @@ function AccordionTrigger({
           <span className="flex-1">{children}</span>
         </div>
         <div className="size-8 shrink-0 flex items-center justify-center relative">
-          <ChevronDown className="text-muted-foreground pointer-events-none size-5 transition-transform duration-200 group-data-[state=open]:scale-0 group-data-[state=open]:opacity-0" />
-          <ChevronUp className="text-muted-foreground pointer-events-none size-5 transition-transform duration-200 group-data-[state=closed]:scale-0 group-data-[state=closed]:opacity-0 absolute inset-0 m-auto" />
+          <ChevronDown className="text-fg-subtle group-data-[state=open]:text-fg-base pointer-events-none size-5 transition-all duration-200 group-data-[state=open]:scale-0 group-data-[state=open]:opacity-0" />
+          <ChevronUp className="text-fg-base pointer-events-none size-5 transition-all duration-200 group-data-[state=closed]:scale-0 group-data-[state=closed]:opacity-0 absolute inset-0 m-auto" />
         </div>
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>

@@ -3,6 +3,27 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /*
+   * ============================================================================
+   * DESIGN TOKEN SYSTEM - LAYERED ARCHITECTURE
+   * ============================================================================
+   * 
+   * This theme implements a layered token system based on Movement Design Tokens:
+   * 
+   * Layer 1: Primitives (spacing, sizing, radii, borders, shadows, opacity)
+   * Layer 2: Brand Colors (moveus-marigold, guild-green, etc.)
+   * Layer 3: Semantic Base (bg, fg, border, feedback)
+   * Layer 4: Component Tokens (accordion, badge, input, etc.)
+   * Layer 5: Legacy Mappings (--primary, --secondary, etc.)
+   * 
+   * Source: movement-design-tokens-FULL/design-tokens/
+   * ============================================================================
+   */
+
+  /* ========================================================================
+   * LAYER 1: PRIMITIVE TOKENS
+   * ======================================================================== */
+  
   /* Spacing scale - based on 2px base scale */
   --spacing-0: 0px;
   --spacing-1: 4px;
@@ -163,6 +184,10 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   
+  /* ========================================================================
+   * LAYER 2: BRAND COLOR TOKENS
+   * ======================================================================== */
+  
   /* Brand colors - Moveus Marigold */
   --color-moveus-marigold-50: #fffbeb;
   --color-moveus-marigold-100: #fff2bd;
@@ -292,10 +317,138 @@
       height: 0;
     }
   }
+  
+  /* ========================================================================
+   * LAYER 3: SEMANTIC BASE TOKENS
+   * ======================================================================== */
+  
+  /* These tokens provide semantic meaning to primitives and brand colors.
+   * They are theme-aware and change between light/dark modes.
+   * Source: Inferred from component token references in design-tokens/semantic/
+   */
+  
+  /* ========================================================================
+   * LAYER 4: COMPONENT TOKENS
+   * ======================================================================== */
+  
+  /* Component-specific tokens that reference semantic base tokens.
+   * These create a reference chain: Component → Semantic → Brand → Primitive
+   * Source: movement-design-tokens-FULL/design-tokens/semantic/
+   * 
+   * Note: Component tokens are defined inline within component declarations below
+   * using the semantic base tokens (--semantic-*) as their foundation.
+   */
+  
+  /* ========================================================================
+   * TAILWIND UTILITY CLASS MAPPINGS
+   * ========================================================================
+   * 
+   * Map semantic tokens to Tailwind utility classes for better DX.
+   * Instead of: text-[var(--semantic-fg-muted)]
+   * Use: text-fg-muted
+   */
+  
+  /* Semantic background colors */
+  --color-semantic-base: var(--semantic-bg-base);
+  --color-semantic-alt-1: var(--semantic-bg-alt-1);
+  --color-semantic-alt-2: var(--semantic-bg-alt-2);
+  
+  /* Semantic foreground colors */
+  --color-fg-base: var(--semantic-fg-base);
+  --color-fg-muted: var(--semantic-fg-muted);
+  --color-fg-subtle: var(--semantic-fg-subtle);
+  
+  /* Semantic border colors */
+  --color-border-default: var(--semantic-border-default);
+  --color-border-strong: var(--semantic-border-strong);
+  
+  /* Semantic feedback colors */
+  --color-feedback-success: var(--semantic-feedback-success-default);
+  --color-feedback-success-light: var(--semantic-feedback-success-light);
+  --color-feedback-error: var(--semantic-feedback-error-default);
+  --color-feedback-error-light: var(--semantic-feedback-error-light);
+  --color-feedback-warning: var(--semantic-feedback-warning-default);
+  --color-feedback-warning-light: var(--semantic-feedback-warning-light);
+  --color-feedback-info: var(--semantic-feedback-info-default);
+  --color-feedback-info-light: var(--semantic-feedback-info-light);
+  
+  /* Semantic disabled state */
+  --color-disabled: var(--semantic-disabled-base);
 }
 
 :root {
   --radius: 0.625rem;
+  
+  /* ========================================================================
+   * LAYER 3: SEMANTIC BASE TOKENS (Light Mode)
+   * ======================================================================== */
+  
+  /* Background semantic tokens */
+  --semantic-bg-base: #ffffff;
+  --semantic-bg-alt-1: #f5f5f5; /* 5% gray */
+  --semantic-bg-alt-2: #e8e8e8; /* 10% gray */
+  
+  /* Foreground semantic tokens */
+  --semantic-fg-base: #000000;
+  --semantic-fg-muted: #666666; /* 60% opacity black */
+  --semantic-fg-subtle: #999999; /* 40% opacity black */
+  
+  /* Border semantic tokens */
+  --semantic-border-default: var(--color-neutrals-black-alpha-200);
+  --semantic-border-strong: var(--color-neutrals-black-alpha-400);
+  
+  /* Feedback semantic tokens */
+  --semantic-feedback-success-default: var(--color-guild-green-400);
+  --semantic-feedback-success-light: var(--color-guild-green-100);
+  --semantic-feedback-error-default: #D82C2D;
+  --semantic-feedback-error-light: #ffc2c2;
+  --semantic-feedback-warning-default: var(--color-oracle-orange-500);
+  --semantic-feedback-warning-light: var(--color-oracle-orange-100);
+  --semantic-feedback-info-default: var(--color-byzantine-blue-400);
+  --semantic-feedback-info-light: var(--color-byzantine-blue-100);
+  
+  /* Disabled state */
+  --semantic-disabled-base: var(--color-neutrals-black-alpha-300);
+  
+  /* ========================================================================
+   * LAYER 4 → LAYER 5: TOKEN MAPPING DOCUMENTATION
+   * ========================================================================
+   * 
+   * This documents how existing (legacy) CSS variables map to the new
+   * layered token system. The legacy variables are preserved for backward
+   * compatibility with existing components.
+   * 
+   * LEGACY VARIABLE          → NEW TOKEN PATH
+   * -------------------------------------------------------------------------
+   * --primary                → semantic.brand.primary.default (guild-green.300)
+   * --primary-foreground     → semantic.brand.primary.on-primary
+   * --secondary              → semantic.brand.secondary.default (byzantine-blue.400)
+   * --secondary-foreground   → semantic.brand.secondary.on-secondary
+   * --accent                 → semantic.brand.accent.default (protocol-pink.400)
+   * --accent-foreground      → semantic.brand.accent.on-accent
+   * --destructive            → semantic.brand.error.default
+   * --destructive-foreground → semantic.brand.error.on-error
+   * --success                → semantic.brand.success.default (guild-green.400)
+   * --success-foreground     → semantic.brand.success.on-success
+   * --warning                → semantic.brand.warning.default (oracle-orange.500)
+   * --warning-foreground     → semantic.brand.warning.on-warning
+   * --error                  → semantic.brand.error.default (#D82C2D)
+   * --error-foreground       → semantic.brand.error.on-error
+   * --info                   → semantic.feedback.info.default (byzantine-blue.400)
+   * --info-foreground        → semantic.feedback.info.on-info
+   * --muted                  → semantic.bg.alt-1
+   * --muted-foreground       → semantic.fg.muted
+   * --border                 → semantic.border.default
+   * --input                  → semantic.bg.alt-1
+   * --ring                   → semantic.brand.primary.default
+   * --background             → semantic.bg.base
+   * --foreground             → semantic.fg.base
+   * -------------------------------------------------------------------------
+   */
+  
+  /* ========================================================================
+   * LAYER 5: LEGACY SEMANTIC MAPPINGS (Light Mode)
+   * ======================================================================== */
   
   /* Backgrounds & Foregrounds */
   --background: hsl(0 0% 100%); /* white */
@@ -351,6 +504,41 @@
 }
 
 .dark {
+  /* ========================================================================
+   * LAYER 3: SEMANTIC BASE TOKENS (Dark Mode)
+   * ======================================================================== */
+  
+  /* Background semantic tokens */
+  --semantic-bg-base: #000000;
+  --semantic-bg-alt-1: #0a0a0a; /* ~4% white */
+  --semantic-bg-alt-2: #141414; /* ~8% white */
+  
+  /* Foreground semantic tokens */
+  --semantic-fg-base: #ffffff;
+  --semantic-fg-muted: #b3b3b3; /* ~70% opacity white */
+  --semantic-fg-subtle: #808080; /* ~50% opacity white */
+  
+  /* Border semantic tokens */
+  --semantic-border-default: var(--color-neutrals-white-alpha-200);
+  --semantic-border-strong: var(--color-neutrals-white-alpha-400);
+  
+  /* Feedback semantic tokens (same as light mode) */
+  --semantic-feedback-success-default: var(--color-guild-green-400);
+  --semantic-feedback-success-light: var(--color-guild-green-100);
+  --semantic-feedback-error-default: #D82C2D;
+  --semantic-feedback-error-light: #ffc2c2;
+  --semantic-feedback-warning-default: var(--color-oracle-orange-500);
+  --semantic-feedback-warning-light: var(--color-oracle-orange-100);
+  --semantic-feedback-info-default: var(--color-byzantine-blue-400);
+  --semantic-feedback-info-light: var(--color-byzantine-blue-100);
+  
+  /* Disabled state */
+  --semantic-disabled-base: var(--color-neutrals-white-alpha-300);
+  
+  /* ========================================================================
+   * LAYER 5: LEGACY SEMANTIC MAPPINGS (Dark Mode)
+   * ======================================================================== */
+  
   /* Dark mode backgrounds & foregrounds */
   --background: hsl(0 0% 0%); /* black */
   --foreground: hsl(0 0% 100%); /* white */
@@ -403,6 +591,52 @@
   --sidebar-border: hsl(0 0% 100% / 10%);
   --sidebar-ring: hsl(154 66% 66%);
 }
+
+/* ============================================================================
+ * COMPONENT TOKEN COVERAGE SUMMARY
+ * ============================================================================
+ * 
+ * Components WITH matching token files (16 components UPDATED):
+ * -------------------------------------------------------------------------
+ * ✓ accordion.tsx        → semantic-accordion.json
+ * ✓ avatar.tsx           → semantic-avatar.json  
+ * ✓ badge.tsx            → semantic-badge.json + semantic-tag.json
+ * ✓ card.tsx             → semantic-surface.json
+ * ✓ checkbox.tsx         → semantic-checkbox.json
+ * ✓ dialog.tsx           → semantic-modal.json
+ * ✓ input.tsx            → semantic-input.json
+ * ✓ navigation-menu.tsx  → semantic-navigation.json
+ * ✓ pagination.tsx       → semantic-pagination.json
+ * ✓ radio-group.tsx      → semantic-radio.json
+ * ✓ select.tsx           → semantic-select.json
+ * ✓ slider.tsx           → semantic-slider.json
+ * ✓ switch.tsx           → semantic-switch.json
+ * ✓ table.tsx            → semantic-table.json
+ * ✓ tooltip.tsx          → semantic-tooltip.json
+ * ✓ sonner.tsx           → semantic-toast.json (Toaster component)
+ * 
+ * Components WITHOUT matching token files (37 components):
+ * -------------------------------------------------------------------------
+ * These components use legacy semantic tokens (--primary, --border, etc.)
+ * or have custom styling that doesn't map to the design token system:
+ * 
+ * alert, alert-dialog, aspect-ratio, breadcrumb, button, button-group,
+ * calendar, carousel, chart, collapsible, command, context-menu,
+ * crypto-amount-input, drawer, dropdown-menu, empty, field, form,
+ * hover-card, input-group, input-otp, item, kbd, label, menubar, popover,
+ * progress, resizable, scroll-area, separator, sheet, sidebar, skeleton,
+ * spinner, tabs, textarea, toggle, toggle-group, typography
+ * 
+ * Token files WITHOUT matching components (3 files):
+ * -------------------------------------------------------------------------
+ * These token files don't have corresponding components in the system:
+ * 
+ * - semantic-stepper.json        (no stepper component exists)
+ * - semantic-list.json           (could apply to item.tsx, unclear mapping)
+ * - semantic-segmented-control.json (could apply to toggle-group.tsx, unclear)
+ * 
+ * ============================================================================
+ */
 
 @layer base {
   * {
