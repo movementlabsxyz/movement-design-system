@@ -16,7 +16,7 @@ import {
 } from "recharts";
 
 const meta = {
-  title: "UI/Chart",
+  title: "shadcn/Chart",
   component: ChartContainer,
   parameters: {
     layout: "centered",

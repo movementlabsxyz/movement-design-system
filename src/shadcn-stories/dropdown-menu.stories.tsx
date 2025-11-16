@@ -34,7 +34,7 @@ import {
 } from "lucide-react";
 
 const meta = {
-  title: "UI/DropdownMenu",
+  title: "shadcn/DropdownMenu",
   component: DropdownMenu,
   parameters: {
     layout: "centered",

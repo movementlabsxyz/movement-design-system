@@ -8,7 +8,7 @@ import { Button } from "../components/shadcn/button";
 import { ChevronsUpDown } from "lucide-react";
 
 const meta = {
-  title: "UI/Collapsible",
+  title: "shadcn/Collapsible",
   component: Collapsible,
   parameters: {
     layout: "centered",

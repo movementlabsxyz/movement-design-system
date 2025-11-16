@@ -10,7 +10,7 @@ import {
 import { Button } from "../components/shadcn/button";
 
 const meta = {
-  title: "UI/Sheet",
+  title: "shadcn/Sheet",
   component: Sheet,
   parameters: {
     layout: "centered",

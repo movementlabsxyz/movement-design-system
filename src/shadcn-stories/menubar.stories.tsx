@@ -10,7 +10,7 @@ import {
 } from "../components/shadcn/menubar";
 
 const meta = {
-  title: "UI/Menubar",
+  title: "shadcn/Menubar",
   component: Menubar,
   parameters: {
     layout: "centered",

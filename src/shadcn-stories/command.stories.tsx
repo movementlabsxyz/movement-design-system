@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 
 const meta = {
-  title: "UI/Command",
+  title: "shadcn/Command",
   component: Command,
   parameters: {
     layout: "centered",

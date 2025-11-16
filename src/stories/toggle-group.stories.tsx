@@ -6,7 +6,7 @@ import {
 } from "../components/shadcn/toggle-group";
 
 const meta = {
-  title: "UI/ToggleGroup",
+  title: "movement-design-system/ToggleGroup",
   component: ToggleGroup,
   parameters: {
     layout: "centered",

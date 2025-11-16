@@ -14,7 +14,7 @@ import {
 } from "../components/shadcn/table-hooks";
 
 const meta = {
-  title: "UI/Table",
+  title: "movement-design-system/Table",
   component: Table,
   parameters: {
     layout: "padded",

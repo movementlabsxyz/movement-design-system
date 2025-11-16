@@ -3,7 +3,7 @@ import { ScrollArea } from "../components/shadcn/scroll-area";
 import { Separator } from "../components/shadcn/separator";
 
 const meta = {
-  title: "UI/ScrollArea",
+  title: "shadcn/ScrollArea",
   component: ScrollArea,
   parameters: {
     layout: "centered",

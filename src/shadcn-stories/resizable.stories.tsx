@@ -6,7 +6,7 @@ import {
 } from "../components/shadcn/resizable";
 
 const meta = {
-  title: "UI/Resizable",
+  title: "shadcn/Resizable",
   component: ResizablePanelGroup,
   parameters: {
     layout: "centered",

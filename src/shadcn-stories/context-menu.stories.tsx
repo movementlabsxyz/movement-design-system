@@ -13,7 +13,7 @@ import {
 } from "../components/shadcn/context-menu";
 
 const meta = {
-  title: "UI/ContextMenu",
+  title: "shadcn/ContextMenu",
   component: ContextMenu,
   parameters: {
     layout: "centered",

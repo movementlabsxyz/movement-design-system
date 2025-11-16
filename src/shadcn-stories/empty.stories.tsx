@@ -11,7 +11,7 @@ import { Button } from "../components/shadcn/button";
 import { FileQuestion, Inbox } from "lucide-react";
 
 const meta = {
-  title: "UI/Empty",
+  title: "shadcn/Empty",
   component: Empty,
   parameters: {
     layout: "centered",

@@ -4,7 +4,7 @@ import { Input } from "../components/shadcn/input";
 import { Checkbox } from "../components/shadcn/checkbox";
 
 const meta = {
-  title: "UI/Label",
+  title: "shadcn/Label",
   component: Label,
   parameters: {
     layout: "centered",

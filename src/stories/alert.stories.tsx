@@ -7,7 +7,7 @@ import {
 import { Terminal, AlertCircle } from "lucide-react";
 
 const meta = {
-  title: "movement-design-system/Alert",
+  title: "in-progress/Alert",
   component: Alert,
   parameters: {
     layout: "centered",

@@ -3,7 +3,7 @@ import { Calendar } from "../components/shadcn/calendar";
 import { useState } from "react";
 
 const meta = {
-  title: "UI/Calendar",
+  title: "shadcn/Calendar",
   component: Calendar,
   parameters: {
     layout: "centered",

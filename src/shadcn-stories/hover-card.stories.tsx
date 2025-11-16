@@ -13,7 +13,7 @@ import {
 import { CalendarDays } from "lucide-react";
 
 const meta = {
-  title: "UI/HoverCard",
+  title: "shadcn/HoverCard",
   component: HoverCard,
   parameters: {
     layout: "centered",

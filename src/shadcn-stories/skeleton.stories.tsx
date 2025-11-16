@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Skeleton } from "../components/shadcn/skeleton";
 
 const meta = {
-  title: "UI/Skeleton",
+  title: "shadcn/Skeleton",
   component: Skeleton,
   parameters: {
     layout: "centered",
