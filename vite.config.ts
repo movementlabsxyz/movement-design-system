@@ -88,7 +88,15 @@ export default defineConfig({
       fileName: "index",
     },
     rollupOptions: {
-      external: ["react", "react/jsx-runtime"],
+      external: [
+        "react",
+        "react/jsx-runtime",
+        "react-dom",
+        "@aptos-labs/wallet-adapter-react",
+        /^@aptos-labs\//,
+        /^@radix-ui\//,
+        "tailwindcss"
+      ],
     },
   },
   // build: {
