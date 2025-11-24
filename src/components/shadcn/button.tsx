@@ -22,7 +22,7 @@ const buttonVariants = cva(
         warning:
           "bg-yellow-500 text-black hover:bg-yellow-600 active:bg-yellow-700",
         outline:
-          "border-2 border-primary bg-transparent text-primary hover:bg-primary/10 active:bg-primary/20",
+          "border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground",
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",

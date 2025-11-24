@@ -27,7 +27,20 @@ function RadioGroupItem({
     <RadioGroupPrimitive.Item
       data-slot="radio-group-item"
       className={cn(
-        "bg-semantic-base border-border-default text-primary focus-visible:border-border-strong focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-semantic-alt-1 aspect-square size-4 shrink-0 rounded-full border shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-semantic-alt-2 disabled:border-disabled",
+        // Base styles
+        "aspect-square size-4 shrink-0 rounded-full border transition-all outline-none",
+        // Default state - unselected
+        "bg-white/[0.24] border-white/[0.24]",
+        // Hover state
+        "hover:border-white/[0.64]",
+        // Selected state
+        "data-[state=checked]:bg-[#81ffba] data-[state=checked]:border-[#81ffba]",
+        // Focus state
+        "focus-visible:border-white/[0.64] focus-visible:ring-[3px] focus-visible:ring-ring/50",
+        // Invalid state
+        "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+        // Disabled state
+        "disabled:cursor-not-allowed disabled:opacity-50",
         className
       )}
       {...props}
@@ -36,7 +49,7 @@ function RadioGroupItem({
         data-slot="radio-group-indicator"
         className="relative flex items-center justify-center"
       >
-        <CircleIcon className="fill-primary absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2" />
+        <CircleIcon className="fill-black absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2" />
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>
   )

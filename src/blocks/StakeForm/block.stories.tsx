@@ -67,6 +67,7 @@ function StakeFormExample() {
           balance={availableBalance}
           token="MOVE"
           onMaxClick={handleMaxClick}
+          className="!w-full"
         />
 
         {/* Validator Section */}

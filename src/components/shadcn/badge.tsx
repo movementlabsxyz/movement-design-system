@@ -1,11 +1,11 @@
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 const badgeVariants = cva(
-  "inline-flex items-center justify-center rounded-full border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-border-strong focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden",
+  "inline-flex items-center justify-center border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-border-strong focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden",
   {
     variants: {
       variant: {
@@ -23,32 +23,37 @@ const badgeVariants = cva(
           "border-transparent bg-error text-error-foreground [a&]:hover:opacity-90",
         warning:
           "border-transparent bg-warning text-warning-foreground [a&]:hover:opacity-90",
-        info:
-          "border-transparent bg-info text-info-foreground [a&]:hover:opacity-90",
+        info: "border-transparent bg-info text-info-foreground [a&]:hover:opacity-90",
+      },
+      radius: {
+        full: "rounded-full",
+        sm: "rounded-sm",
       },
     },
     defaultVariants: {
       variant: "default",
+      radius: "full",
     },
-  }
-)
+  },
+);
 
 function Badge({
   className,
   variant,
+  radius,
   asChild = false,
   ...props
 }: React.ComponentProps<"span"> &
   VariantProps<typeof badgeVariants> & { asChild?: boolean }) {
-  const Comp = asChild ? Slot : "span"
+  const Comp = asChild ? Slot : "span";
 
   return (
     <Comp
       data-slot="badge"
-      className={cn(badgeVariants({ variant }), className)}
+      className={cn(badgeVariants({ variant, radius }), className)}
       {...props}
     />
-  )
+  );
 }
 
-export { Badge, badgeVariants }
+export { Badge, badgeVariants };

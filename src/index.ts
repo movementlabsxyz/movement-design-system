@@ -75,6 +75,7 @@ export {
   Dialog,
   DialogClose,
   DialogContent,
+  dialogContentVariants,
   DialogDescription,
   DialogFooter,
   DialogHeader,
@@ -152,6 +153,14 @@ export {
 export { Item } from "./components/shadcn/item";
 export { Label } from "./components/shadcn/label";
 export {
+  List,
+  ListItem,
+  listVariants,
+  listItemVariants,
+  bulletVariants,
+} from "./components/shadcn/list";
+export type { ListProps, ListItemProps } from "./components/shadcn/list";
+export {
   Menubar,
   MenubarCheckboxItem,
   MenubarContent,
@@ -188,6 +197,11 @@ export {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
+  BulletPagination,
+} from "./components/shadcn/pagination";
+export type {
+  PaginationVariant,
+  BulletPaginationProps,
 } from "./components/shadcn/pagination";
 export {
   Popover,
@@ -303,6 +317,11 @@ export {
   glassBackgroundStyles,
   glassBackgroundClasses,
 } from "./lib/border-styles";
+export {
+  gradientBackgroundStyles,
+  gradientBackgroundClasses,
+  getGradientClass,
+} from "./lib/gradient-styles";
 
 // Hooks
 export { useIsMobile } from "./hooks/use-mobile";
