@@ -54,7 +54,6 @@ export {
 } from "./components/shadcn/breadcrumb";
 export { Button, buttonVariants } from "./components/shadcn/button";
 export { ButtonGroup } from "./components/shadcn/button-group";
-export { Calendar } from "./components/shadcn/calendar";
 export {
   Card,
   CardAction,
@@ -71,49 +70,7 @@ export {
   CarouselNext,
   CarouselPrevious,
 } from "./components/shadcn/carousel";
-export {
-  ChartContainer,
-  ChartLegend,
-  ChartLegendContent,
-  ChartStyle,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "./components/shadcn/chart";
-export type { ChartConfig } from "./components/shadcn/chart";
 export { Checkbox } from "./components/shadcn/checkbox";
-export {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "./components/shadcn/collapsible";
-export {
-  Command,
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-  CommandShortcut,
-} from "./components/shadcn/command";
-export {
-  ContextMenu,
-  ContextMenuCheckboxItem,
-  ContextMenuContent,
-  ContextMenuGroup,
-  ContextMenuItem,
-  ContextMenuLabel,
-  ContextMenuPortal,
-  ContextMenuRadioGroup,
-  ContextMenuRadioItem,
-  ContextMenuSeparator,
-  ContextMenuShortcut,
-  ContextMenuSub,
-  ContextMenuSubContent,
-  ContextMenuSubTrigger,
-  ContextMenuTrigger,
-} from "./components/shadcn/context-menu";
 export {
   Dialog,
   DialogClose,
@@ -192,14 +149,7 @@ export {
   InputGroupText,
   InputGroupTextarea,
 } from "./components/shadcn/input-group";
-export {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSeparator,
-  InputOTPSlot,
-} from "./components/shadcn/input-otp";
 export { Item } from "./components/shadcn/item";
-export { Kbd } from "./components/shadcn/kbd";
 export { Label } from "./components/shadcn/label";
 export {
   Menubar,
@@ -246,11 +196,6 @@ export {
 } from "./components/shadcn/popover";
 export { Progress } from "./components/shadcn/progress";
 export { RadioGroup, RadioGroupItem } from "./components/shadcn/radio-group";
-export {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "./components/shadcn/resizable";
 export { ScrollArea, ScrollBar } from "./components/shadcn/scroll-area";
 export {
   Select,
