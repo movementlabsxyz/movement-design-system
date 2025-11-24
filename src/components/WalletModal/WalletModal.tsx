@@ -91,6 +91,15 @@ function ConnectWalletContent({
       const additionalInstallableWallets: (AdapterWallet | AdapterNotDetectedWallet)[] = [];
 
       // Check if OKX wallet is already in the lists
+      const hasNightly = [
+        ...(grouped?.availableWallets ?? []),
+        ...(grouped?.installableWallets ?? []),
+      ].some((w) => w.name.toLowerCase().includes('nightly'));
+      if (!hasNightly) {
+        additionalInstallableWallets.push(nightlyWallet);
+      }
+
+      // Check if OKX wallet is already in the lists
       const hasOKX = [
         ...(grouped?.availableWallets ?? []),
         ...(grouped?.installableWallets ?? []),
@@ -463,13 +472,13 @@ function ConnectWalletContent({
             {isMoreWalletsOpen && (
               <div
                 className={css({
-                  overflow: 'hidden',
+                  overflow: 'visible',
                   animation: 'fadeIn 0.2s ease-out',
                 })}
               >
                 <div
                   className={css({
-                    paddingTop: '0.5rem',
+                    paddingTop: '1.5rem',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'flex-start',
