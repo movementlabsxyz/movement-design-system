@@ -84,10 +84,16 @@ const drawerContentStyles = css({
   bg: "neutrals.blackAlpha.900",
   boxShadow: "2xl",
   display: "flex",
-  flexDirection: "column",
   overflow: "hidden",
   transition: "transform 0.3s ease-out",
   zIndex: "modal",
+});
+
+const drawerInnerContentStyles = css({
+  display: "flex",
+  flexDirection: "column",
+  flex: "1",
+  overflow: "hidden",
 });
 
 const getPlacementStyles = (placement: string) => {
@@ -98,6 +104,7 @@ const getPlacementStyles = (placement: string) => {
         left: "0",
         right: "0",
         borderBottomRadius: "lg",
+        flexDirection: "column-reverse",
         transform: "translateY(-100%)",
         animation: "slideInFromTop 0.3s ease-out forwards",
         _closed: {
@@ -110,6 +117,7 @@ const getPlacementStyles = (placement: string) => {
         left: "0",
         right: "0",
         borderTopRadius: "lg",
+        flexDirection: "column",
         transform: "translateY(100%)",
         animation: "slideInFromBottom 0.3s ease-out forwards",
         _closed: {
@@ -122,6 +130,7 @@ const getPlacementStyles = (placement: string) => {
         left: "0",
         bottom: "0",
         borderRightRadius: "lg",
+        flexDirection: "row-reverse",
         transform: "translateX(-100%)",
         animation: "slideInFromLeft 0.3s ease-out forwards",
         _closed: {
@@ -135,10 +144,7 @@ const getPlacementStyles = (placement: string) => {
         right: "0",
         bottom: "0",
         borderLeftRadius: "lg",
-        // transform: "translateX(100%)",
-        // _closed: {
-        //   transform: "translateX(-100%)",
-        // }
+        flexDirection: "row",
         animation: "slideInFromRight 0.3s ease-out forwards",
         _closed: {
           animation: "slideOutToRight 0.3s ease-in forwards",
@@ -224,11 +230,13 @@ const iconStyles = css({
   color: "neutrals.blackAlpha.600",
 });
 
-const dragHandleStyles = css({
-  position: "absolute",
-  bg: "neutrals.blackAlpha.300",
-  borderRadius: "full",
+const dragHandleContainerStyles = css({
+  bg: "neutrals.whiteAlpha.200",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
   cursor: "grab",
+  flexShrink: "0",
   _active: {
     cursor: "grabbing",
   },
@@ -237,41 +245,56 @@ const dragHandleStyles = css({
   },
 });
 
-const getDragHandlePosition = (placement: string) => {
+const dragHandleStyles = css({
+  bg: "neutrals.whiteAlpha.400",
+  borderRadius: "full",
+  transition: "background 0.2s ease",
+  _hover: {
+    bg: "neutrals.whiteAlpha.500",
+  },
+});
+
+const getDragHandleContainerSize = (placement: string) => {
   switch (placement) {
     case "top":
       return css({
-        bottom: "8px",
-        left: "50%",
-        transform: "translateX(-50%)",
-        w: "40px",
-        h: "4px",
+        w: "full",
+        h: "24px",
+        borderBottomRadius: "md",
       });
     case "bottom":
       return css({
-        top: "8px",
-        left: "50%",
-        transform: "translateX(-50%)",
-        w: "40px",
-        h: "4px",
+        w: "full",
+        h: "24px",
+        borderTopRadius: "md",
       });
     case "left":
       return css({
-        right: "8px",
-        top: "50%",
-        transform: "translateY(-50%)",
-        w: "4px",
-        h: "40px",
+        w: "24px",
+        h: "full",
+        borderRightRadius: "md",
       });
     case "right":
     default:
       return css({
-        left: "8px",
-        top: "50%",
-        transform: "translateY(-50%)",
-        w: "4px",
-        h: "40px",
+        w: "24px",
+        h: "full",
+        borderLeftRadius: "md",
       });
+  }
+};
+
+const getDragHandleSize = (placement: string) => {
+  if (placement === "top" || placement === "bottom") {
+    return css({
+      w: "32px",
+      h: "4px",
+    });
+  } else {
+    return css({
+      w: "4px",
+      h: "32px",
+    });
   }
 };
 
@@ -328,6 +351,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
       closeOnEscape = true,
       className,
     },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     ref
   ) => {
     const placementStyle = getPlacementStyles(placement);
@@ -421,8 +445,8 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
       }
     };
 
-
-    const dragHandlePosition = getDragHandlePosition(placement);
+    const dragHandleContainerSize = getDragHandleContainerSize(placement);
+    const dragHandleSize = getDragHandleSize(placement);
 
     return (
       <ArkDialog.Root
@@ -457,14 +481,15 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
-            {/* Drag handle for mobile */}
-
+            {/* Drag handle container for mobile */}
             <div
-              className={cx(dragHandleStyles, dragHandlePosition)}
+              className={cx(dragHandleContainerStyles, dragHandleContainerSize)}
               aria-label="Drag to close"
-            />
+            >
+              <div className={cx(dragHandleStyles, dragHandleSize)} />
+            </div>
 
-            {children}
+            <div className={drawerInnerContentStyles}>{children}</div>
           </ArkDialog.Content>
         </ArkDialog.Positioner>
       </ArkDialog.Root>
