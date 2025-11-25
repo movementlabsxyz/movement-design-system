@@ -121,7 +121,6 @@ function ConnectWalletContent({
   const { wallets } = useWallet();
   const [isMoreWalletsOpen, setIsMoreWalletsOpen] = useState(false);
   const isMobile = useIsMobile();
-  console.log(wallets,"walllllet");
   const { aptosConnectWallets, availableWallets, installableWallets } =
     useMemo(() => {
       const grouped = groupAndSortWallets(wallets, walletSortingOptions);
