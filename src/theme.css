@@ -277,14 +277,15 @@
   --color-neutrals-black-alpha-900: #000000eb;
   
   /* Opacity values */
-  --opacity-1: 0.1;
+  /* commenting out because it's interfereing with default scale */
+  /* --opacity-1: 0.1;
   --opacity-2: 0.2;
   --opacity-3: 0.3;
   --opacity-4: 0.4;
   --opacity-5: 0.5;
   --opacity-8: 0.8;
   --opacity-9: 0.9;
-  --opacity-10: 1;
+  --opacity-10: 1; */
   
   /* Font families */
   --font-heading: "TWK Everett", sans-serif;

@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
+import { AptosWalletAdapterProvider } from "@aptos-labs/wallet-adapter-react";
 import { WalletModal } from "@/components/WalletModal";
 import { Button } from "@/components/shadcn/button";
 
 const meta: Meta<typeof WalletModal> = {
-title: "Movement Design System/WalletModal",
+  title: "Movement Design System/WalletModal",
   component: WalletModal,
   parameters: {
     layout: "centered",
@@ -16,6 +17,24 @@ title: "Movement Design System/WalletModal",
     },
   },
   tags: ["autodocs"],
+  decorators: [
+    (Story: React.ComponentType) => (
+      <AptosWalletAdapterProvider
+        // autoConnect={true}
+        onError={(error) => {
+          console.log("Wallet error:", error);
+          // Suppress provider conflict errors
+          if (
+            error?.message?.includes?.("setting the global Ethereum provider")
+          ) {
+            return;
+          }
+        }}
+      >
+        <Story />
+      </AptosWalletAdapterProvider>
+    ),
+  ],
 };
 
 export default meta;
@@ -54,40 +73,40 @@ export const Interactive: Story = {
  * The WalletModal automatically opens on mount.
  * Useful for previewing the modal's appearance without interaction.
  */
-export const AlwaysOpen: Story = {
-  render: () => {
-    const [isOpen, setIsOpen] = useState(true);
+// export const AlwaysOpen: Story = {
+//   render: () => {
+//     const [isOpen, setIsOpen] = useState(true);
 
-    return (
-      <div className="relative min-h-screen">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="space-y-4 text-center">
-            <h3 className="text-lg font-semibold">Modal Preview</h3>
-            <p className="text-muted-foreground text-sm">
-              The wallet modal is always open in this story
-            </p>
-            <Button onClick={() => setIsOpen(true)} disabled={isOpen}>
-              Reopen Modal
-            </Button>
-          </div>
-        </div>
+//     return (
+//       <div className="relative min-h-screen">
+//         <div className="absolute inset-0 flex items-center justify-center">
+//           <div className="space-y-4 text-center">
+//             <h3 className="text-lg font-semibold">Modal Preview</h3>
+//             <p className="text-muted-foreground text-sm">
+//               The wallet modal is always open in this story
+//             </p>
+//             <Button onClick={() => setIsOpen(true)} disabled={isOpen}>
+//               Reopen Modal
+//             </Button>
+//           </div>
+//         </div>
 
-        {isOpen && (
-          <WalletModal
-            onClose={() => {
-              setIsOpen(false);
-              // Automatically reopen after a short delay for demo purposes
-              setTimeout(() => setIsOpen(true), 500);
-            }}
-          />
-        )}
-      </div>
-    );
-  },
-  parameters: {
-    layout: "fullscreen",
-  },
-};
+//         {isOpen && (
+//           <WalletModal
+//             onClose={() => {
+//               setIsOpen(false);
+//               // Automatically reopen after a short delay for demo purposes
+//               setTimeout(() => setIsOpen(true), 500);
+//             }}
+//           />
+//         )}
+//       </div>
+//     );
+//   },
+//   parameters: {
+//     layout: "fullscreen",
+//   },
+// };
 
 /**
  * Demonstrates the modal with custom wallet sorting options.
