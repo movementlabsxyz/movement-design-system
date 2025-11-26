@@ -46,7 +46,12 @@ function Card({ className, variant, children, ...props }: CardProps) {
     /* Outer container: provides background, border, shadow, and padding */
     <div
       data-slot="card"
-      className={cn(cardVariants({ variant }), className)}
+      className={cn(
+        cardVariants({ variant }),
+        "flex flex-col gap-4 md:gap-6",
+        (isGlow || isDefault) && "relative z-10",
+        className,
+      )}
       {...props}
     >
       {/* Glow variant: absolutely positioned gradient border effect layer */}
@@ -59,14 +64,8 @@ function Card({ className, variant, children, ...props }: CardProps) {
         />
       )}
       {/* Inner wrapper: controls spacing between card sections (Header/Content/Footer) */}
-      <div
-        className={cn(
-          "flex flex-col gap-4 md:gap-6",
-          (isGlow || isDefault) && "relative z-10",
-        )}
-      >
-        {children}
-      </div>
+      {children}
+      {/* <div className={cn()}>{children}</div> */}
     </div>
   );
 }
