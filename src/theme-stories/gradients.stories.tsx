@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
-  gradientBackgroundStyles,
   gradientBackgroundClasses,
   getGradientClass,
 } from "../lib/gradient-styles";
@@ -20,11 +19,6 @@ const meta: Meta = {
 
 export default meta;
 type Story = StoryObj;
-
-// Inject styles for the showcase
-const styleTag = document.createElement("style");
-styleTag.innerHTML = gradientBackgroundStyles;
-document.head.appendChild(styleTag);
 
 export const MintCyan: Story = {
   render: () => (
@@ -123,14 +117,10 @@ export const UsageExample: Story = {
           </div>
 
           <div>
-            <p className="text-sm font-semibold mb-2">Method 3: Injecting styles globally</p>
+            <p className="text-sm font-semibold mb-2">Method 3: Using class names directly (after importing the design system)</p>
             <pre className="text-xs bg-gray-100 dark:bg-gray-800 p-3 rounded overflow-x-auto">
-{`import { gradientBackgroundStyles } from '@/lib/gradient-styles';
-
-// In your app entry point or layout
-const styleTag = document.createElement('style');
-styleTag.innerHTML = gradientBackgroundStyles;
-document.head.appendChild(styleTag);
+{`// The gradient styles are automatically available when you import the design system
+import '@movementlabsxyz/movement-design-system/dist/index.css';
 
 // Then use class names directly in your HTML/JSX
 <div className="gradient-mint-cyan">Content</div>`}
