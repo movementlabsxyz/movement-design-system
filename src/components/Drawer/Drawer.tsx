@@ -1,4 +1,5 @@
 import { Dialog as ArkDialog } from "@ark-ui/react/dialog";
+import { Portal } from "@ark-ui/react/portal";
 import {
   ComponentType,
   ReactNode,
@@ -73,6 +74,8 @@ const drawerOverlayStyles = css({
   inset: "0",
   bg: "neutrals.blackAlpha.600",
   zIndex: "overlay",
+  width: "100vw",
+  height: "100vh",
   animation: "fadeIn 0.2s ease-out",
   _closed: {
     animation: "fadeOut 0.2s ease-in",
@@ -463,35 +466,37 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
         closeOnEscape={closeOnEscape}
         closeOnInteractOutside={closeOnBackdropClick}
       >
-        <ArkDialog.Backdrop
-          className={drawerOverlayStyles}
-          // style={getBackdropOpacity()}
-        />
-        <ArkDialog.Positioner>
-          <ArkDialog.Content
-            ref={contentRef}
-            className={cx(
-              drawerContentStyles,
-              placementStyle,
-              sizeStyle,
-              className
-            )}
-            style={getDragTransform()}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-          >
-            {/* Drag handle container for mobile */}
-            <div
-              className={cx(dragHandleContainerStyles, dragHandleContainerSize)}
-              aria-label="Drag to close"
+        <Portal>
+          <ArkDialog.Backdrop
+            className={drawerOverlayStyles}
+            // style={getBackdropOpacity()}
+          />
+          <ArkDialog.Positioner>
+            <ArkDialog.Content
+              ref={contentRef}
+              className={cx(
+                drawerContentStyles,
+                placementStyle,
+                sizeStyle,
+                className
+              )}
+              style={getDragTransform()}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
             >
-              <div className={cx(dragHandleStyles, dragHandleSize)} />
-            </div>
+              {/* Drag handle container for mobile */}
+              <div
+                className={cx(dragHandleContainerStyles, dragHandleContainerSize)}
+                aria-label="Drag to close"
+              >
+                <div className={cx(dragHandleStyles, dragHandleSize)} />
+              </div>
 
-            <div className={drawerInnerContentStyles}>{children}</div>
-          </ArkDialog.Content>
-        </ArkDialog.Positioner>
+              <div className={drawerInnerContentStyles}>{children}</div>
+            </ArkDialog.Content>
+          </ArkDialog.Positioner>
+        </Portal>
       </ArkDialog.Root>
     );
   }

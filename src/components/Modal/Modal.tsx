@@ -1,4 +1,5 @@
 import { Dialog as ArkDialog } from "@ark-ui/react/dialog";
+import { Portal } from "@ark-ui/react/portal";
 import { ComponentType, ReactNode, forwardRef } from "react";
 import { css, cx } from "styled-system/css";
 
@@ -214,19 +215,21 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
         closeOnEscape={closeOnEscape}
         closeOnInteractOutside={closeOnBackdropClick}
       >
-        <ArkDialog.Backdrop className={modalOverlayStyles} />
-        <ArkDialog.Positioner>
-          <ArkDialog.Content
-            ref={ref}
-            className={cx(
-              modalContentStyles,
-              css({ ...sizeStyles[size] }),
-              className
-            )}
-          >
-            {children}
-          </ArkDialog.Content>
-        </ArkDialog.Positioner>
+        <Portal>
+          <ArkDialog.Backdrop className={modalOverlayStyles} />
+          <ArkDialog.Positioner>
+            <ArkDialog.Content
+              ref={ref}
+              className={cx(
+                modalContentStyles,
+                css({ ...sizeStyles[size] }),
+                className
+              )}
+            >
+              {children}
+            </ArkDialog.Content>
+          </ArkDialog.Positioner>
+        </Portal>
       </ArkDialog.Root>
     );
   }
