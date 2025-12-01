@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@aptos-labs/wallet-adapter-react':
+        specifier: ^7.0.4
+        version: 7.2.2(@aptos-labs/ts-sdk@1.39.0(axios@1.13.2)(got@11.8.6))(@telegram-apps/bridge@1.9.2)(@types/react@19.2.2)(@wallet-standard/core@1.1.1)(aptos@1.22.1(got@11.8.6))(react@19.2.0)
       '@hookform/resolvers':
         specifier: ^5.2.2
         version: 5.2.2(react-hook-form@7.65.0(react@19.2.0))
@@ -150,9 +153,6 @@ importers:
         specifier: ^4.1.12
         version: 4.1.12
     devDependencies:
-      '@aptos-labs/wallet-adapter-react':
-        specifier: ^7.0.4
-        version: 7.2.2(@aptos-labs/ts-sdk@1.39.0(axios@1.13.2)(got@11.8.6))(@telegram-apps/bridge@1.9.2)(@types/react@19.2.2)(@wallet-standard/core@1.1.1)(aptos@1.22.1(got@11.8.6))(react@19.2.0)
       '@chromatic-com/storybook':
         specifier: ^4.1.1
         version: 4.1.1(storybook@9.1.15(@testing-library/dom@10.4.1)(prettier@3.6.2)(vite@7.1.12(@types/node@24.9.1)(jiti@2.6.1)(lightningcss@1.30.2)))
@@ -1929,9 +1929,6 @@ packages:
 
   '@types/mdx@2.0.13':
     resolution: {integrity: sha512-+OWZQfAYyio6YkJb3HLxDrvnx6SWWDbC0zVPfBRzUk0/nqoDyf6dNxQi3eArPe8rJ473nobTMQ/8Zk+LxJ+Yuw==}
-
-  '@types/node@24.10.1':
-    resolution: {integrity: sha512-GNWcUTRBgIRJD5zj+Tq0fKOJ5XZajIiBroOF0yvj2bSU1WvNdYS/dn9UxwsujGW4JX06dnHyjV2y9rRaybH0iQ==}
 
   '@types/node@24.9.1':
     resolution: {integrity: sha512-QoiaXANRkSXK6p0Duvt56W208du4P9Uye9hWLWgGMDTEoKPhuenzNcC4vGUmrNkiOKTlIrBoyNQYNpSwfEZXSg==}
@@ -5760,7 +5757,7 @@ snapshots:
     dependencies:
       '@types/http-cache-semantics': 4.0.4
       '@types/keyv': 3.1.4
-      '@types/node': 24.10.1
+      '@types/node': 24.9.1
       '@types/responselike': 1.0.3
 
   '@types/chai@5.2.3':
@@ -5817,13 +5814,9 @@ snapshots:
 
   '@types/keyv@3.1.4':
     dependencies:
-      '@types/node': 24.10.1
+      '@types/node': 24.9.1
 
   '@types/mdx@2.0.13': {}
-
-  '@types/node@24.10.1':
-    dependencies:
-      undici-types: 7.16.0
 
   '@types/node@24.9.1':
     dependencies:
@@ -5841,7 +5834,7 @@ snapshots:
 
   '@types/responselike@1.0.3':
     dependencies:
-      '@types/node': 24.10.1
+      '@types/node': 24.9.1
 
   '@typescript-eslint/eslint-plugin@8.46.2(@typescript-eslint/parser@8.46.2(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.3))(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.3)':
     dependencies:
