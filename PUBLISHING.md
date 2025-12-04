@@ -1,13 +1,23 @@
 # Publishing Guide for Movement Design System
 
-## ✅ What's Been Configured
+## 🎉 Version 1.0.0 Released!
 
-Your design system is now set up as an installable npm package with the following configuration:
+The Movement Design System has reached its first stable release (1.0.0). This marks a commitment to:
 
-### Package Configuration
+- **Stable API**: No breaking changes without major version bump
+- **Production Ready**: All components tested and documented
+- **Semantic Versioning**: Following semver strictly from this point forward
+- **Active Maintenance**: Regular updates, bug fixes, and improvements
+
+## ✅ Package Configuration
+
+The design system is configured as a public npm package:
+
+### Package Details
 - **Package name**: `@movementlabsxyz/movement-design-system`
-- **Version**: 0.1.0
+- **Current Version**: 1.0.0
 - **License**: MIT
+- **Repository**: https://github.com/movementlabsxyz/movement-design-system
 - **Entry points**:
   - ESM: `dist/index.js`
   - CommonJS: `dist/index.cjs`
@@ -159,24 +169,78 @@ Note: The current build doesn't output a `style.css` file. You may want to confi
 
 ## 📋 Pre-Publish Checklist
 
-- [x] Package.json configured with correct name and version
-- [x] Build completes successfully (`pnpm build`)
-- [x] README.md includes installation and usage instructions
-- [x] .npmignore excludes unnecessary files
-- [ ] Test installation in a separate project
+### For Every Release
+
+- [ ] Update version in `package.json` using `npm version`
+- [ ] Update `CHANGELOG.md` with changes
+- [ ] Update `src/Changelog.mdx` to match
+- [ ] Run full build: `pnpm build:lib`
+- [ ] Run linter: `pnpm lint`
+- [ ] Build Storybook: `pnpm build-storybook`
+- [ ] Test installation in a separate project using `npm pack`
 - [ ] Verify all exports work correctly
-- [ ] Add repository URL to package.json
-- [ ] Set up CI/CD for automated publishing (optional)
-- [ ] Add changelog for version tracking
-- [ ] Consider adding semantic-release or changesets
+- [ ] Review git diff before committing
+- [ ] Create git tag matching version: `git tag v1.0.0`
+- [ ] Push with tags: `git push --follow-tags`
 
-## 🔄 Versioning Strategy
+### For Major Releases Only
 
-Follow [Semantic Versioning](https://semver.org/):
+- [ ] Write migration guide
+- [ ] Update all examples
+- [ ] Announce deprecations clearly
+- [ ] Test in production apps
+- [ ] Update documentation site
 
-- **Major (1.0.0)**: Breaking changes
-- **Minor (0.1.0)**: New features (backward compatible)
-- **Patch (0.0.1)**: Bug fixes (backward compatible)
+### Post-Publish
+
+- [ ] Verify package on npm
+- [ ] Test installation: `npm install @movementlabsxyz/movement-design-system@latest`
+- [ ] Announce release (if significant)
+- [ ] Monitor for issues
+
+## 🔄 Versioning Strategy (Post-1.0)
+
+Now that we've reached 1.0.0, we follow strict [Semantic Versioning](https://semver.org/):
+
+### Version Format: MAJOR.MINOR.PATCH
+
+- **Major (2.0.0, 3.0.0)**: Breaking changes to public API
+  - Changed component props
+  - Removed exports
+  - Changed behavior that apps depend on
+  - Requires migration guide
+  
+- **Minor (1.1.0, 1.2.0)**: New features (backward compatible)
+  - New components
+  - New props with default values
+  - New utilities
+  - Enhanced functionality
+  
+- **Patch (1.0.1, 1.0.2)**: Bug fixes (backward compatible)
+  - Bug fixes
+  - Documentation updates
+  - Performance improvements
+  - Internal refactoring
+
+### Examples
+
+```bash
+# Bug fix release
+npm version patch  # 1.0.0 -> 1.0.1
+
+# New component or feature
+npm version minor  # 1.0.0 -> 1.1.0
+
+# Breaking change (avoid if possible)
+npm version major  # 1.0.0 -> 2.0.0
+```
+
+### Commitment
+
+- **No breaking changes** in minor/patch releases
+- **Deprecation warnings** before removing features in major releases
+- **Migration guides** for all major version updates
+- **Changelog** updated with every release
 
 ## 📱 After Publishing
 
@@ -215,10 +279,40 @@ Follow [Semantic Versioning](https://semver.org/):
    - Consider using `tsup` or `rollup-plugin-dts`
    - Ensure all component props are properly typed
 
+## 🎯 1.0 Release Notes
+
+### What Changed in 1.0
+
+The 1.0 release represents the completion of:
+
+1. **Complete Component Library** - 50+ production-ready components
+2. **Stable API** - All components follow shadcn/ui patterns
+3. **Full TypeScript Support** - Complete type definitions
+4. **Comprehensive Documentation** - Storybook with examples
+5. **Tailwind CSS v4 Migration** - Modern CSS-first configuration
+6. **Production Testing** - Used in Movement Labs applications
+
+### Breaking Changes from 0.x
+
+- Moved styling recipes to `recipes.css` (no manual injection needed)
+- Removed CSS string exports (`gradientBorderStyles`, etc.)
+- All styles now automatically included when importing design system
+
+### Migration from 0.x to 1.0
+
+If upgrading from 0.x versions:
+
+1. Remove manual style injections from your code
+2. Ensure you're importing: `@movementlabsxyz/movement-design-system/component-styles`
+3. Continue using class name exports (`gradientBorderClasses`, etc.)
+4. Update any beta/experimental API usage
+
 ## 📚 Resources
 
 - [npm Publishing Guide](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry)
 - [Semantic Versioning](https://semver.org/)
 - [npm Scoped Packages](https://docs.npmjs.com/about-scopes)
 - [Vite Library Mode](https://vitejs.dev/guide/build.html#library-mode)
+- [GitHub Repository](https://github.com/movementlabsxyz/movement-design-system)
+- [Documentation Site](https://movement-design-system-docs-git-shadcn-movement-labs.vercel.app/)
 

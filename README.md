@@ -1,8 +1,13 @@
 # Movement Design System
 
-A comprehensive, production-ready design system built with shadcn/ui components, Radix UI primitives, and Tailwind CSS. This library provides a complete set of accessible, customizable React components for building modern web applications.
+[![npm version](https://img.shields.io/npm/v/@movementlabsxyz/movement-design-system.svg)](https://www.npmjs.com/package/@movementlabsxyz/movement-design-system)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Features
+A production-ready design system built with shadcn/ui components, Radix UI primitives, and Tailwind CSS v4. This library provides a complete set of accessible, customizable React components for building modern web applications.
+
+**Version 1.0** - Stable API, production-ready, comprehensive documentation.
+
+## ✨ Features
 
 - 🎨 **50+ Components** - Buttons, forms, dialogs, navigation, data display, and more
 - ♿ **Accessible** - Built on Radix UI primitives with ARIA support
@@ -11,8 +16,9 @@ A comprehensive, production-ready design system built with shadcn/ui components,
 - 📦 **Tree Shakeable** - Only import what you need
 - 🔷 **TypeScript** - Full type safety out of the box
 - 📚 **Storybook** - Interactive component documentation
+- ⚡ **Modern Stack** - Tailwind CSS v4, React 18+, shadcn/ui architecture
 
-## Installation
+## 📦 Installation
 
 ```bash
 npm install @movementlabsxyz/movement-design-system
@@ -299,13 +305,27 @@ import { Button, buttonVariants } from '@movementlabsxyz/movement-design-system'
 type ButtonVariants = VariantProps<typeof buttonVariants>;
 ```
 
-## Storybook Documentation
+## 📚 Documentation
 
-For interactive component documentation and examples, check out our Storybook:
+### Interactive Storybook
+
+Explore components with live examples and code snippets:
+
+**[View Storybook Documentation →](https://movement-design-system-docs-git-shadcn-movement-labs.vercel.app/)**
+
+### Local Development
+
+Run Storybook locally:
 
 ```bash
-# Clone the repository and run:
+# Clone the repository
+git clone https://github.com/movementlabsxyz/movement-design-system.git
+cd movement-design-system
+
+# Install dependencies
 pnpm install
+
+# Start Storybook
 pnpm storybook
 ```
 
@@ -352,23 +372,33 @@ pnpm test
 pnpm lint
 ```
 
-## Contributing
+## 🤝 Contributing
 
-Contributions are welcome! Please read our contributing guidelines before submitting PRs.
+We welcome contributions! If you find a bug or have a feature request, please open an issue on [GitHub](https://github.com/movementlabsxyz/movement-design-system/issues).
 
-## License
+For major changes, please open an issue first to discuss what you would like to change.
 
-MIT
+## 📄 License
 
-## Credits
+[MIT](https://opensource.org/licenses/MIT) © Movement Labs
+
+## 🙏 Credits
 
 Built with:
-- [shadcn/ui](https://ui.shadcn.com/)
-- [Radix UI](https://www.radix-ui.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Vite](https://vitejs.dev/)
-- [Storybook](https://storybook.js.org/)
+- [shadcn/ui](https://ui.shadcn.com/) - Component architecture
+- [Radix UI](https://www.radix-ui.com/) - Accessible primitives
+- [Tailwind CSS v4](https://tailwindcss.com/) - Styling framework
+- [Vite](https://vitejs.dev/) - Build tool
+- [Storybook](https://storybook.js.org/) - Documentation
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+
+## 🔗 Links
+
+- [Documentation](https://movement-design-system-docs-git-shadcn-movement-labs.vercel.app/)
+- [GitHub Repository](https://github.com/movementlabsxyz/movement-design-system)
+- [npm Package](https://www.npmjs.com/package/@movementlabsxyz/movement-design-system)
+- [Issue Tracker](https://github.com/movementlabsxyz/movement-design-system/issues)
 
 ---
 
-Made with ❤️ by Movement Labs
+Made with ❤️ by [Movement Labs](https://movementlabs.xyz)

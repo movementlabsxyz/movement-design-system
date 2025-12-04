@@ -6,6 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [1.0.0] - 2025-12-04
+
+This is the first stable release of the Movement Design System! 🎉
+
+The library is now production-ready with a stable API, comprehensive component library, and full TypeScript support. This release marks the completion of the migration to shadcn/ui architecture with Tailwind CSS v4.
+
+### What's New in 1.0
+
+- **50+ Production-Ready Components** - Complete set of accessible, customizable React components
+- **Stable API** - All components follow consistent shadcn/ui patterns
+- **Full TypeScript Support** - Complete type definitions for all components
+- **Comprehensive Documentation** - Interactive Storybook with live examples
+- **Tailwind CSS v4** - Modern CSS-first configuration
+- **Tree-Shakeable** - Optimized bundle with proper exports
+- **Dark Mode Ready** - Built-in dark mode support for all components
+
 ### Added
 
 #### Core Components

@@ -10,6 +10,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [1.0.0] - 2025-12-04
+
+🎉 **First Stable Release!**
+
+The Movement Design System is now production-ready with a stable API, comprehensive component library, and full TypeScript support. This release marks the completion of the migration to shadcn/ui architecture with Tailwind CSS v4.
+
+### What's New in 1.0
+
+- **50+ Production-Ready Components** - Complete set of accessible, customizable React components
+- **Stable API** - All components follow consistent shadcn/ui patterns  
+- **Full TypeScript Support** - Complete type definitions for all components
+- **Comprehensive Documentation** - Interactive Storybook with live examples
+- **Tailwind CSS v4** - Modern CSS-first configuration
+- **Tree-Shakeable** - Optimized bundle with proper exports
+- **Dark Mode Ready** - Built-in dark mode support for all components
+
 ### Changed
 
 #### Styling Recipes
@@ -24,7 +40,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 **Migration Guide:**
 - Remove any manual `<style dangerouslySetInnerHTML={{ __html: gradientBorderStyles }} />` injections
-- Simply import the design system CSS: `import "@movementlabsxyz/movement-design-system/style.css"`
+- Simply import the design system CSS: `import "@movementlabsxyz/movement-design-system/component-styles"`
 - Continue using class name exports as before: `gradientBorderClasses.glow`, etc.
 
 ### Added
@@ -152,6 +168,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ---
 
 **Package**: `@movementlabsxyz/movement-design-system`  
-**Current Version**: 0.1.18  
+**Current Version**: 1.0.0  
 **Maintainer**: Movement Labs
 
