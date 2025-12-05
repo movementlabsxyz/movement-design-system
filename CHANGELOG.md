@@ -1,39 +1,146 @@
-# Storybook Changelog
+# Changelog
 
-All notable changes to the Storybook configuration and components will be documented in this file.
+All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.0.0] - 2025-12-04
+
+This is the first stable release of the Movement Design System! 🎉
+
+The library is now production-ready with a stable API, comprehensive component library, and full TypeScript support. This release marks the completion of the migration to shadcn/ui architecture with Tailwind CSS v4.
+
+### What's New in 1.0
+
+- **50+ Production-Ready Components** - Complete set of accessible, customizable React components
+- **Stable API** - All components follow consistent shadcn/ui patterns
+- **Full TypeScript Support** - Complete type definitions for all components
+- **Comprehensive Documentation** - Interactive Storybook with live examples
+- **Tailwind CSS v4** - Modern CSS-first configuration
+- **Tree-Shakeable** - Optimized bundle with proper exports
+- **Dark Mode Ready** - Built-in dark mode support for all components
+
 ### Added
-- New `BridgeButton` component with unique styling and hover effects
-- Comprehensive Storybook stories for BridgeButton component
-- BaseButton component to reduce code duplication across button variants
 
-### Changed
-- Refactored Button and BridgeButton components to use shared BaseButton
-- Improved button component architecture for better maintainability
-- Enhanced icon support across all button variants
+#### Core Components
+- Added Accordion component
+- Added Alert component
+- Added AlertDialog component
+- Added AspectRatio component
+- Added Avatar component
+- Added Badge component
+- Added Breadcrumb component
+- Added Button component with variants
+- Added ButtonGroup component
+- Added Calendar component
+- Added Card component
+- Added Carousel component
+- Added Chart components (ChartContainer, ChartLegend, ChartTooltip)
+- Added Checkbox component
+- Added Collapsible component
+- Added Command component
+- Added ContextMenu component
+- Added Dialog component
+- Added Drawer component
+- Added DropdownMenu component
+- Added Empty component
+- Added Field components (Field, FieldContent, FieldDescription, FieldError, FieldGroup, FieldLabel, FieldLegend, FieldSeparator, FieldSet, FieldTitle)
+- Added Form components with React Hook Form integration
+- Added HoverCard component
+- Added Input component
+- Added CryptoAmountInput component
+- Added InputGroup components (InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupText, InputGroupTextarea)
+- Added InputOTP component
+- Added Kbd component
+- Added Label component
+- Added Menubar component
+- Added NavigationMenu component
+- Added Pagination component
+- Added Popover component
+- Added Progress component
+- Added RadioGroup component
+- Added Resizable components (ResizableHandle, ResizablePanel, ResizablePanelGroup)
+- Added ScrollArea component
+- Added Select component
+- Added Separator component
+- Added Sheet component
+- Added Sidebar component with full sidebar system
+- Added Skeleton component
+- Added Slider component
+- Added Spinner component
+- Added Switch component
+- Added Table component with sorting hooks
+- Added Tabs component
+- Added Textarea component
+- Added Toggle component
+- Added ToggleGroup component
+- Added Tooltip component
+- Added Typography component with Text variants
+- Added Toaster component using Sonner
+- Added GlobalToaster with movement toast functionality
 
-### Fixed
-- Resolved duplicate code between Button and BridgeButton components
-- Improved type safety and prop inheritance
+#### Custom Components
+- Added DottedBackground component
+- Added Icon components with extensive icon library
+- Added IconButton component
+- Added Logo component
+- Added MultiOutlineText component
+- Added ProgressButton component
+- Added WalletModal component
 
-## [0.1.0] - 2025-09-01
+#### Utilities
+- Added `cn` utility for classname merging
+- Added `gradientBorderStyles` and `gradientBorderClasses` utilities
+- Added `glassBackgroundStyles` and `glassBackgroundClasses` utilities
+- Added `useTableSort` and `useSortableData` hooks for table sorting
 
-### Added
-- Movement PandaCSS preset
-    - Design tokens
-    - Typography styles
-- `Collapsible` component
-- `Button` component
-- `BridgeButton` component
-- `Card` component
-- `Input` component
-- `Select` component
-- `Textarea` component
-- `Tooltip` component
-- `Modal` component
-- `Drawer` component
+#### Hooks
+- Added `useIsMobile` hook for responsive design
+- Added `useSidebar` hook
+- Added `useFormField` hook
+
+#### Design System
+- Added theme scales: spacing, sizes, radii, borderWidths, shadows, zIndex
+- Added comprehensive typography variants
+- Added toast variants and types
+- Added button variants using class-variance-authority
+- Added badge variants
+- Added toggle variants
+
+#### Styling
+- Added component styles via `component-styles` export
+- Added theme CSS via `theme` export
+- Added fonts CSS via `fonts` export
+
+#### Type Exports
+- Added `ChartConfig` type
+- Added `ConnectWalletDialogProps` type
+- Added `CreateToastArgs` type
+- Added `TypedToastArgs` type
+- Added `ToastVariant` type
+- Added `TableVariant` type
+- Added `SortDirection` type
+- Added `SortFunction` type
+- Added `VariantProps` type from class-variance-authority
+
+#### Dependencies
+- Integrated with Radix UI components
+- Integrated with Aptos Wallet Adapter
+- Integrated with React Hook Form
+- Integrated with Tailwind CSS v4
+- Integrated with Sonner for toast notifications
+- Integrated with Recharts for charting
+- Integrated with Lucide React for icons
+- Integrated with Phosphor Icons
+- Integrated with date-fns for date utilities
+- Integrated with Zod for validation
+
+### Updated
+- Built on shadcn/ui component architecture
+- Supports React 18 and React 19
+- Optimized for tree-shaking with proper exports
+- Configured as ES module with CommonJS fallback
+- TypeScript support with full type definitions
+

@@ -1,192 +1,154 @@
 # Movement Design System
 
-A comprehensive design system built with React, TypeScript, and PandaCSS. This design system provides a complete set of components, design tokens, and styling utilities for building consistent web applications.
+[![npm version](https://img.shields.io/npm/v/@movementlabsxyz/movement-design-system.svg)](https://www.npmjs.com/package/@movementlabsxyz/movement-design-system)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Features
+A production-ready design system built with shadcn/ui components, Radix UI primitives, and Tailwind CSS v4. This library provides a complete set of accessible, customizable React components for building modern web applications.
 
-- 🎨 **Complete Design Tokens**: Colors, typography, spacing, and more
-- 🧩 **React Components**: Pre-built, accessible components
-- 🎯 **PandaCSS Integration**: Built on top of PandaCSS for optimal performance
-- 📱 **Responsive Design**: Mobile-first approach with breakpoints
-- ♿ **Accessibility**: WCAG compliant components
-- 🎭 **Theme Support**: Dark and light theme variants
-- 📚 **Storybook**: Interactive component documentation
+**Version 1.0** - Stable API, production-ready, comprehensive documentation.
 
-## Installation
+## ✨ Features
 
-### For a new project with PandaCSS
+- 🎨 **50+ Components** - Buttons, forms, dialogs, navigation, data display, and more
+- ♿ **Accessible** - Built on Radix UI primitives with ARIA support
+- 🎭 **Customizable** - Full theme customization with CSS variables
+- 🌗 **Dark Mode** - Built-in dark mode support
+- 📦 **Tree Shakeable** - Only import what you need
+- 🔷 **TypeScript** - Full type safety out of the box
+- 📚 **Storybook** - Interactive component documentation
+- ⚡ **Modern Stack** - Tailwind CSS v4, React 18+, shadcn/ui architecture
 
-1. **Install the design system**:
-   ```bash
-   npm install movement-design-system
-   # or
-   pnpm add movement-design-system
-   # or
-   yarn add movement-design-system
-   ```
+## 📦 Installation
 
-2. **Install PandaCSS** (if not already installed):
-   ```bash
-   npm install -D @pandacss/dev
-   # or
-   pnpm add -D @pandacss/dev
-   ```
+### Prerequisites
 
-3. **Initialize PandaCSS**:
-   ```bash
-   npx panda init
-   ```
+- React 18+ or 19+
+- Tailwind CSS v4
+- PostCSS
 
-4. **Configure PandaCSS** in your `panda.config.ts`:
-   ```typescript
-   import { defineConfig } from "@pandacss/dev";
-   import { movementPreset } from "movement-design-system/preset";
+### Install the Package
 
-   export default defineConfig({
-     presets: [movementPreset],
-     preflight: true,
-     include: ["./src/**/*.{js,jsx,ts,tsx}"],
-     exclude: [],
-     outdir: "styled-system",
-   });
-   ```
+```bash
+npm install @movementlabsxyz/movement-design-system
+# or
+pnpm add @movementlabsxyz/movement-design-system
+# or
+yarn add @movementlabsxyz/movement-design-system
+```
 
-5. **Generate the CSS**:
-   ```bash
-   npx panda codegen
-   ```
+### Setup Tailwind CSS
 
-6. **Import the CSS** in your main entry file:
-   ```typescript
-   import "./styled-system/css";
-   ```
+Ensure you have a standard Tailwind CSS setup with PostCSS. If you haven't set this up yet, follow the [Tailwind CSS v4 installation guide](https://tailwindcss.com/docs/installation).
 
-## Usage
+### Import Styles
 
-### Using Components
+Add the following imports to your `global.css` file **in this exact order** (the order is important!):
+
+```css
+@import "movement-design-system/component-styles";
+@import "movement-design-system/theme";
+@import "tailwindcss";
+```
+
+> ⚠️ **Important**: The order of these imports matters! Make sure to import the component styles and theme before Tailwind CSS.
+
+## 🚀 Quick Start
 
 ```tsx
-import { Button, Card } from "movement-design-system";
+import { Button, Card, Input } from '@movementlabsxyz/movement-design-system';
 
 function App() {
   return (
-    <div>
-      <Button variant="filled" color="yellow" size="md">
-        Click me
-      </Button>
-      
-      <Card>
-        <h2>Card Title</h2>
-        <p>Card content goes here</p>
-      </Card>
-    </div>
+    <Card>
+      <Input placeholder="Enter text..." />
+      <Button>Submit</Button>
+    </Card>
   );
 }
 ```
 
-### Using Design Tokens
+## 📚 Components & Blocks
+
+### 50+ Production-Ready Components
+
+- **Layout** - Card, Separator, AspectRatio, Resizable, ScrollArea, Sidebar
+- **Forms & Inputs** - Input, Textarea, Button, Checkbox, RadioGroup, Select, Switch, Slider, Label, Form, Calendar
+- **Navigation** - NavigationMenu, Menubar, DropdownMenu, ContextMenu, Breadcrumb, Tabs, Pagination
+- **Feedback** - Alert, AlertDialog, Dialog, Toast, Progress, Spinner, Skeleton
+- **Data Display** - Table, Badge, Avatar, Tooltip, HoverCard, Accordion, Collapsible, Chart, Command, Empty
+- **Overlays** - Sheet, Drawer, Popover
+- **Utilities** - `cn()` function, `useMobile` hook
+
+### Pre-built Blocks
+
+Copy-paste ready patterns built with design system components:
+
+- **StakingBalance** - Glass-morphism card with staking stats and rewards
+- **StakeForm** - Complete staking form with validator selection
+- **ValidatorsTable** - Comprehensive table with sorting and metrics
+- **MobileValidatorsTable** - Responsive table with card layouts
+- **PaginatedTable** - Full-featured table with sorting and pagination
+
+Browse the **Blocks** section in [Storybook](https://movement-design-system-docs-git-shadcn-movement-labs.vercel.app/) for live examples with full source code.
+
+## 📖 Documentation
+
+**[View Interactive Storybook →](https://movement-design-system-docs-git-shadcn-movement-labs.vercel.app/)**
+
+Explore live examples, API documentation, and copy-paste ready code snippets for all components and blocks.
+
+### TypeScript Support
+
+Full TypeScript support with IntelliSense and type safety:
 
 ```tsx
-import { css } from "styled-system/css";
+import { Button, type VariantProps, buttonVariants } from '@movementlabsxyz/movement-design-system';
 
-const MyComponent = () => (
-  <div
-    className={css({
-      bg: "moveus-marigold.400",
-      color: "neutrals.black",
-      p: "4",
-      rounded: "md",
-      fontSize: "lg",
-    })}
-  >
-    Styled with design tokens
-  </div>
-);
+type ButtonVariants = VariantProps<typeof buttonVariants>;
 ```
 
-### Using the Movement Preset
+## 🛠️ Development
 
-If you want to use just the design tokens without the components:
+### Run Locally
 
-```typescript
-// panda.config.ts
-import { defineConfig } from "@pandacss/dev";
-import { movementPreset } from "movement-design-system/preset";
+```bash
+# Clone and install
+git clone https://github.com/movementlabsxyz/movement-design-system.git
+cd movement-design-system
+pnpm install
 
-export default defineConfig({
-  presets: [movementPreset],
-  // ... other config
-});
+# Start Storybook
+pnpm storybook
+
+# Build library
+pnpm build:lib
+
+# Run tests
+pnpm test
 ```
 
-## Available Components
+## 🤝 Contributing
 
-- **Button**: Interactive button with multiple variants, sizes, and colors
-- **Card**: Container component for content organization
+Contributions are welcome! Please open an issue first to discuss major changes.
 
-## Design Tokens
+- [Report Issues](https://github.com/movementlabsxyz/movement-design-system/issues)
+- [View Source](https://github.com/movementlabsxyz/movement-design-system)
 
-The design system includes comprehensive design tokens:
+## 🔗 Links
 
-- **Colors**: Semantic color system with light/dark variants
-- **Typography**: Font families, sizes, weights, and line heights
-- **Spacing**: Consistent spacing scale
-- **Border Radius**: Rounded corner options
-- **Shadows**: Elevation and depth
-- **Animations**: Standardized animation durations and keyframes
+- [📚 Documentation](https://movement-design-system-docs-git-shadcn-movement-labs.vercel.app/)
+- [📦 npm Package](https://www.npmjs.com/package/@movementlabsxyz/movement-design-system)
+- [🐙 GitHub Repository](https://github.com/movementlabsxyz/movement-design-system)
+- [🐛 Issue Tracker](https://github.com/movementlabsxyz/movement-design-system/issues)
 
-## Development
+## 🙏 Built With
 
-### Prerequisites
+- [shadcn/ui](https://ui.shadcn.com/) - Component architecture
+- [Radix UI](https://www.radix-ui.com/) - Accessible primitives
+- [Tailwind CSS v4](https://tailwindcss.com/) - Styling
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [Storybook](https://storybook.js.org/) - Documentation
 
-- Node.js 18+
-- pnpm (recommended) or npm
+## 📄 License
 
-### Setup
-
-1. **Clone the repository**:
-   ```bash
-   git clone <repository-url>
-   cd movement-design-system
-   ```
-
-2. **Install dependencies**:
-   ```bash
-   pnpm install
-   ```
-
-3. **Generate PandaCSS**:
-   ```bash
-   pnpm run prepare
-   ```
-
-4. **Start Storybook**:
-   ```bash
-   pnpm run storybook
-   ```
-
-5. **Build the library**:
-   ```bash
-   pnpm run build
-   ```
-
-### Scripts
-
-- `pnpm dev` - Start development server
-- `pnpm build` - Build the library
-- `pnpm storybook` - Start Storybook
-- `pnpm build-storybook` - Build Storybook
-- `pnpm lint` - Run ESLint
-- `pnpm prepare` - Generate PandaCSS code
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## License
-
-MIT License - see LICENSE file for details
+[MIT](https://opensource.org/licenses/MIT) © [Movement Labs](https://movementlabs.xyz)

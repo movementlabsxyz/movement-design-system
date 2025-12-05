@@ -1,0 +1,67 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Utils/Glass Background Recipe" />
+
+# Glass Background Recipe
+
+CSS recipe for creating glass morphism backgrounds with backdrop blur. These styles are automatically included when you import the design system.
+
+The recipe provides two classes:
+- `.glass-background-dark`: Glass effect for dark themes
+- `.glass-background-light`: Glass effect for light themes
+
+## Import
+
+The CSS is automatically available when you import the design system. To use the class names in your code:
+
+```tsx
+import { glassBackgroundClasses } from "@movementlabsxyz/movement-design-system";
+```
+
+## Setup
+
+**No setup required!** The CSS is automatically included when you import the design system's main CSS:
+
+```tsx
+// In your app entry point (e.g., main.tsx, index.tsx, _app.tsx)
+import "@movementlabsxyz/movement-design-system/style.css";
+```
+
+The glass background styles are part of the `recipes.css` file that's automatically imported with the design system.
+
+## CSS Classes Created
+
+Once injected, these classes are available:
+
+### .glass-background-dark
+Glass morphism effect for dark themes with dark gradient and light border.
+
+### .glass-background-light
+Glass morphism effect for light themes with light gradient and dark border.
+
+## Usage Example
+
+After injecting the styles, use with `glassBackgroundClasses`:
+
+```tsx
+import { glassBackgroundClasses } from "@movementlabsxyz/movement-design-system";
+
+export function GlassCard() {
+  const isDarkMode = true; // Get from your theme context
+  
+  return (
+    <div 
+      className={
+        isDarkMode 
+          ? glassBackgroundClasses.dark 
+          : glassBackgroundClasses.light
+      }
+    >
+      <div className="p-6">
+        Card with glass morphism effect
+      </div>
+    </div>
+  );
+}
+```
+

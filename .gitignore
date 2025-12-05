@@ -26,8 +26,5 @@ dist-ssr
 *storybook.log
 storybook-static
 
-## Panda
-styled-system
-styled-system-studio
-
-.npmrc
+.pnpm-store/
+.ignore/

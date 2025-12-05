@@ -1,0 +1,63 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Utils/Gradient Border Recipe" />
+
+# Gradient Border Recipe
+
+CSS recipe for creating gradient borders using the CSS mask technique. These styles are automatically included when you import the design system.
+
+The recipe provides two classes:
+- `.gradient-border-glow`: A 1px gradient border with Movement's brand colors (teal to green)
+- `.gradient-border-error`: A 1px solid red border for error states
+
+## Import
+
+The CSS is automatically available when you import the design system. To use the class names in your code:
+
+```tsx
+import { gradientBorderClasses } from "@movementlabsxyz/movement-design-system";
+```
+
+## Setup
+
+**No setup required!** The CSS is automatically included when you import the design system's main CSS:
+
+```tsx
+// In your app entry point (e.g., main.tsx, index.tsx, _app.tsx)
+import "@movementlabsxyz/movement-design-system/style.css";
+```
+
+The gradient border styles are part of the `recipes.css` file that's automatically imported with the design system.
+
+## CSS Classes Created
+
+Once injected, these classes are available:
+
+### .gradient-border-glow
+A gradient border with Movement's brand colors (linear gradient from teal to green).
+
+### .gradient-border-error
+A solid red border for error states.
+
+## Usage Example
+
+After injecting the styles, use with `gradientBorderClasses`:
+
+```tsx
+import { gradientBorderClasses } from "@movementlabsxyz/movement-design-system";
+
+export function GlowCard() {
+  return (
+    <div className={`relative rounded-lg ${gradientBorderClasses.glow}`}>
+      <div className="p-4">
+        Card with gradient glow border
+      </div>
+    </div>
+  );
+}
+```
+
+## Note
+
+Elements using these classes must have `position: relative` for the border to work correctly.
+

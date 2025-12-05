@@ -1,0 +1,261 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Recipes/gradientBackgroundStyles" />
+
+# Gradient Background Recipes
+
+Reusable gradient background recipes for consistent styling across the application. These gradients are optimized for the Movement design system's color palette.
+
+**CSS is automatically included** when you import the design system - no manual setup required!
+
+## Import
+
+```tsx
+import { 
+  gradientBackgroundClasses,
+  getGradientClass 
+} from "@movementlabsxyz/movement-design-system";
+```
+
+## Setup
+
+**No setup required!** The CSS is automatically included when you import the design system's main CSS:
+
+```tsx
+// In your app entry point (e.g., main.tsx, index.tsx, _app.tsx)
+import "@movementlabsxyz/movement-design-system/style.css";
+```
+
+## Available Gradients
+
+### mintCyan
+
+A vibrant linear gradient from mint green (#81FFBA) to cyan (#00FFF9).
+
+**CSS:**
+```css
+background: linear-gradient(130deg, #81FFBA 33.64%, #00FFF9 79.2%);
+```
+
+**Use cases:**
+- Call-to-action backgrounds
+- Primary accent elements
+- Button backgrounds
+- Hero sections
+- Highlight elements
+
+### glassOverlay
+
+A sophisticated multi-layered gradient combining dark overlays with radial mint-to-blue gradients.
+
+**CSS:**
+```css
+background: linear-gradient(0deg, rgba(4, 5, 27, 0.20) 0%, rgba(4, 5, 27, 0.20) 100%), 
+            linear-gradient(153deg, rgba(0, 0, 0, 0.80) 0%, rgba(0, 0, 0, 0.00) 100%), 
+            radial-gradient(100% 100% at 120.34% 112.85%, rgba(129, 255, 186, 0.40) 0%, rgba(0, 27, 133, 0.40) 100%);
+```
+
+**Use cases:**
+- Glassmorphic card backgrounds
+- Modal overlays
+- Dashboard panels
+- Feature cards
+- Complex UI surfaces
+
+## Usage Methods
+
+### Method 1: Using Class Names Directly
+
+```tsx
+import { gradientBackgroundClasses } from "@movementlabsxyz/movement-design-system";
+
+export function Hero() {
+  return (
+    <div className={gradientBackgroundClasses.mintCyan}>
+      <h1>Welcome to Movement</h1>
+    </div>
+  );
+}
+```
+
+### Method 2: Using the Utility Function
+
+```tsx
+import { getGradientClass } from "@movementlabsxyz/movement-design-system";
+
+export function Card({ variant }: { variant: 'mintCyan' | 'glassOverlay' }) {
+  return (
+    <div className={getGradientClass(variant)}>
+      <p>Card content</p>
+    </div>
+  );
+}
+```
+
+### Method 3: Using Raw CSS Class Names
+
+Since the CSS is automatically included, you can also use the raw class names directly:
+
+```tsx
+export function Feature() {
+  return (
+    <div className="gradient-mint-cyan">
+      Feature content
+    </div>
+  );
+}
+```
+
+## Practical Examples
+
+### Call-to-Action Button
+
+```tsx
+import { gradientBackgroundClasses } from "@movementlabsxyz/movement-design-system";
+import { cn } from "@movementlabsxyz/movement-design-system";
+
+export function CTAButton({ children }: { children: React.ReactNode }) {
+  return (
+    <button 
+      className={cn(
+        gradientBackgroundClasses.mintCyan,
+        "px-6 py-3 rounded-lg text-white font-semibold",
+        "transition-transform hover:scale-105"
+      )}
+    >
+      {children}
+    </button>
+  );
+}
+```
+
+### Glassmorphic Card
+
+```tsx
+import { gradientBackgroundClasses } from "@movementlabsxyz/movement-design-system";
+import { cn } from "@movementlabsxyz/movement-design-system";
+
+export function GlassCard({ children }: { children: React.ReactNode }) {
+  return (
+    <div 
+      className={cn(
+        gradientBackgroundClasses.glassOverlay,
+        "p-6 rounded-2xl backdrop-blur-xl",
+        "border border-white/10"
+      )}
+    >
+      {children}
+    </div>
+  );
+}
+```
+
+### Hero Section with Gradient
+
+```tsx
+import { gradientBackgroundClasses } from "@movementlabsxyz/movement-design-system";
+
+export function HeroSection() {
+  return (
+    <section className="relative min-h-screen">
+      <div className={`absolute inset-0 ${gradientBackgroundClasses.mintCyan}`} />
+      <div className="relative z-10 container mx-auto px-4 py-20">
+        <h1 className="text-5xl font-bold text-white">
+          Welcome to Movement
+        </h1>
+        <p className="text-xl text-white/90 mt-4">
+          Build the future of blockchain
+        </p>
+      </div>
+    </section>
+  );
+}
+```
+
+### Feature Grid with Mixed Gradients
+
+```tsx
+import { getGradientClass } from "@movementlabsxyz/movement-design-system";
+
+const features = [
+  { id: 1, title: "Fast", gradient: "mintCyan" as const },
+  { id: 2, title: "Secure", gradient: "glassOverlay" as const },
+  { id: 3, title: "Scalable", gradient: "mintCyan" as const },
+];
+
+export function FeatureGrid() {
+  return (
+    <div className="grid grid-cols-3 gap-6">
+      {features.map((feature) => (
+        <div 
+          key={feature.id}
+          className={`${getGradientClass(feature.gradient)} p-6 rounded-xl`}
+        >
+          <h3 className="text-xl font-bold">{feature.title}</h3>
+        </div>
+      ))}
+    </div>
+  );
+}
+```
+
+## Combining with Other Styles
+
+### With Tailwind Classes
+
+```tsx
+import { gradientBackgroundClasses, cn } from "@movementlabsxyz/movement-design-system";
+
+export function AnimatedCard() {
+  return (
+    <div 
+      className={cn(
+        gradientBackgroundClasses.mintCyan,
+        "p-8 rounded-2xl shadow-xl",
+        "transition-all duration-300",
+        "hover:shadow-2xl hover:scale-105"
+      )}
+    >
+      Hover me!
+    </div>
+  );
+}
+```
+
+### With Border Styles
+
+```tsx
+import { 
+  gradientBackgroundClasses, 
+  gradientBorderClasses,
+  cn 
+} from "@movementlabsxyz/movement-design-system";
+
+export function BorderedCard() {
+  return (
+    <div 
+      className={cn(
+        "relative",
+        gradientBackgroundClasses.glassOverlay,
+        gradientBorderClasses.glow,
+        "p-6 rounded-xl"
+      )}
+    >
+      Card with gradient background and border
+    </div>
+  );
+}
+```
+
+## Tips
+
+1. **Performance**: These gradients are CSS-based and have excellent performance. No JavaScript overhead.
+
+2. **Accessibility**: When using these gradients with text, ensure sufficient contrast. Use white or dark text depending on the gradient.
+
+3. **Combining Gradients**: You can layer gradients by using multiple elements with absolute positioning, or by extending the CSS with additional gradient layers.
+
+4. **Responsive Design**: These gradients scale automatically. No media queries needed.
+
+5. **Dark Mode**: The `glassOverlay` gradient works well in both light and dark modes due to its transparent overlays.
+

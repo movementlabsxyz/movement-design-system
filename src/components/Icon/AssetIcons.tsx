@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { IconProps } from "@phosphor-icons/react";
+import type { IconProps } from "@phosphor-icons/react";
 
 // USDC Icon Component
 export const USDCIcon = forwardRef<SVGSVGElement, IconProps>((props, ref) => (
