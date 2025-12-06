@@ -151,4 +151,4 @@ Contributions are welcome! Please open an issue first to discuss major changes.
 
 ## 📄 License
 
-[MIT](https://opensource.org/licenses/MIT) © [Movement Labs](https://movementlabs.xyz)
+[MIT](https://opensource.org/licenses/MIT) © [Movement Network](https://www.movementnetwork.xyz/)
