@@ -62,3 +62,20 @@ export const WithStep: Story = {
     </div>
   ),
 };
+
+export const SegmentedWithLabels: Story = {
+  render: () => (
+    <div className="w-80">
+      <Slider defaultValue={[50]} max={100} step={25} />
+      <div className="relative mt-2">
+        <div className="flex justify-between text-xs text-muted-foreground">
+          <span>0%</span>
+          <span>25%</span>
+          <span>50%</span>
+          <span>75%</span>
+          <span>MAX</span>
+        </div>
+      </div>
+    </div>
+  ),
+};
