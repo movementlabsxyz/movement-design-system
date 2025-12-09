@@ -28,12 +28,20 @@ A production-ready design system built with shadcn/ui components, Radix UI primi
 
 ### Install the Package
 
+Official published package is COMING SOON to NPM. For now, you can install it from the GitHub repository:
+
+have the following in your package.json:
+```json
+{
+  "dependencies": {
+    "movement-design-system": "github:movementlabsxyz/movement-design-system"
+  }
+}
+```
+
+then run:
 ```bash
-npm install @movementlabsxyz/movement-design-system
-# or
-pnpm add @movementlabsxyz/movement-design-system
-# or
-yarn add @movementlabsxyz/movement-design-system
+pnpm install
 ```
 
 ### Setup Tailwind CSS
