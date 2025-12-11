@@ -134,7 +134,7 @@ function ConnectWalletContent({
       const hasNightly = [
         ...(grouped?.availableWallets ?? []),
         ...(grouped?.installableWallets ?? []),
-      ].some((w) => w.name.toLowerCase().includes('nightly'));
+      ].some((w) => w.name.toLowerCase().includes("nightly"));
       if (!hasNightly) {
         additionalInstallableWallets.push(nightlyWallet);
       }
@@ -251,7 +251,7 @@ function ConnectWalletContent({
               className={cn(
                 "inline-flex items-center justify-center gap-2 self-center text-white",
                 "rounded-md text-sm font-medium whitespace-nowrap transition-all duration-200",
-                "cursor-pointer border-none bg-white/10",
+                "cursor-pointer border-none bg-transparent",
                 "focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
                 "disabled:pointer-events-none disabled:opacity-50",
                 "h-9 px-3 hover:bg-white/20",
@@ -268,7 +268,7 @@ function ConnectWalletContent({
               />
             </button>
             {isMoreWalletsOpen && (
-              <div className="animate-in fade-in overflow-hidden duration-200">
+              <div className="animate-in fade-in duration-200">
                 <div className="flex w-full flex-wrap items-start justify-center gap-4 pt-2">
                   {cleanWalletList(installableWallets).map((wallet) => (
                     <div

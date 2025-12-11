@@ -36,7 +36,9 @@ export function ToastComponent({
         <X
           className={cn(
             "m-[2px] h-4 w-4",
-            variant === "success" ? "text-black" : "text-white",
+            variant === "error" || variant === "warning"
+              ? "text-white"
+              : "text-black",
           )}
         />
       </button>
@@ -83,7 +85,7 @@ const toastRecipe = cva(
 const iconRecipe = cva(["h-5", "w-5"], {
   variants: {
     variant: {
-      info: ["text-white"],
+      info: ["text-black"],
       error: ["text-white"],
       warning: ["text-white"],
       success: ["text-black"],
