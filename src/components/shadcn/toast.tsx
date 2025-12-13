@@ -3,7 +3,7 @@ import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 import { type ToastVariant } from "./toast-types";
-import { Info, AlertTriangle, CheckCircle2, X } from "lucide-react";
+import { Info, AlertTriangle, Check, X } from "lucide-react";
 
 /**
  * A message that appears on the screen to provide feedback on an action, or provide a notification
@@ -50,7 +50,7 @@ const iconMap: Record<ToastVariant, ComponentType<{ className?: string }>> = {
   info: Info,
   error: AlertTriangle,
   warning: AlertTriangle,
-  success: CheckCircle2,
+  success: Check,
 };
 
 // Toast recipe using CVA

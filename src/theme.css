@@ -462,7 +462,7 @@
   /* Brand semantic colors (dark theme) */
   --primary: hsl(150 100% 75%); /* guild-green.300 - bright */
   --primary-foreground: hsl(0 0% 0%); /* black - for bright green bg */
-  --secondary: hsl(227 100% 50%); /* byzantine-blue.400 - dark blue */
+  --secondary: 	hsl(228, 100%, 42%); /* byzantine-blue.500 - dark blue */
   --secondary-foreground: hsl(0 0% 100%); /* white - for dark blue bg */
   --accent: hsl(0 0% 100%); /* white - for menu/dropdown active bg */
   --accent-foreground: hsl(0 0% 0%); /* black - for menu/dropdown active text */
