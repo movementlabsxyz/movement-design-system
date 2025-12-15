@@ -33,7 +33,7 @@ const meta = {
     },
     variant: {
       control: "select",
-      options: ["default", "error"],
+      options: ["default", "error", "iridescent"],
       description: "Input variant",
     },
     disabled: {
@@ -461,4 +461,147 @@ export const AllVariants: Story = {
       </div>
     </div>
   ),
+};
+
+export const IridescentVariant: Story = {
+  render: () => (
+    <div className="flex w-full max-w-md flex-col gap-6">
+      <h2 className="text-2xl font-semibold">Iridescent Variant</h2>
+
+      <div className="space-y-2">
+        <Label>Iridescent Input</Label>
+        <Input
+          variant="iridescent"
+          size="lg"
+          placeholder="Enter text..."
+          clearable
+        />
+      </div>
+
+      <div className="space-y-2">
+        <Label>Iridescent with Search Icon</Label>
+        <Input
+          variant="iridescent"
+          size="lg"
+          placeholder="Search"
+          leftIcon={<Search className="size-6" />}
+          clearable
+          defaultValue="Query"
+        />
+      </div>
+
+      <div className="space-y-2">
+        <Label>Iridescent with Email</Label>
+        <Input
+          variant="iridescent"
+          size="md"
+          type="email"
+          placeholder="email@example.com"
+          leftIcon={<Mail className="size-6" />}
+        />
+      </div>
+
+      <div className="space-y-2">
+        <Label>Iridescent Error State</Label>
+        <Input
+          variant="iridescent"
+          size="lg"
+          placeholder="Invalid input"
+          error
+          defaultValue="Invalid value"
+          clearable
+        />
+        <p className="text-destructive text-sm">This field has an error</p>
+      </div>
+
+      <div className="space-y-2">
+        <Label>Iridescent Small Size</Label>
+        <Input
+          variant="iridescent"
+          size="sm"
+          placeholder="Small iridescent"
+          leftIcon={<User className="size-5" />}
+          clearable
+        />
+      </div>
+
+      <div className="space-y-2">
+        <Label className="opacity-50">Iridescent Disabled</Label>
+        <Input
+          variant="iridescent"
+          size="md"
+          placeholder="Disabled"
+          disabled
+          defaultValue="Cannot edit"
+        />
+      </div>
+    </div>
+  ),
+};
+
+export const IridescentComparison: Story = {
+  render: function IridescentComparisonRender() {
+    const [value, setValue] = useState("");
+    const [hasError, setHasError] = useState(false);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const newValue = e.target.value;
+      setValue(newValue);
+      // Simple validation: error if less than 3 characters
+      setHasError(newValue.length > 0 && newValue.length < 3);
+    };
+
+    return (
+      <div className="flex w-full max-w-md flex-col gap-6">
+        <h2 className="text-2xl font-semibold">Iridescent with Live Validation</h2>
+
+        <div className="space-y-2">
+          <Label>Default Variant</Label>
+          <Input
+            size="lg"
+            placeholder="Default border..."
+            leftIcon={<User className="size-6" />}
+            clearable
+          />
+        </div>
+
+        <div className="space-y-2">
+          <Label>Iridescent Variant</Label>
+          <Input
+            variant="iridescent"
+            size="lg"
+            placeholder="Iridescent border..."
+            leftIcon={<User className="size-6" />}
+            clearable
+          />
+        </div>
+
+        <div className="space-y-2">
+          <Label>Live Validation (type at least 3 chars)</Label>
+          <Input
+            variant="iridescent"
+            size="lg"
+            placeholder="Start typing..."
+            value={value}
+            onChange={handleChange}
+            onClear={() => {
+              setValue("");
+              setHasError(false);
+            }}
+            error={hasError}
+            clearable
+            leftIcon={<Mail className="size-6" />}
+          />
+          {hasError && (
+            <p className="text-destructive text-sm">
+              Input must be at least 3 characters long
+            </p>
+          )}
+          {value.length >= 3 && (
+            <p className="text-guild-green-300 text-sm">✓ Valid input</p>
+          )}
+        </div>
+      </div>
+    );
+  },
 };

@@ -17,12 +17,13 @@ import { cn } from "@/lib/utils";
  * - Custom cursor color (guild-green-300)
  */
 const inputVariants = cva(
-  "flex w-full items-center gap-3 border-2 backdrop-blur-[21px] bg-transparent transition-[border-color,box-shadow] outline-none",
+  "flex w-full items-center gap-3 backdrop-blur-[21px] bg-transparent transition-[border-color,box-shadow] outline-none",
   {
     variants: {
       variant: {
-        default: "border-border-default focus-within:border-border-strong",
-        error: "border-feedback-error focus-within:border-feedback-error",
+        default: "border-2 border-border-default focus-within:border-border-strong",
+        error: "border-2 border-feedback-error focus-within:border-feedback-error",
+        iridescent: "relative border-0 gradient-border-iridescent",
       },
       size: {
         sm: "h-10 rounded-lg px-4 py-2 text-lg",
