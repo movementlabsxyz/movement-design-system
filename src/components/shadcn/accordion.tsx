@@ -40,6 +40,7 @@ interface AccordionTriggerProps
   extends React.ComponentProps<typeof AccordionPrimitive.Trigger> {
   icon?: React.ReactNode;
   showIcon?: boolean;
+  hideCaret?: boolean;
 }
 
 function AccordionTrigger({
@@ -47,6 +48,7 @@ function AccordionTrigger({
   children,
   icon,
   showIcon = false,
+  hideCaret = false,
   ...props
 }: AccordionTriggerProps) {
   return (
@@ -67,10 +69,12 @@ function AccordionTrigger({
           )}
           <span className="flex-1">{children}</span>
         </div>
-        <div className="relative flex size-8 shrink-0 items-center justify-center">
-          <ChevronDown className="text-fg-subtle group-data-[state=open]:text-fg-base pointer-events-none size-5 transition-all duration-200 group-data-[state=open]:scale-0 group-data-[state=open]:opacity-0" />
-          <ChevronUp className="text-fg-base pointer-events-none absolute inset-0 m-auto size-5 transition-all duration-200 group-data-[state=closed]:scale-0 group-data-[state=closed]:opacity-0" />
-        </div>
+        {!hideCaret && (
+          <div className="relative flex size-8 shrink-0 items-center justify-center">
+            <ChevronDown className="text-fg-subtle group-data-[state=open]:text-fg-base pointer-events-none size-5 transition-all duration-200 group-data-[state=open]:scale-0 group-data-[state=open]:opacity-0" />
+            <ChevronUp className="text-fg-base pointer-events-none absolute inset-0 m-auto size-5 transition-all duration-200 group-data-[state=closed]:scale-0 group-data-[state=closed]:opacity-0" />
+          </div>
+        )}
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   );

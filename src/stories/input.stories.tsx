@@ -553,7 +553,9 @@ export const IridescentComparison: Story = {
 
     return (
       <div className="flex w-full max-w-md flex-col gap-6">
-        <h2 className="text-2xl font-semibold">Iridescent with Live Validation</h2>
+        <h2 className="text-2xl font-semibold">
+          Iridescent with Live Validation
+        </h2>
 
         <div className="space-y-2">
           <Label>Default Variant</Label>
