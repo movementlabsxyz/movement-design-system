@@ -169,7 +169,7 @@ export const Multiple: Story = {
 
 export const DarkTheme: Story = {
   render: () => (
-    <div className="bg-background p-8 rounded-lg">
+    <div className="bg-background rounded-lg p-8">
       <Accordion type="single" collapsible className="w-96">
         <AccordionItem value="item-1" showTopBorder>
           <AccordionTrigger showIcon icon={<MoveIcon className="size-6" />}>
@@ -191,5 +191,41 @@ export const DarkTheme: Story = {
         </AccordionItem>
       </Accordion>
     </div>
+  ),
+};
+
+export const HiddenCaret: Story = {
+  render: () => (
+    <Accordion type="single" collapsible className="w-96">
+      <AccordionItem value="item-1">
+        <AccordionTrigger hideCaret>
+          Accordion without caret icon
+        </AccordionTrigger>
+        <AccordionContent>
+          This accordion has the caret/chevron icon hidden for a cleaner look.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-2">
+        <AccordionTrigger hideCaret>
+          Perfect for minimal designs
+        </AccordionTrigger>
+        <AccordionContent>
+          Use the hideCaret prop when you want a more minimal appearance without
+          the expand/collapse indicator.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-3">
+        <AccordionTrigger
+          hideCaret
+          showIcon
+          icon={<Package className="size-6" />}
+        >
+          Works with leading icons too
+        </AccordionTrigger>
+        <AccordionContent>
+          You can combine hideCaret with leading icons for custom designs.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
   ),
 };

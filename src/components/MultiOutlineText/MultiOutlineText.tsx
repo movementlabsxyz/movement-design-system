@@ -24,6 +24,7 @@ interface MultiOutlineTextProps {
 export default function MultiOutlineText({
   children,
   color = "#81FFBA",
+  fontSize,
   fontWeight = "900",
   lineHeight = "110%",
   letterSpacing = "1.28px",
@@ -51,8 +52,11 @@ export default function MultiOutlineText({
 
     const loadFont = async () => {
       try {
-        const fontSize = isMobile ? 36 : 64;
-        await document.fonts.load(`${fontWeight} ${fontSize}px ${fontFamily}`);
+        const defaultSize = isMobile ? 36 : 64;
+        const sizeToLoad = fontSize ? parseFloat(fontSize) : defaultSize;
+        await document.fonts.load(
+          `${fontWeight} ${sizeToLoad}px ${fontFamily}`,
+        );
         setFontLoaded(true);
       } catch {
         await document.fonts.ready;
@@ -61,7 +65,7 @@ export default function MultiOutlineText({
     };
 
     loadFont();
-  }, [waitForFont, fontWeight, fontFamily, isMobile]);
+  }, [waitForFont, fontWeight, fontFamily, fontSize, isMobile]);
 
   // Function to measure text width accurately
   const measureTextWidth = (
@@ -88,17 +92,18 @@ export default function MultiOutlineText({
 
   if (isTextOnly) {
     // Use SVG rendering for text-only content
-    const fontSize = isMobile ? 36 : 64;
-    
+    const defaultSize = isMobile ? 36 : 64;
+    const computedFontSize = fontSize ? parseFloat(fontSize) : defaultSize;
+
     // Only measure after font is loaded for accuracy
     const textWidth = fontLoaded
       ? measureTextWidth(
           children as string,
-          fontSize,
+          computedFontSize,
           fontWeight,
           letterSpacing,
         )
-      : (children as string).length * fontSize * 0.6; // Fallback while loading
+      : (children as string).length * computedFontSize * 0.6; // Fallback while loading
 
     // Calculate max stroke width to add as padding
     const maxStroke = Math.max(
@@ -108,14 +113,14 @@ export default function MultiOutlineText({
     );
 
     const estimatedWidth = textWidth + maxStroke * 2; // Add stroke padding on both sides
-    const height = fontSize * 1.2; // Adding padding for strokes
+    const height = computedFontSize * 1.2; // Adding padding for strokes
 
     return (
       <svg
         viewBox={`0 0 ${estimatedWidth} ${height}`}
         className={cn("w-auto overflow-visible", className)}
         style={{
-          height: isMobile ? "36px" : "64px",
+          height: fontSize || (isMobile ? "36px" : "64px"),
           opacity: fontLoaded ? 1 : 0,
           transition: "opacity 0.2s ease-in-out",
         }}
@@ -135,7 +140,7 @@ export default function MultiOutlineText({
               dominantBaseline="middle"
               style={{
                 fontFamily: fontFamily,
-                fontSize: `${fontSize}px`,
+                fontSize: `${computedFontSize}px`,
                 fontWeight: fontWeight,
                 letterSpacing: letterSpacing,
                 fill: "none",
@@ -158,7 +163,7 @@ export default function MultiOutlineText({
           dominantBaseline="middle"
           style={{
             fontFamily: fontFamily,
-            fontSize: `${fontSize}px`,
+            fontSize: `${computedFontSize}px`,
             fontWeight: fontWeight,
             letterSpacing: letterSpacing,
             fill: color,
@@ -184,11 +189,12 @@ export default function MultiOutlineText({
             aria-hidden="true"
             className={cn(
               "absolute top-0 left-0 m-0 inline-flex items-center",
-              "text-[36px] md:text-[56px] lg:text-[64px]",
+              !fontSize && "text-[36px] md:text-[56px] lg:text-[64px]",
               "font-[900]",
             )}
             style={{
               textAlign: textAlign as any,
+              fontSize: fontSize,
               fontWeight,
               lineHeight,
               letterSpacing,
@@ -209,11 +215,12 @@ export default function MultiOutlineText({
       <div
         className={cn(
           "relative m-0 inline-flex items-center",
-          "text-[36px] md:text-[56px] lg:text-[64px]",
+          !fontSize && "text-[36px] md:text-[56px] lg:text-[64px]",
           "font-[900]",
         )}
         style={{
           textAlign: textAlign as any,
+          fontSize: fontSize,
           fontWeight,
           lineHeight,
           letterSpacing,
