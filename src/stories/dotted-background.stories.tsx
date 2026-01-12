@@ -43,7 +43,7 @@ export const Dots: Story = {
   render: (args) => (
     <DottedBackground {...args}>
       <div className="flex items-center justify-center h-full">
-        <p className="text-white text-lg">Dotted Background</p>
+        <p className="text-foreground text-lg">Dotted Background</p>
       </div>
     </DottedBackground>
   ),
@@ -56,7 +56,7 @@ export const Grid: Story = {
   render: (args) => (
     <DottedBackground {...args}>
       <div className="flex items-center justify-center h-full">
-        <p className="text-white text-lg">Grid Background</p>
+        <p className="text-foreground text-lg">Grid Background</p>
       </div>
     </DottedBackground>
   ),
@@ -69,7 +69,7 @@ export const Gradient: Story = {
   render: (args) => (
     <DottedBackground {...args}>
       <div className="flex items-center justify-center h-full">
-        <p className="text-white text-lg">Gradient Background</p>
+        <p className="text-foreground text-lg">Gradient Background</p>
       </div>
     </DottedBackground>
   ),
@@ -82,7 +82,7 @@ export const WithGlassInput: Story = {
   render: (args) => (
     <DottedBackground {...args}>
       <div className="flex flex-col items-center justify-center h-full gap-6">
-        <h2 className="text-white text-2xl font-semibold">Search Interface</h2>
+        <h2 className="text-foreground text-2xl font-semibold">Search Interface</h2>
         <div className="w-full max-w-md">
           <Input
             type="search"
@@ -102,9 +102,9 @@ export const WithGlassCard: Story = {
   render: (args) => (
     <DottedBackground {...args}>
       <div className="flex items-center justify-center h-full">
-        <Card className="w-full max-w-md bg-white/10 backdrop-blur-xl border-white/20">
+        <Card className="w-full max-w-md bg-background/80 backdrop-blur-xl border-border">
           <CardHeader>
-            <CardTitle className="text-white">Glass Card</CardTitle>
+            <CardTitle>Glass Card</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <Input
@@ -130,7 +130,7 @@ export const CustomDots: Story = {
   render: (args) => (
     <DottedBackground {...args}>
       <div className="flex items-center justify-center h-full">
-        <p className="text-white text-lg">Custom Styled Dots</p>
+        <p className="text-foreground text-lg">Custom Styled Dots</p>
       </div>
     </DottedBackground>
   ),
@@ -139,13 +139,12 @@ export const CustomDots: Story = {
 export const FineGrid: Story = {
   args: {
     variant: "grid",
-    dotColor: "rgba(255, 255, 255, 0.1)",
     gap: 15,
   },
   render: (args) => (
     <DottedBackground {...args}>
       <div className="flex items-center justify-center h-full">
-        <p className="text-white text-lg">Fine Grid Pattern</p>
+        <p className="text-foreground text-lg">Fine Grid Pattern</p>
       </div>
     </DottedBackground>
   ),
@@ -156,7 +155,7 @@ export const AllVariants: Story = {
     <div className="flex flex-col gap-8 w-full">
       <DottedBackground variant="dots" className="min-h-[300px]">
         <div className="flex flex-col items-center justify-center h-full gap-4">
-          <h3 className="text-white text-xl font-semibold">Dots Variant</h3>
+          <h3 className="text-foreground text-xl font-semibold">Dots Variant</h3>
           <Input
             type="search"
             placeholder="Search with dots"
@@ -168,7 +167,7 @@ export const AllVariants: Story = {
 
       <DottedBackground variant="grid" className="min-h-[300px]">
         <div className="flex flex-col items-center justify-center h-full gap-4">
-          <h3 className="text-white text-xl font-semibold">Grid Variant</h3>
+          <h3 className="text-foreground text-xl font-semibold">Grid Variant</h3>
           <Input
             type="search"
             placeholder="Search with grid"
@@ -180,7 +179,7 @@ export const AllVariants: Story = {
 
       <DottedBackground variant="gradient" className="min-h-[300px]">
         <div className="flex flex-col items-center justify-center h-full gap-4">
-          <h3 className="text-white text-xl font-semibold">Gradient Variant</h3>
+          <h3 className="text-foreground text-xl font-semibold">Gradient Variant</h3>
           <Input
             type="search"
             placeholder="Search with gradient"

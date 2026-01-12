@@ -30,13 +30,13 @@ function RadioGroupItem({
         // Base styles
         "aspect-square size-4 shrink-0 rounded-full border transition-all outline-none",
         // Default state - unselected
-        "bg-white/[0.24] border-white/[0.24]",
+        "bg-input border-border",
         // Hover state
-        "hover:border-white/[0.64]",
+        "hover:border-border-strong",
         // Selected state
-        "data-[state=checked]:bg-[#81ffba] data-[state=checked]:border-[#81ffba]",
+        "data-[state=checked]:bg-primary data-[state=checked]:border-primary",
         // Focus state
-        "focus-visible:border-white/[0.64] focus-visible:ring-[3px] focus-visible:ring-ring/50",
+        "focus-visible:border-border-strong focus-visible:ring-[3px] focus-visible:ring-ring/50",
         // Invalid state
         "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
         // Disabled state
@@ -49,7 +49,7 @@ function RadioGroupItem({
         data-slot="radio-group-indicator"
         className="relative flex items-center justify-center"
       >
-        <CircleIcon className="fill-black absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2" />
+        <CircleIcon className="fill-primary-foreground absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2" />
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>
   )

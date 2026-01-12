@@ -1,6 +1,18 @@
 // Styles
 import "./index.css";
 
+// Theme
+export {
+  ThemeProvider,
+  ThemeSwitcher,
+  ThemeToggle,
+  useTheme,
+} from "./components/theme";
+export type {
+  ThemeProviderProps,
+  ThemeSwitcherProps,
+} from "./components/theme";
+
 // Components
 export * from "./components/Icon";
 export { Branding } from "./components/Branding";

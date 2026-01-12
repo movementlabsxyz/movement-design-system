@@ -18,15 +18,15 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90 active:bg-destructive/80",
         success:
-          "bg-green-600 text-white hover:bg-green-700 active:bg-green-800",
+          "bg-success text-success-foreground hover:bg-success/90 active:bg-success/80",
         warning:
-          "bg-yellow-500 text-black hover:bg-yellow-600 active:bg-yellow-700",
+          "bg-warning text-warning-foreground hover:bg-warning/90 active:bg-warning/80",
         outline:
           "border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground",
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
-        glow: "w-full max-w-[522px] p-3 bg-[#81FFBA] border-0 font-mono text-[#0237FE] rounded-lg text-2xl font-bold leading-6 tracking-[-0.06rem] uppercase relative overflow-hidden backdrop-blur-[21px] shadow-[8px_8px_0_0_#0337FF] hover:-translate-y-px hover:bg-white hover:shadow-[-8px_-8px_0_0_#0337FF] active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 ease-in-out",
+        glow: "w-full max-w-[522px] p-3 bg-primary border-0 font-mono text-secondary rounded-lg text-2xl font-bold leading-6 tracking-[-0.06rem] uppercase relative overflow-hidden backdrop-blur-[21px] shadow-[8px_8px_0_0_hsl(var(--secondary))] hover:-translate-y-px hover:bg-background hover:shadow-[-8px_-8px_0_0_hsl(var(--secondary))] active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 ease-in-out",
       },
       size: {
         xs: "h-6 px-3 text-xs gap-1.5",

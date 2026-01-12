@@ -226,15 +226,15 @@ function ConnectWalletContent({
         ) : (
           <>
             <div className="h-px w-92 bg-[rgba(255,255,255,0.48)]" />
-            <span className="font-['TWK_Everett_Mono',monospace] text-lg leading-[21.60px] font-medium text-[#81FFBA]">
+            <span className="font-['TWK_Everett_Mono',monospace] text-lg leading-[21.60px] font-medium text-primary">
               Don&apos;t have a wallet?
             </span>
             <button
               className={cn(
-                "h-10 w-full rounded-full bg-[#6067F9] px-4 py-1 [&_path]:fill-white",
+                "h-10 w-full rounded-full bg-accent px-4 py-1 [&_path]:fill-white",
                 "inline-flex cursor-pointer items-center justify-center gap-2 border-none",
                 "transition-all duration-200 ease-[ease]",
-                "hover:bg-white hover:text-black [&:hover_path]:fill-black",
+                "hover:bg-background hover:text-foreground [&:hover_path]:fill-foreground",
               )}
               onClick={() => window.open(nightlyWallet.url, "_blank")}
             >
@@ -364,7 +364,7 @@ interface WalletRowProps {
 }
 
 const gridCard = (child: React.ReactNode) => (
-  <div className="group/wallet relative h-28 w-28 cursor-pointer rounded-lg backdrop-blur-[1.3125rem] transition-shadow duration-200 ease-in-out hover:shadow-[0.25rem_0.25rem_0_#81FFBA]">
+  <div className="group/wallet relative h-28 w-28 cursor-pointer rounded-lg backdrop-blur-[1.3125rem] transition-shadow duration-200 ease-in-out hover:shadow-[0.25rem_0.25rem_0_hsl(var(--primary))]">
     <div className="absolute inset-0 rounded-lg bg-linear-to-br from-white/[0.096] to-transparent backdrop-blur-[1.3125rem] group-hover/wallet:from-white/40" />
     <div className="absolute top-1/2 left-1/2 flex h-20.5 w-20.5 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-2 p-0">
       {child}
@@ -390,8 +390,8 @@ function IconWalletCard({ wallet, onConnect }: WalletRowProps) {
               <div className="flex h-4.5 w-20.5 items-center justify-center text-center font-['TWK_Everett_Mono',monospace] text-lg leading-[100%] font-normal tracking-[-0.06em] text-white">
                 {cleanWalletName(wallet.name)}
               </div>
-              <div className="absolute top-[-1rem] left-1/2 z-9999 hidden h-5 w-28 -translate-x-1/2 items-center justify-center overflow-hidden rounded-t-lg bg-[rgba(129,255,186,0.80)] group-hover/wallet:inline-flex">
-                <span className="font-['TWK_Everett_Mono',monospace] text-xs leading-[14px] font-bold tracking-[0.40px] text-[#0337FF] uppercase">
+              <div className="absolute top-[-1rem] left-1/2 z-9999 hidden h-5 w-28 -translate-x-1/2 items-center justify-center overflow-hidden rounded-t-lg bg-primary/80 group-hover/wallet:inline-flex">
+                <span className="font-['TWK_Everett_Mono',monospace] text-xs leading-[14px] font-bold tracking-[0.40px] text-secondary uppercase">
                   INSTALL
                 </span>
               </div>

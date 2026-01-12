@@ -1,6 +1,6 @@
 
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
   /*
@@ -381,32 +381,32 @@
   --radius: 0.625rem;
   
   /* ========================================================================
-   * LAYER 3: SEMANTIC BASE TOKENS (Dark Theme Default)
+   * LAYER 3: SEMANTIC BASE TOKENS (Light Theme Default)
    * ======================================================================== */
   
   /* Background semantic tokens */
-  --semantic-bg-base: rgba(255, 255, 255, 0.24); /* input/checkbox bg */
-  --semantic-bg-alt-1: rgba(255, 255, 255, 0.08); /* subtle bg */
-  --semantic-bg-alt-2: rgba(255, 255, 255, 0.16); /* disabled bg */
+  --semantic-bg-base: #ffffff;
+  --semantic-bg-alt-1: #f5f5f5;
+  --semantic-bg-alt-2: #ebebeb;
   
   /* Foreground semantic tokens */
-  --semantic-fg-base: #ffffff; /* white text */
-  --semantic-fg-muted: rgba(255, 255, 255, 0.64); /* muted white */
-  --semantic-fg-subtle: rgba(255, 255, 255, 0.40); /* subtle white */
+  --semantic-fg-base: #000000;
+  --semantic-fg-muted: rgba(0, 0, 0, 0.64);
+  --semantic-fg-subtle: rgba(0, 0, 0, 0.40);
   
   /* Border semantic tokens */
-  --semantic-border-default: rgba(255, 255, 255, 0.24); /* input/checkbox border */
-  --semantic-border-strong: rgba(255, 255, 255, 0.40); /* focus border */
+  --semantic-border-default: rgba(0, 0, 0, 0.12);
+  --semantic-border-strong: rgba(0, 0, 0, 0.24);
   
   /* Feedback semantic tokens */
-  --semantic-feedback-success-default: var(--color-guild-green-400);
-  --semantic-feedback-success-light: var(--color-guild-green-100);
+  --semantic-feedback-success-default: var(--color-guild-green-600);
+  --semantic-feedback-success-light: var(--color-guild-green-50);
   --semantic-feedback-error-default: #D82C2D;
-  --semantic-feedback-error-light: #ffc2c2;
-  --semantic-feedback-warning-default: var(--color-oracle-orange-500);
-  --semantic-feedback-warning-light: var(--color-oracle-orange-100);
-  --semantic-feedback-info-default: var(--color-byzantine-blue-400);
-  --semantic-feedback-info-light: var(--color-byzantine-blue-100);
+  --semantic-feedback-error-light: #ffeaea;
+  --semantic-feedback-warning-default: var(--color-oracle-orange-600);
+  --semantic-feedback-warning-light: var(--color-oracle-orange-50);
+  --semantic-feedback-info-default: var(--color-byzantine-blue-500);
+  --semantic-feedback-info-light: var(--color-byzantine-blue-50);
   
   /* Disabled state */
   --semantic-disabled-base: var(--color-neutrals-black-alpha-300);
@@ -452,56 +452,56 @@
    * ======================================================================== */
   
   /* Backgrounds & Foregrounds */
-  --background: hsl(0 0% 0%); /* black - dark theme default */
-  --foreground: hsl(0 0% 100%); /* white - default text */
-  --card: hsl(0 0% 10%); /* dark card */
-  --card-foreground: hsl(0 0% 100%); /* white text */
-  --popover: hsl(0 0% 100% / 24%); /* rgba(255,255,255,0.24) - menu/dropdown bg */
-  --popover-foreground: hsl(0 0% 100%); /* white - menu text */
+  --background: hsl(0 0% 100%); /* white - light theme default */
+  --foreground: hsl(0 0% 0%); /* black - default text */
+  --card: hsl(0 0% 100%); /* white card */
+  --card-foreground: hsl(0 0% 0%); /* black text */
+  --popover: hsl(0 0% 100%); /* white - menu/dropdown bg */
+  --popover-foreground: hsl(0 0% 0%); /* black - menu text */
   
-  /* Brand semantic colors (dark theme) */
-  --primary: hsl(150 100% 75%); /* guild-green.300 - bright */
-  --primary-foreground: hsl(0 0% 0%); /* black - for bright green bg */
-  --secondary: 	hsl(228, 100%, 42%); /* byzantine-blue.500 - dark blue */
-  --secondary-foreground: hsl(0 0% 100%); /* white - for dark blue bg */
-  --accent: hsl(0 0% 100%); /* white - for menu/dropdown active bg */
-  --accent-foreground: hsl(0 0% 0%); /* black - for menu/dropdown active text */
-  --destructive: hsl(13 100% 63%); /* oracle-orange.400 - bright */
-  --destructive-foreground: hsl(0 0% 0%); /* black - for bright orange bg */
+  /* Brand semantic colors (light theme) */
+  --primary: hsl(154 66% 66%); /* guild-green.400 */
+  --primary-foreground: hsl(0 0% 0%); /* black - for green bg */
+  --secondary: hsl(228 100% 50%); /* byzantine-blue.400 */
+  --secondary-foreground: hsl(0 0% 100%); /* white - for blue bg */
+  --accent: hsl(304 100% 73%); /* protocol-pink.300 */
+  --accent-foreground: hsl(0 0% 0%); /* black - for pink bg */
+  --destructive: hsl(0 72% 51%); /* red for destructive actions */
+  --destructive-foreground: hsl(0 0% 100%); /* white */
   
   /* Feedback colors - for alerts/toasts */
-  --info: hsl(0 0% 100%); /* white - basic info bg */
-  --info-foreground: hsl(0 0% 0%); /* black - basic info text */
-  --success: hsl(154 66% 66%); /* guild-green.400 - bright */
-  --success-foreground: hsl(0 0% 0%); /* black - for bright green bg */
-  --warning: hsl(47 100% 60%); /* moveus-marigold.400 - bright */
-  --warning-foreground: hsl(0 0% 0%); /* black - for bright yellow bg */
-  --error: hsl(13 100% 63%); /* oracle-orange.400 - bright */
-  --error-foreground: hsl(0 0% 0%); /* black - for bright orange bg */
+  --info: hsl(228 100% 50%); /* byzantine-blue.400 */
+  --info-foreground: hsl(0 0% 100%); /* white */
+  --success: hsl(154 66% 66%); /* guild-green.400 */
+  --success-foreground: hsl(0 0% 0%); /* black */
+  --warning: hsl(47 100% 60%); /* moveus-marigold.400 */
+  --warning-foreground: hsl(0 0% 0%); /* black */
+  --error: hsl(0 72% 51%); /* red */
+  --error-foreground: hsl(0 0% 100%); /* white */
   
   /* Muted & UI elements */
-  --muted: hsl(0 0% 15%); /* dark muted bg */
-  --muted-foreground: hsl(0 0% 60%); /* muted white */
-  --border: hsl(0 0% 100% / 24%); /* rgba(255,255,255,0.24) */
-  --input: hsl(0 0% 100% / 24%); /* rgba(255,255,255,0.24) - checkbox/input border and bg */
-  --ring: hsl(150 100% 75%); /* guild-green.300 - focus ring */
+  --muted: hsl(0 0% 96%); /* light muted bg */
+  --muted-foreground: hsl(0 0% 40%); /* muted gray */
+  --border: hsl(0 0% 0% / 12%); /* rgba(0,0,0,0.12) */
+  --input: hsl(0 0% 0% / 12%); /* rgba(0,0,0,0.12) */
+  --ring: hsl(154 66% 66%); /* guild-green.400 - focus ring */
   
   /* Charts (using brand colors) */
   --chart-1: hsl(154 66% 66%); /* guild-green.400 */
-  --chart-2: hsl(227 100% 50%); /* byzantine-blue.400 */
+  --chart-2: hsl(228 100% 50%); /* byzantine-blue.400 */
   --chart-3: hsl(304 100% 73%); /* protocol-pink.300 */
   --chart-4: hsl(13 100% 63%); /* oracle-orange.400 */
   --chart-5: hsl(47 100% 60%); /* moveus-marigold.400 */
   
   /* Sidebar */
-  --sidebar: hsl(0 0% 5%); /* dark */
-  --sidebar-foreground: hsl(0 0% 100%); /* white */
-  --sidebar-primary: hsl(150 100% 75%); /* guild-green.300 - bright */
-  --sidebar-primary-foreground: hsl(0 0% 0%); /* black - for bright green */
-  --sidebar-accent: hsl(0 0% 15%); /* slightly lighter dark */
-  --sidebar-accent-foreground: hsl(0 0% 100%); /* white */
-  --sidebar-border: hsl(0 0% 100% / 10%);
-  --sidebar-ring: hsl(150 100% 75%);
+  --sidebar: hsl(0 0% 98%); /* light */
+  --sidebar-foreground: hsl(0 0% 0%); /* black */
+  --sidebar-primary: hsl(154 66% 66%); /* guild-green.400 */
+  --sidebar-primary-foreground: hsl(0 0% 0%); /* black */
+  --sidebar-accent: hsl(0 0% 96%); /* light gray */
+  --sidebar-accent-foreground: hsl(0 0% 0%); /* black */
+  --sidebar-border: hsl(0 0% 0% / 10%);
+  --sidebar-ring: hsl(154 66% 66%);
 }
 
 .dark {
@@ -516,25 +516,25 @@
   
   /* Foreground semantic tokens */
   --semantic-fg-base: #ffffff;
-  --semantic-fg-muted: #b3b3b3; /* ~70% opacity white */
-  --semantic-fg-subtle: #808080; /* ~50% opacity white */
+  --semantic-fg-muted: rgba(255, 255, 255, 0.64);
+  --semantic-fg-subtle: rgba(255, 255, 255, 0.40);
   
   /* Border semantic tokens */
-  --semantic-border-default: var(--color-neutrals-white-alpha-200);
-  --semantic-border-strong: var(--color-neutrals-white-alpha-400);
+  --semantic-border-default: rgba(255, 255, 255, 0.12);
+  --semantic-border-strong: rgba(255, 255, 255, 0.24);
   
-  /* Feedback semantic tokens (same as light mode) */
+  /* Feedback semantic tokens (dark mode - brighter variants for visibility) */
   --semantic-feedback-success-default: var(--color-guild-green-400);
-  --semantic-feedback-success-light: var(--color-guild-green-100);
-  --semantic-feedback-error-default: #D82C2D;
-  --semantic-feedback-error-light: #ffc2c2;
-  --semantic-feedback-warning-default: var(--color-oracle-orange-500);
-  --semantic-feedback-warning-light: var(--color-oracle-orange-100);
-  --semantic-feedback-info-default: var(--color-byzantine-blue-400);
-  --semantic-feedback-info-light: var(--color-byzantine-blue-100);
+  --semantic-feedback-success-light: var(--color-guild-green-900);
+  --semantic-feedback-error-default: #ff4d4d;
+  --semantic-feedback-error-light: #3d1414;
+  --semantic-feedback-warning-default: var(--color-oracle-orange-400);
+  --semantic-feedback-warning-light: var(--color-oracle-orange-900);
+  --semantic-feedback-info-default: var(--color-byzantine-blue-300);
+  --semantic-feedback-info-light: var(--color-byzantine-blue-900);
   
   /* Disabled state */
-  --semantic-disabled-base: var(--color-neutrals-white-alpha-300);
+  --semantic-disabled-base: rgba(255, 255, 255, 0.16);
   
   /* ========================================================================
    * LAYER 5: LEGACY SEMANTIC MAPPINGS (Dark Mode)
@@ -543,54 +543,54 @@
   /* Dark mode backgrounds & foregrounds */
   --background: hsl(0 0% 0%); /* black */
   --foreground: hsl(0 0% 100%); /* white */
-  --card: hsl(0 0% 10%);
+  --card: hsl(0 0% 7%);
   --card-foreground: hsl(0 0% 100%);
-  --popover: hsl(0 0% 10%);
+  --popover: hsl(0 0% 7%);
   --popover-foreground: hsl(0 0% 100%);
   
-  /* Brand semantic colors (dark mode - slightly adjusted) */
-  --primary: hsl(154 66% 66%); /* guild-green.400 (slightly less bright) */
+  /* Brand semantic colors (dark mode) */
+  --primary: hsl(150 100% 75%); /* guild-green.300 - brighter for dark mode */
   --primary-foreground: hsl(0 0% 0%);
-  --secondary: hsl(227 100% 65%); /* byzantine-blue.200 (lighter for dark mode) */
+  --secondary: hsl(228 100% 65%); /* byzantine-blue.200 - lighter for dark mode */
   --secondary-foreground: hsl(0 0% 0%);
   --accent: hsl(304 100% 73%); /* protocol-pink.300 */
   --accent-foreground: hsl(0 0% 0%);
-  --destructive: hsl(13 100% 63%); /* oracle-orange.400 */
-  --destructive-foreground: hsl(0 0% 0%);
+  --destructive: hsl(0 72% 60%); /* brighter red for dark mode */
+  --destructive-foreground: hsl(0 0% 100%);
   
   /* Feedback colors (dark mode) */
-  --info: hsl(227 100% 65%); /* byzantine-blue.200 */
+  --info: hsl(228 100% 65%); /* byzantine-blue.200 */
   --info-foreground: hsl(0 0% 0%);
-  --success: hsl(154 66% 66%); /* guild-green.400 */
+  --success: hsl(150 100% 75%); /* guild-green.300 - brighter */
   --success-foreground: hsl(0 0% 0%);
   --warning: hsl(47 100% 60%); /* moveus-marigold.400 */
   --warning-foreground: hsl(0 0% 0%);
-  --error: hsl(13 100% 63%); /* oracle-orange.400 */
-  --error-foreground: hsl(0 0% 0%);
+  --error: hsl(0 72% 60%); /* brighter red */
+  --error-foreground: hsl(0 0% 100%);
   
   /* Muted & UI elements (dark mode) */
   --muted: hsl(0 0% 15%);
-  --muted-foreground: hsl(0 0% 70%);
-  --border: hsl(0 0% 100% / 10%);
-  --input: hsl(0 0% 100% / 15%);
-  --ring: hsl(154 66% 66%); /* guild-green.400 */
+  --muted-foreground: hsl(0 0% 64%);
+  --border: hsl(0 0% 100% / 12%);
+  --input: hsl(0 0% 100% / 12%);
+  --ring: hsl(150 100% 75%); /* guild-green.300 */
   
   /* Charts (dark mode) */
-  --chart-1: hsl(154 66% 66%); /* guild-green.400 */
-  --chart-2: hsl(227 100% 65%); /* byzantine-blue.200 */
+  --chart-1: hsl(150 100% 75%); /* guild-green.300 */
+  --chart-2: hsl(228 100% 65%); /* byzantine-blue.200 */
   --chart-3: hsl(304 100% 73%); /* protocol-pink.300 */
   --chart-4: hsl(13 100% 63%); /* oracle-orange.400 */
   --chart-5: hsl(47 100% 60%); /* moveus-marigold.400 */
   
   /* Sidebar (dark mode) */
-  --sidebar: hsl(0 0% 10%);
+  --sidebar: hsl(0 0% 5%);
   --sidebar-foreground: hsl(0 0% 100%);
-  --sidebar-primary: hsl(154 66% 66%); /* guild-green.400 */
+  --sidebar-primary: hsl(150 100% 75%); /* guild-green.300 */
   --sidebar-primary-foreground: hsl(0 0% 0%);
   --sidebar-accent: hsl(0 0% 15%);
   --sidebar-accent-foreground: hsl(0 0% 100%);
   --sidebar-border: hsl(0 0% 100% / 10%);
-  --sidebar-ring: hsl(154 66% 66%);
+  --sidebar-ring: hsl(150 100% 75%);
 }
 
 /* ============================================================================

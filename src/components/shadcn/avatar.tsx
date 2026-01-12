@@ -12,8 +12,8 @@ const avatarVariants = cva(
       border: {
         none: "",
         glow: gradientBorderClasses.glow,
-        guild: "border-2 border-[#81FFBA]",
-        byzantine: "border-2 border-[#0337FF]",
+        guild: "border-2 border-primary",
+        byzantine: "border-2 border-secondary",
       },
     },
     defaultVariants: {

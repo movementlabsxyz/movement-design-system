@@ -64,14 +64,14 @@ function ProgressButton({
       className={cn(
         "relative",
         loading &&
-          "bg-moveus-marigold-400 -translate-y-px shadow-[-8px_-8px_0_0_#0337FF]!",
+          "bg-warning -translate-y-px shadow-[-8px_-8px_0_0_hsl(var(--secondary))]!",
         className,
       )}
       {...props}
     >
       {loading && (
         <span
-          className="absolute top-0 left-0 z-0 h-full bg-[#81FFBA] transition-[width] duration-300 ease-in-out"
+          className="absolute top-0 left-0 z-0 h-full bg-primary transition-[width] duration-300 ease-in-out"
           style={{
             width: `${percent}%`,
             willChange: "width",

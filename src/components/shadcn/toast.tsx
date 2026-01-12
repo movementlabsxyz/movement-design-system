@@ -37,8 +37,8 @@ export function ToastComponent({
           className={cn(
             "m-[2px] h-4 w-4",
             variant === "error" || variant === "warning"
-              ? "text-white"
-              : "text-black",
+              ? "text-error-foreground"
+              : "text-success-foreground",
           )}
         />
       </button>
@@ -69,10 +69,10 @@ const toastRecipe = cva(
   {
     variants: {
       variant: {
-        info: ["text-black", "bg-[#6ce2a1]"],
-        error: ["text-white", "bg-[#D82C2D]"],
-        warning: ["text-white", "bg-[#D82C2D]"],
-        success: ["text-black", "bg-[#6ce2a1]"],
+        info: ["text-success-foreground", "bg-success"],
+        error: ["text-error-foreground", "bg-error"],
+        warning: ["text-error-foreground", "bg-error"],
+        success: ["text-success-foreground", "bg-success"],
       },
     },
     defaultVariants: {
@@ -85,10 +85,10 @@ const toastRecipe = cva(
 const iconRecipe = cva(["h-5", "w-5"], {
   variants: {
     variant: {
-      info: ["text-black"],
-      error: ["text-white"],
-      warning: ["text-white"],
-      success: ["text-black"],
+      info: ["text-success-foreground"],
+      error: ["text-error-foreground"],
+      warning: ["text-error-foreground"],
+      success: ["text-success-foreground"],
     },
   },
   defaultVariants: {
@@ -103,7 +103,12 @@ const titleRecipe = cva(["text-sm", "font-medium"], {
       info: [],
       error: [],
       warning: [],
-      success: ["text-base", "font-bold", "text-black", "leading-[1.5]"],
+      success: [
+        "text-base",
+        "font-bold",
+        "text-success-foreground",
+        "leading-[1.5]",
+      ],
     },
   },
   defaultVariants: {
@@ -118,7 +123,12 @@ const descriptionRecipe = cva(["text-sm"], {
       info: [],
       error: [],
       warning: [],
-      success: ["text-base", "font-normal", "text-black", "leading-[1.4]"],
+      success: [
+        "text-base",
+        "font-normal",
+        "text-success-foreground",
+        "leading-[1.4]",
+      ],
     },
   },
   defaultVariants: {

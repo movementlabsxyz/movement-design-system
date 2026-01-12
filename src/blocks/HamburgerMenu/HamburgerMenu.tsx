@@ -127,7 +127,7 @@ export function HamburgerMenu({
             <DropdownMenuLabel className="flex items-center gap-2 p-2">
               <Avatar className="size-8">
                 <AvatarImage src={user.avatar} alt={user.name} />
-                <AvatarFallback className="bg-yellow-400 text-black font-bold text-xs">
+                <AvatarFallback className="bg-warning text-warning-foreground font-bold text-xs">
                   {user.name
                     .split(" ")
                     .map((n) => n[0])
@@ -149,7 +149,7 @@ export function HamburgerMenu({
                   <Bell size={16} weight="regular" />
                   <Badge
                     variant="destructive"
-                    className="absolute -top-1 -right-1 size-4 p-0 flex items-center justify-center text-[10px] bg-[#f068d4] text-white border-0"
+                    className="absolute -top-1 -right-1 size-4 p-0 flex items-center justify-center text-[10px] bg-accent text-accent-foreground border-0"
                   >
                     {notificationCount}
                   </Badge>
@@ -198,7 +198,7 @@ export function HamburgerMenu({
               <Bell size={20} weight="regular" />
               <Badge
                 variant="destructive"
-                className="absolute top-1 right-1 size-4 p-0 flex items-center justify-center text-[10px] bg-[#f068d4] text-white border-0"
+                className="absolute top-1 right-1 size-4 p-0 flex items-center justify-center text-[10px] bg-accent text-accent-foreground border-0"
               >
                 {notificationCount}
               </Badge>
