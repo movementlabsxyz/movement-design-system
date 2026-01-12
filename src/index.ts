@@ -346,5 +346,9 @@ export {
   zIndex,
 } from "./lib/scales";
 
+// Themes & Colors (for React Native and non-CSS environments)
+export { colors, lightTheme, darkTheme, themes } from "./lib/theme";
+export type { Colors, Theme, ThemeName } from "./lib/theme";
+
 // Re-export useful types
 export type { VariantProps } from "class-variance-authority";
