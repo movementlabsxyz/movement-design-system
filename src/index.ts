@@ -23,6 +23,25 @@ export type {
   BrandingColor,
 } from "./components/Branding";
 export { DottedBackground } from "./components/DottedBackground";
+export {
+  Footer,
+  DesktopFooter,
+  MobileFooter,
+  footerLinkVariants,
+  footerHeaderVariants,
+  socialIconVariants,
+} from "./components/Footer";
+export type {
+  FooterProps,
+  FooterLink,
+  FooterColumn,
+  SocialLink,
+} from "./components/Footer";
+export { GlobalNavMenu, productBlockVariants } from "./components/GlobalNavMenu";
+export type {
+  GlobalNavMenuProps,
+  NavMenuItem,
+} from "./components/GlobalNavMenu";
 export { IconButton } from "./components/IconButton/IconButton";
 export { Logo } from "./components/Logo/Logo";
 export { MultiOutlineText } from "./components/MultiOutlineText";
