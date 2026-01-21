@@ -38,7 +38,7 @@ export default function MultiOutlineText({
   ],
 }: MultiOutlineTextProps) {
   const isMobile = useIsMobile();
-  const [fontLoaded, setFontLoaded] = useState(!waitForFont);
+  const [fontLoaded, setFontLoaded] = useState(false);
 
   // Check if children contains only text
   const isTextOnly = typeof children === "string";
@@ -49,8 +49,8 @@ export default function MultiOutlineText({
 
   // Calculate actual text width using canvas measureText
   const getTextWidth = (text: string, font: string) => {
-    // Check if we're in browser environment
-    if (typeof document === "undefined") {
+    // Use fallback calculation until font is loaded to prevent hydration mismatch
+    if (typeof document === "undefined" || !fontLoaded) {
       return text.length * svgFontSize * 0.8;
     }
 
