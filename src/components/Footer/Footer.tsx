@@ -289,9 +289,9 @@ function DesktopFooter({
         {/* Logo section - left side */}
         <div className="flex items-center shrink-0">
           {/* Small logo for smaller desktop screens */}
-          <img src={FooterSmallSvg} alt="Move Industries" className="h-24 w-auto block xl:hidden" />
+          <img src={FooterSmallSvg} alt="Move Industries" className="h-24 w-auto block xl:!hidden" />
           {/* Big logo for larger screens */}
-          <img src={FooterBigSvg} alt="Move Industries" className="h-24 w-auto hidden xl:block" />
+          <img src={FooterBigSvg} alt="Move Industries" className="h-24 w-auto hidden xl:!block" />
         </div>
 
         {/* Navigation columns - right side */}
@@ -407,11 +407,11 @@ function Footer({
   return (
     <footer data-slot="footer" className={cn("w-full", className)} {...props}>
       {/* Mobile footer - shown below lg breakpoint (1024px) */}
-      <div className="block lg:hidden">
+      <div className="block lg:!hidden">
         <MobileFooter {...sharedProps} />
       </div>
       {/* Desktop footer - shown at lg breakpoint and above */}
-      <div className="hidden lg:block">
+      <div className="hidden lg:!block">
         <DesktopFooter {...sharedProps} />
       </div>
     </footer>

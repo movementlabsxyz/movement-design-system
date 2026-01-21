@@ -344,9 +344,9 @@ function DesktopMenuContent({
       <div className="px-10 pb-10">
         <div className="flex gap-10">
           {/* Apps columns grouped together - flex-1 below xl to fill space, auto width at xl+ */}
-          <div className="flex gap-4 flex-1 xl:flex-none justify-center xl:justify-start">
+          <div className="flex gap-4 flex-1 xl:!flex-none justify-center xl:!justify-start">
             {/* Left apps column */}
-            <div className="flex-1 xl:flex-none max-w-[356px]">
+            <div className="flex-1 xl:!flex-none max-w-[356px]">
               <p className="font-heading font-black text-lg text-white tracking-wider mb-4">
                 APPS
               </p>
@@ -365,7 +365,7 @@ function DesktopMenuContent({
             </div>
 
             {/* Right apps column */}
-            <div className="flex flex-col flex-1 xl:flex-none max-w-[345px]">
+            <div className="flex flex-col flex-1 xl:!flex-none max-w-[345px]">
               <div className="h-[47px]" /> {/* Spacer to align with "APPS" header */}
               {rightItems.map((item) => (
                 <ProductBlock
@@ -381,7 +381,7 @@ function DesktopMenuContent({
           </div>
 
           {/* Right section - Video and Alliance (hidden on tablet, shown on xl+) */}
-          <div className="hidden xl:flex flex-1 flex-col items-center justify-center gap-8">
+          <div className="hidden xl:!flex flex-1 flex-col items-center justify-center gap-8">
             {showVideoSection && (
               <div className="w-[384px] h-[224px] rounded-lg overflow-hidden">
                 <iframe
