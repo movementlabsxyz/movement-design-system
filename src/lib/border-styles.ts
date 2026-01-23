@@ -13,6 +13,7 @@ export const gradientBorderClasses = {
   glow: "gradient-border-glow",
   error: "gradient-border-error",
   iridescent: "gradient-border-iridescent",
+  diagonal: "gradient-border-diagonal",
 } as const;
 
 /**

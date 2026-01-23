@@ -7,6 +7,7 @@ import {
   SheetTrigger,
   SheetClose,
 } from "@/components/shadcn/sheet";
+import { Skeleton } from "@/components/shadcn/skeleton";
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
 import HeadingBigSvg from "@/assets/branding/heading-big.svg";
@@ -329,6 +330,8 @@ function DesktopMenuContent({
   movePrice = "$0.03",
   onItemClick,
 }: DesktopMenuContentProps) {
+  const [isVideoLoaded, setIsVideoLoaded] = React.useState(false);
+
   // Split items into two columns (first 3 left, last 3 right)
   const leftItems = items.slice(0, 3);
   const rightItems = items.slice(3, 6);
@@ -341,7 +344,7 @@ function DesktopMenuContent({
       </div>
 
       {/* Main content */}
-      <div className="px-10 pb-10">
+      <div className="px-10 pb-6">
         <div className="flex gap-10">
           {/* Apps columns grouped together - flex-1 below xl to fill space, auto width at xl+ */}
           <div className="flex gap-4 flex-1 xl:!flex-none justify-center xl:!justify-start">
@@ -383,15 +386,23 @@ function DesktopMenuContent({
           {/* Right section - Video and Alliance (hidden on tablet, shown on xl+) */}
           <div className="hidden xl:!flex flex-1 flex-col items-center justify-center gap-8">
             {showVideoSection && (
-              <div className="w-[384px] h-[224px] rounded-lg overflow-hidden">
+              <div className="w-[384px] h-[224px] rounded-lg overflow-hidden relative">
+                {!isVideoLoaded && (
+                  <Skeleton className="absolute inset-0 w-full h-full bg-neutral-800" />
+                )}
                 <iframe
+                  src="https://player.vimeo.com/video/1157746076?badge=0&autopause=0&player_id=0&app_id=58479"
                   width="384"
                   height="224"
-                  src="https://www.youtube.com/embed/vl6qoOeGRL0"
-                  title="Movement Labs"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="w-full h-full"
+                  frameBorder={0}
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  title="Movement x KAST"
+                  className={cn(
+                    "w-full h-full border-none",
+                    !isVideoLoaded && "invisible"
+                  )}
+                  onLoad={() => setIsVideoLoaded(true)}
                 />
               </div>
             )}
@@ -399,23 +410,28 @@ function DesktopMenuContent({
             {showAllianceSection && (
               <div className="w-[400px]">
                 <p className="font-heading font-black text-lg text-white tracking-wider mb-2">
-                  INTRODUCING MOVE ALLIANCE
+                  MOVEMENT x KAST
                 </p>
                 <p className="font-body text-sm text-white/60 leading-relaxed">
-                  This first-of-its-kind ecosystem flywheel fuses{" "}
+                  Earn 4% cashback in{" "}
                   <a
                     href="https://x.com/search?q=%24MOVE&src=cashtag_click"
                     className="underline"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    MOVE · {movePrice}
+                    $MOVE
                   </a>{" "}
-                  buybacks with performance incentives that benefits the builders,
-                  the community, and the Movement network.{" "}
-                  <span className="text-[#81ffba] underline decoration-dotted cursor-pointer">
+                  tokens on every purchase at 150+ million merchants worldwide.
+                  The first dual-rewards cashback program in Move history.{" "}
+                  <a
+                    href="https://www.movementnetwork.xyz/article/movement-kast-faq"
+                    className="text-[#81ffba] underline decoration-dotted cursor-pointer"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     more
-                  </span>
+                  </a>
                 </p>
               </div>
             )}
@@ -441,7 +457,7 @@ function MobileMenuContent({ items, onItemClick }: MobileMenuContentProps) {
       </div>
 
       {/* Apps section */}
-      <div className="px-6 pb-10">
+      <div className="px-6 pb-6">
         <p className="font-heading font-black text-lg text-white tracking-wider mb-4">
           APPS
         </p>
@@ -521,7 +537,7 @@ function GlobalNavMenu({
         )}
       >
         {/* Custom close button */}
-        <SheetClose className="absolute top-8 right-8 z-10 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-white/20 focus:ring-offset-2 focus:ring-offset-black disabled:pointer-events-none">
+        <SheetClose className="absolute top-8 right-8 z-10 border-0 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-white/20 focus:ring-offset-2 focus:ring-offset-black disabled:pointer-events-none">
           <X size={24} weight="bold" className="text-white" />
           <span className="sr-only">Close</span>
         </SheetClose>
