@@ -405,7 +405,7 @@ function Footer({
   };
 
   return (
-    <footer data-slot="footer" className={cn("w-full", className)} {...props}>
+    <footer data-slot="footer" className={cn("w-full lg:mt-16", className)} {...props}>
       {/* Mobile footer - shown below lg breakpoint (1024px) */}
       <div className="block lg:!hidden">
         <MobileFooter {...sharedProps} />
