@@ -277,15 +277,15 @@ function DesktopFooter({
 }: DesktopFooterProps) {
   return (
     <div className={cn("relative w-full bg-black px-12 py-12", className)}>
-      {/* Heading at top left */}
+      {/* Heading centered */}
       {showHeading && (
-        <h2 className="mb-10 text-[32px] font-black uppercase leading-[48px] text-white">
+        <h2 className="mb-10 text-center text-[32px] font-black uppercase leading-[48px] text-white">
           {heading}
         </h2>
       )}
 
       {/* Main content area */}
-      <div className="flex items-start justify-between">
+      <div className="flex items-center justify-between">
         {/* Logo section - left side */}
         <div className="flex items-center shrink-0">
           {/* Small logo for smaller desktop screens */}

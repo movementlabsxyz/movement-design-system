@@ -350,7 +350,7 @@ function DesktopMenuContent({
           <div className="flex gap-4 flex-1 xl:!flex-none justify-center xl:!justify-start">
             {/* Left apps column */}
             <div className="flex-1 xl:!flex-none max-w-[356px]">
-              <p className="font-heading font-black text-lg text-white tracking-wider mb-4">
+              <p className="font-heading font-black text-lg text-white tracking-wider mb-4 pl-4">
                 APPS
               </p>
               <div className="flex flex-col">
@@ -386,13 +386,13 @@ function DesktopMenuContent({
           {/* Right section - Video and Alliance (hidden on tablet, shown on xl+) */}
           <div className="hidden xl:!flex flex-1 flex-col items-center justify-center gap-8">
             {showVideoSection && (
-              <div className="w-[384px] h-[224px] rounded-lg overflow-hidden relative">
+              <div className="w-[400px] h-[224px] rounded-lg overflow-hidden relative">
                 {!isVideoLoaded && (
                   <Skeleton className="absolute inset-0 w-full h-full bg-neutral-800" />
                 )}
                 <iframe
                   src="https://player.vimeo.com/video/1157746076?badge=0&autopause=0&player_id=0&app_id=58479"
-                  width="384"
+                  width="400"
                   height="224"
                   frameBorder={0}
                   allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
